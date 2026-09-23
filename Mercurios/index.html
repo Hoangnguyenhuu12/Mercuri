@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MERCURIOS // Fashion OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- SIDEBAR (FULL-WIDTH 260px, MATCHING REFERENCE BONE STRUCTURE) -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand-header">
+          <div class="brand-title">MERCURIOS</div>
+          <div class="brand-subtitle">FASHION OS</div>
+        </div>
+
+        <!-- 01. OVERVIEW -->
+        <div class="nav-section">
+          <div class="nav-group-title">OVERVIEW</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item active" href="javascript:void(0)" data-view-target="overview">
+                <span>Dashboard</span>
+                <span class="nav-tag">[01]</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 02. CATALOG & DESIGN -->
+        <div class="nav-section">
+          <div class="nav-group-title">PRODUCTS &amp; DESIGN</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" href="javascript:void(0)" data-view-target="products">
+                <span>Products</span>
+                <span class="nav-tag">[SKU]</span>
+              </a>
+            </li>
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="categories"><span>Categories</span><span
+                  class="nav-tag">[CAT]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)"
+                data-view-target="collections"><span>Collections</span><span class="nav-tag">[COL]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="materials"><span>Raw
+                  Materials</span><span class="nav-tag">[MAT]</span></a></li>
+          </ul>
+        </div>
+
+        <!-- 03. SALES & ORDERS -->
+        <div class="nav-section">
+          <div class="nav-group-title">SALES &amp; ORDERS</div>
+          <ul class="nav-list">
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Orders</span><span
+                  class="nav-tag">[ORD]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Customers</span><span
+                  class="nav-tag">[CRM]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Omnichannel Inbox</span><span
+                  class="nav-tag">[MSG]</span></a></li>
+          </ul>
+        </div>
+
+        <!-- 04. OPERATIONS -->
+        <div class="nav-section">
+          <div class="nav-group-title">OPERATIONS</div>
+          <ul class="nav-list">
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Outlets &amp;
+                  Stores</span><span class="nav-tag">[09]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Inventory &amp;
+                  Stock</span><span class="nav-tag">[WHS]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Production (PO)</span><span
+                  class="nav-tag">[MFG]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Suppliers</span><span
+                  class="nav-tag">[VND]</span></a></li>
+          </ul>
+        </div>
+
+        <!-- 05. SYSTEM -->
+        <div class="nav-section">
+          <div class="nav-group-title">SYSTEM</div>
+          <ul class="nav-list">
+            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Staff &amp;
+                  Access</span><span class="nav-tag">[USR]</span></a></li>
+            <li>
+              <a class="nav-item" href="javascript:void(0)" data-view-target="settings">
+                <span>Settings</span>
+                <span class="nav-tag">[CFG]</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SIDEBAR FOOTER -->
+      <div class="sidebar-footer">
+        <div class="system-health-pill">
+          <span class="health-dot"></span>
+          <span>System Stable &amp; Synced</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEWPORT -->
+    <div class="main-viewport">
+
+      <!-- TOPBAR (EXACT MATCH TO REFERENCE CROP) -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <span id="live-indicator-pill" class="live-status-pill" title="Click to toggle Live/Off">
+            <span class="live-dot"></span>LIVE
+          </span>
+          <span class="sub-headline">Unified Multi-Channel Operations</span>
+        </div>
+
+        <div class="topbar-right">
+          <!-- COMPACT USER PROFILE & SIGN OUT -->
+          <div class="user-block">
+            <div class="user-info">
+              <span class="user-name">Hoang Huu Nguyen</span>
+              <span class="user-role">Admin</span>
+            </div>
+            <div class="user-avatar">H</div>
+            <div class="user-divider"></div>
+            <a href="javascript:void(0)" id="btn-sign-out" class="sign-out-link">Sign Out</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- SCROLLABLE WORK CANVAS -->
+      <main class="scroll-canvas">
+        <div class="canvas-container">
+
+          <!-- ================================================================
+               VIEW 1: DASHBOARD OVERVIEW
+               ================================================================ -->
+          <div id="view-overview" class="view-section active">
+
+            <!-- HERO HEADER -->
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>MercuriOS Overview</h1>
+                <p>Revenue, warehouse fulfillment and multi-outlet retail operations across 30 days.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-open-dispatch" class="btn btn-primary">+ New Dispatch</button>
+              </div>
+            </div>
+
+            <!-- [01] REVENUE -->
+            <section class="section-block">
+              <div class="section-title-row">
+                <span class="section-heading">[01] REVENUE</span>
+                <div class="section-line"></div>
+              </div>
+              <div class="kpi-grid-3">
+                <div class="kpi-box" data-metric="gross-revenue">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">GROSS REVENUE</span>
+                    <span class="kpi-code-tag">[VND]</span>
+                  </div>
+                  <div id="val-gross-revenue" class="kpi-box-value">248,500,000 đ</div>
+                  <div class="kpi-box-sub">30 days consolidated</div>
+                </div>
+
+                <div class="kpi-box" data-metric="completed-orders">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">ORDERS</span>
+                    <span class="kpi-code-tag">[COUNT]</span>
+                  </div>
+                  <div id="val-completed-orders" class="kpi-box-value">1,420</div>
+                  <div class="kpi-box-sub">completed / in transit</div>
+                </div>
+
+                <div class="kpi-box" data-metric="pending-settlement">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">PENDING VERIFICATION</span>
+                    <span class="kpi-code-tag">[QUEUE]</span>
+                  </div>
+                  <div id="val-pending-orders" class="kpi-box-value">38</div>
+                  <div class="kpi-box-sub">requires order confirmation</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- [02] CUSTOMERS & PRODUCTS -->
+            <section class="section-block">
+              <div class="section-title-row">
+                <span class="section-heading">[02] CUSTOMERS &amp; PRODUCTS</span>
+                <div class="section-line"></div>
+              </div>
+              <div class="kpi-grid-3">
+                <div class="kpi-box" data-metric="total-customers">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">TOTAL CUSTOMERS</span>
+                    <span class="kpi-code-tag">[CRM]</span>
+                  </div>
+                  <div id="val-total-customers" class="kpi-box-value">18,450</div>
+                  <div class="kpi-box-sub">unified omnichannel profiles</div>
+                </div>
+
+                <div class="kpi-box" data-metric="new-customers">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">NEW CUSTOMERS</span>
+                    <span class="kpi-code-tag">[30 DAYS]</span>
+                  </div>
+                  <div id="val-new-customers" class="kpi-box-value">1,290</div>
+                  <div class="kpi-box-sub">+12.4% acquisition velocity</div>
+                </div>
+
+                <div class="kpi-box" data-metric="total-skus">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">ACTIVE SKUs</span>
+                    <span class="kpi-code-tag">[CATALOG]</span>
+                  </div>
+                  <div id="val-total-skus" class="kpi-box-value">4,850</div>
+                  <div class="kpi-box-sub">available in fulfillment stock</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- [03] OPERATIONS & LOGISTICS -->
+            <section class="section-block">
+              <div class="section-title-row">
+                <span class="section-heading">[03] OPERATIONS &amp; LOGISTICS</span>
+                <div class="section-line"></div>
+              </div>
+              <div class="kpi-grid-3">
+                <div class="kpi-box" data-metric="active-outlets">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">RETAIL OUTLETS</span>
+                    <span class="kpi-code-tag">[STORES]</span>
+                  </div>
+                  <div id="val-active-outlets" class="kpi-box-value">9</div>
+                  <div class="kpi-box-sub">active point-of-sale branches</div>
+                </div>
+
+                <div class="kpi-box" data-metric="running-pos">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">RUNNING POs</span>
+                    <span class="kpi-code-tag">[FACTORY]</span>
+                  </div>
+                  <div id="val-running-pos" class="kpi-box-value">10</div>
+                  <div class="kpi-box-sub">active production orders</div>
+                </div>
+
+                <div class="kpi-box" data-metric="completion-rate">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">COMPLETION RATE</span>
+                    <span class="kpi-code-tag">[SLA]</span>
+                  </div>
+                  <div id="val-completion-rate" class="kpi-box-value">98.4%</div>
+                  <div class="kpi-box-sub">on-time dispatch target &gt;95%</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- [04] VISUAL ANALYSIS ROW -->
+            <section class="section-block">
+              <div class="analytics-split-row">
+                <div class="panel-card">
+                  <div class="panel-card-header">
+                    <span class="panel-card-title">Daily Revenue Velocity</span>
+                    <span class="kpi-code-tag">30 DAYS // PEAK: 31M ₫</span>
+                  </div>
+                  <div class="chart-bars-container">
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 45%;"></div><span class="chart-bar-label">01</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 60%;"></div><span class="chart-bar-label">03</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 38%;"></div><span class="chart-bar-label">05</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 80%;"></div><span class="chart-bar-label">07</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 55%;"></div><span class="chart-bar-label">09</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 90%;"></div><span class="chart-bar-label">11</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 72%;"></div><span class="chart-bar-label">13</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 65%;"></div><span class="chart-bar-label">15</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 85%;"></div><span class="chart-bar-label">17</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 95%;"></div><span class="chart-bar-label">19</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 50%;"></div><span class="chart-bar-label">21</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 78%;"></div><span class="chart-bar-label">23</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 88%;"></div><span class="chart-bar-label">25</span>
+                    </div>
+                    <div class="chart-bar-col">
+                      <div class="chart-bar-fill" style="height: 100%;"></div><span class="chart-bar-label">TODAY</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-card">
+                  <div class="panel-card-header">
+                    <span class="panel-card-title">Orders by Status</span>
+                    <span class="kpi-code-tag">1,458 TOTAL</span>
+                  </div>
+                  <div class="status-progress-list">
+                    <div class="progress-track-item">
+                      <div class="progress-info"><span>Completed / Delivered</span><strong>1,240 (85%)</strong></div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 85%;"></div>
+                      </div>
+                    </div>
+                    <div class="progress-track-item">
+                      <div class="progress-info"><span>In-Transit Dispatch</span><strong>142 (10%)</strong></div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 10%; opacity: 0.7;"></div>
+                      </div>
+                    </div>
+                    <div class="progress-track-item">
+                      <div class="progress-info"><span>Packing Queue</span><strong>38 (3%)</strong></div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 3%; opacity: 0.5;"></div>
+                      </div>
+                    </div>
+                    <div class="progress-track-item">
+                      <div class="progress-info"><span>Returns / RMA</span><strong>12 (1%)</strong></div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 1%; opacity: 0.3;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- [05] CHANNEL DISTRIBUTION -->
+            <section class="section-block">
+              <div class="panel-card" style="margin-bottom: 32px;">
+                <div class="panel-card-header">
+                  <span class="panel-card-title">Omnichannel Revenue Breakdown</span>
+                  <span class="kpi-code-tag">[LIVE FEED]</span>
+                </div>
+                <div id="slot-omnichannel-analytics"></div>
+              </div>
+            </section>
+
+            <!-- [06] IMMEDIATE EXECUTION QUEUE -->
+            <section class="section-block">
+              <div class="panel-card">
+                <div class="panel-card-header">
+                  <span class="panel-card-title">Immediate Stock Dispatch &amp; Refill Queue</span>
+                  <span class="kpi-code-tag">[ACTIONS REQUIRED]</span>
+                </div>
+                <div class="table-responsive">
+                  <table class="clean-table" aria-label="Dispatch Orders">
+                    <thead>
+                      <tr>
+                        <th>DISPATCH ID</th>
+                        <th>ORIGIN HUB</th>
+                        <th>SKU CODE</th>
+                        <th>DESTINATION</th>
+                        <th>QTY</th>
+                        <th>PRIORITY</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody id="queue-table-body"></tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- ================================================================
+               VIEW 2: PRODUCTS CATALOG (MATCHING REFERENCE PRODUCTS SCREENSHOT)
+               ================================================================ -->
+          <div id="view-products" class="view-section">
+
+            <!-- PRODUCTS HERO -->
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Products</h1>
+                <p>Catalog styles of MercuriOS, each style with size x color matrix.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-open-add-product" class="btn btn-primary">+ Add Product</button>
+              </div>
+            </div>
+
+            <!-- 4 SUMMARY CARDS (MATCHING REFERENCE IMAGE) -->
+            <section class="section-block">
+              <div class="kpi-grid-4">
+
+                <div class="kpi-box">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">TOTAL PRODUCTS</span>
+                    <span class="kpi-code-tag">[CATALOG]</span>
+                  </div>
+                  <div id="prod-val-total" class="kpi-box-value">5</div>
+                  <div class="kpi-box-sub">all style matrix items</div>
+                </div>
+
+                <div class="kpi-box">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">ACTIVE FOR SALE</span>
+                    <span class="kpi-code-tag">[ONLINE]</span>
+                  </div>
+                  <div id="prod-val-active" class="kpi-box-value">5</div>
+                  <div class="kpi-box-sub">current active channels</div>
+                </div>
+
+                <div class="kpi-box">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">AVERAGE PRICE</span>
+                    <span class="kpi-code-tag">[VND]</span>
+                  </div>
+                  <div id="prod-val-avg-price" class="kpi-box-value">25,220,000 đ</div>
+                  <div class="kpi-box-sub">weighted catalog avg</div>
+                </div>
+
+                <div class="kpi-box">
+                  <div class="kpi-box-header">
+                    <span class="kpi-box-title">FEATURED STYLES</span>
+                    <span class="kpi-code-tag">[HERO]</span>
+                  </div>
+                  <div id="prod-val-featured" class="kpi-box-value">0</div>
+                  <div class="kpi-box-sub">highlighted on storefronts</div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- FILTER & SEARCH BAR -->
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="prod-search-input" class="search-input"
+                  placeholder="Search by SKU code or product name...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="prod-filter-status" class="filter-select">
+                  <option value="ALL">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Draft">Draft</option>
+                </select>
+
+                <select id="prod-filter-category" class="filter-select">
+                  <option value="ALL">All Categories</option>
+                  <option value="Dress">Dress</option>
+                  <option value="Top">Top</option>
+                  <option value="Skirt">Skirt</option>
+                  <option value="Tee">Tee</option>
+                  <option value="Pants">Pants</option>
+                </select>
+
+                <select id="prod-filter-collection" class="filter-select">
+                  <option value="ALL">All Collections</option>
+                  <option value="Fall/Winter">Fall/Winter 2026 — Cocoon</option>
+                  <option value="Holiday">Holiday Sparkle 2026</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- PRODUCTS DATA TABLE -->
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Products Table">
+                  <thead>
+                    <tr>
+                      <th>SKU CODE</th>
+                      <th>PRODUCT NAME</th>
+                      <th>CATEGORY</th>
+                      <th>COLLECTION</th>
+                      <th>RETAIL PRICE</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="products-table-body">
+                    <!-- Dynamically populated by app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================================================================
+               VIEW: CATEGORIES (DANH MỤC SẢN PHẨM)
+               ================================================================ -->
+          <div id="view-categories" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Categories</h1>
+                <p>Classification taxonomy — Tops, Bottoms, Skirts, Dresses, Sets, Outerwear...</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-category" class="btn btn-primary">+ Add Category</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="cat-search-input" class="search-input" placeholder="Search by category name, code or slug...">
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Categories Table">
+                  <thead>
+                    <tr>
+                      <th>CODE</th>
+                      <th>CATEGORY NAME</th>
+                      <th>SLUG</th>
+                      <th>PARENT</th>
+                      <th>SORT</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="categories-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: COLLECTIONS (BỘ SƯU TẬP)
+               ================================================================ -->
+          <div id="view-collections" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Collections</h1>
+                <p>Seasonal campaign planning — Spring / Summer / Fall / Winter + Capsule releases.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-collection" class="btn btn-primary">+ Add Collection</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="col-search-input" class="search-input" placeholder="Search by name, code or theme...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="col-filter-season" class="filter-select">
+                  <option value="ALL">All Seasons</option>
+                  <option value="holiday">Holiday</option>
+                  <option value="fall">Fall</option>
+                  <option value="spring">Spring</option>
+                  <option value="capsule">Capsule</option>
+                </select>
+                <select id="col-filter-status" class="filter-select">
+                  <option value="ALL">All Status</option>
+                  <option value="Planning">Planning</option>
+                  <option value="Design">Design</option>
+                  <option value="Sample">Sample</option>
+                  <option value="Active">Active</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Collections Table">
+                  <thead>
+                    <tr>
+                      <th>CODE</th>
+                      <th>COLLECTION NAME</th>
+                      <th>SEASON</th>
+                      <th>THEME</th>
+                      <th>LAUNCH</th>
+                      <th>TARGET SKUS</th>
+                      <th>BUDGET</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="collections-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: RAW MATERIALS & FABRICS (NGUYÊN PHỤ LIỆU)
+               ================================================================ -->
+          <div id="view-materials" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Raw Materials &amp; Fabrics</h1>
+                <p>Main fabrics, lining, buttons, zippers, thread, labels, packaging...</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-material" class="btn btn-primary">+ Add Material</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="mat-search-input" class="search-input" placeholder="Search by name, code or color...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="mat-filter-type" class="filter-select">
+                  <option value="ALL">All Types</option>
+                  <option value="packaging">Packaging</option>
+                  <option value="label">Label</option>
+                  <option value="thread">Thread</option>
+                  <option value="button">Button</option>
+                  <option value="zipper">Zipper</option>
+                </select>
+                <select id="mat-filter-supplier" class="filter-select">
+                  <option value="ALL">All Suppliers</option>
+                  <option value="Bao bi Tan Phu">Bao bi Tan Phu</option>
+                  <option value="YKK Vietnam">YKK Vietnam</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Raw Materials Table">
+                  <thead>
+                    <tr>
+                      <th>CODE</th>
+                      <th>MATERIAL NAME</th>
+                      <th>TYPE</th>
+                      <th>COLOR</th>
+                      <th>UOM</th>
+                      <th>UNIT PRICE</th>
+                      <th>ON-HAND</th>
+                      <th>SUPPLIER</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="materials-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW 3: SETTINGS (EXACT MATCH TO REFERENCE SETTINGS SCREENSHOT)
+               ================================================================ -->
+          <div id="view-settings" class="view-section">
+
+            <!-- SETTINGS HERO -->
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Settings</h1>
+                <p>Account profile, operational hub routing &amp; system configuration.</p>
+              </div>
+            </div>
+
+            <!-- TOP SPLIT: ACCOUNT PROFILE & SYSTEM TELEMETRY -->
+            <div class="settings-split-row">
+
+              <!-- LEFT: YOUR ACCOUNT -->
+              <div class="panel-card">
+                <div class="panel-card-header">
+                  <span class="panel-card-title">Your Account</span>
+                  <span class="kpi-code-tag">[PROFILE]</span>
+                </div>
+                <div class="settings-info-list">
+                  <div class="settings-info-row">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value">Hoang Huu Nguyen</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value info-value-mono">admin@mercuri.vn</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value info-value-mono">0967676767</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Role</span>
+                    <span class="info-value"><span class="badge-tag tag-active">[ADMIN]</span></span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Operational Hub</span>
+                    <span class="info-value">
+                      <select id="settings-node-selector" class="settings-inline-select"
+                        aria-label="Select Operational Hub">
+                        <option value="HUB_01" selected>CENTRAL HUB [WH-01] (DEFAULT)</option>
+                        <option value="ECOM_01">ECOM FULFILLMENT [WH-02]</option>
+                        <option value="OUTLET_FLAGSHIP">FLAGSHIP STORE [ST-01]</option>
+                        <option value="OUTLETS_CHAIN">RETAIL OUTLETS (9 UNITS)</option>
+                        <option value="ALL_NODES">ALL NODES // CONSOLIDATED</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Last Login</span>
+                    <span class="info-value info-value-mono">13:45 23 Sep 2026</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Account Created</span>
+                    <span class="info-value info-value-mono">01 Jan 2026</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: MERCURIOS SYSTEM -->
+              <div class="panel-card">
+                <div class="panel-card-header">
+                  <span class="panel-card-title">MercuriOS System</span>
+                  <span class="kpi-code-tag">[TELEMETRY]</span>
+                </div>
+                <div class="settings-info-list">
+                  <div class="settings-info-row">
+                    <span class="info-label">Version</span>
+                    <span class="info-value info-value-mono">v1.0.0 — MVP</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Visual Theme</span>
+                    <span class="info-value">
+                      <select id="settings-theme-selector" class="settings-inline-select">
+                        <option value="light" selected>Light Mode (Soft Slate)</option>
+                        <option value="dark">Dark Mode (Velvet Charcoal)</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">API URL</span>
+                    <span class="info-value info-value-mono">/api/v1</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">Active Modules</span>
+                    <span class="info-value info-value-mono">13 modules</span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">AI Bridge Status</span>
+                    <span class="info-value"><span class="badge-tag tag-active">[MERCURIX CONNECTED]</span></span>
+                  </div>
+                  <div class="settings-info-row">
+                    <span class="info-label">System State</span>
+                    <span class="info-value"><span class="health-dot"></span> Online &amp; Stable</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- BOTTOM: OPERATIONAL MODULES (MODULE NGHIỆP VỤ) -->
+            <div class="panel-card">
+              <div class="panel-card-header">
+                <span class="panel-card-title">Operational Modules</span>
+                <span class="kpi-code-tag">13 TOTAL</span>
+              </div>
+              <div class="modules-list">
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[DASH]</span>
+                    <div>
+                      <span class="module-name">Dashboard &amp; Analytics</span>
+                      <span class="module-desc">Consolidated telemetry &amp; daily velocity</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[PLM]</span>
+                    <div>
+                      <span class="module-name">PLM — Product Lifecycle</span>
+                      <span class="module-desc">SKU catalog, styles, color x size matrix</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[MES]</span>
+                    <div>
+                      <span class="module-name">MES — Production Tracking</span>
+                      <span class="module-desc">Batch production orders &amp; supplier POs</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[WMS]</span>
+                    <div>
+                      <span class="module-name">WMS — Warehouse &amp; Inventory</span>
+                      <span class="module-desc">Stock refill, bin tracking &amp; cross-docking</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[POS]</span>
+                    <div>
+                      <span class="module-name">POS &amp; Omnichannel Orders</span>
+                      <span class="module-desc">Shopee, TikTok Shop &amp; 9 Retail Outlets</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[CRM]</span>
+                    <div>
+                      <span class="module-name">CRM 360°</span>
+                      <span class="module-desc">Unified customer accounts &amp; purchase frequency</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[SCM]</span>
+                    <div>
+                      <span class="module-name">Suppliers &amp; Raw Materials</span>
+                      <span class="module-desc">Fabric inventory, trim items &amp; supplier leads</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[HR]</span>
+                    <div>
+                      <span class="module-name">HR &amp; Users</span>
+                      <span class="module-desc">Role-based access control &amp; permission tier</span>
+                    </div>
+                  </div>
+                  <span class="module-status-active">[ACTIVE]</span>
+                </div>
+
+                <div class="module-row-item">
+                  <div class="module-left">
+                    <span class="module-tag">[AI]</span>
+                    <div>
+                      <span class="module-name">Mercurix AI Agent (Autonomous Dispatch)</span>
+                      <span class="module-desc">Dedicated background intelligence suite</span>
+                    </div>
+                  </div>
+                  <span class="module-status-roadmap">[ROADMAP V2 / BAN AI]</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+
+
+    <!-- NEW DISPATCH MODAL -->
+    <div id="dispatch-modal" class="modal-backdrop">
+      <div class="modal-window">
+        <div class="modal-title-row">
+          <h2>CREATE STOCK DISPATCH ORDER</h2>
+          <button id="btn-close-dispatch" class="btn btn-sm">[X]</button>
+        </div>
+        <form id="form-dispatch">
+          <div class="form-field">
+            <label for="input-source-node">ORIGIN WAREHOUSE</label>
+            <select id="input-source-node" class="select-box" required>
+              <option value="HUB_01">CENTRAL HUB [WH-01]</option>
+              <option value="ECOM_01">ECOM FULFILLMENT [WH-02]</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="input-dest-node">DESTINATION</label>
+            <select id="input-dest-node" class="select-box" required>
+              <option value="OUTLET-01">FLAGSHIP OUTLET 01</option>
+              <option value="OUTLET-02">OUTLET 02 (DOWNTOWN)</option>
+              <option value="OUTLET-03">OUTLET 03 (MALL NORTH)</option>
+              <option value="SHOPEE-FULFILL">SHOPEE BULK FULFILLMENT</option>
+              <option value="TIKTOK-EXPRESS">TIKTOK EXPRESS DISPATCH</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="input-sku">ITEM SKU CODE</label>
+            <input type="text" id="input-sku" class="input-box" placeholder="e.g. OVERSHIRT-KHAKI-L" required>
+          </div>
+
+          <div class="form-field">
+            <label for="input-qty">QUANTITY</label>
+            <input type="number" id="input-qty" class="input-box" value="50" min="1" required>
+          </div>
+
+          <div class="form-field" style="display: flex; align-items: center; gap: 10px;">
+            <input type="checkbox" id="input-urgent" style="width: 16px; height: 16px; cursor: pointer;">
+            <label for="input-urgent" style="margin-bottom: 0; cursor: pointer;">MARK AS URGENT DISPATCH</label>
+          </div>
+
+          <div class="modal-actions-row">
+            <button type="button" class="btn"
+              onclick="document.getElementById('dispatch-modal').classList.remove('active')">CANCEL</button>
+            <button type="submit" class="btn btn-primary">SUBMIT DISPATCH</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ADD PRODUCT MODAL (MATCHING PRODUCTS PAGE) -->
+    <div id="add-product-modal" class="modal-backdrop">
+      <div class="modal-window">
+        <div class="modal-title-row">
+          <h2>ADD NEW PRODUCT STYLE</h2>
+          <button id="btn-close-add-product" class="btn btn-sm">[X]</button>
+        </div>
+        <form id="form-add-product">
+          <div class="form-field">
+            <label for="new-prod-sku">SKU STYLE CODE</label>
+            <input type="text" id="new-prod-sku" class="input-box" placeholder="e.g. HE-99201" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-prod-name">PRODUCT NAME</label>
+            <input type="text" id="new-prod-name" class="input-box" placeholder="e.g. Cotton Trench Coat" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-prod-category">CATEGORY</label>
+            <select id="new-prod-category" class="select-box" required>
+              <option value="Dress">Dress</option>
+              <option value="Top">Top</option>
+              <option value="Skirt">Skirt</option>
+              <option value="Tee">Tee</option>
+              <option value="Pants">Pants</option>
+              <option value="Outerwear">Outerwear</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="new-prod-collection">COLLECTION</label>
+            <select id="new-prod-collection" class="select-box">
+              <option value="—">— None —</option>
+              <option value="Fall/Winter 2026 — Cocoon">Fall/Winter 2026 — Cocoon</option>
+              <option value="Holiday Sparkle 2026">Holiday Sparkle 2026</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="new-prod-price">RETAIL PRICE (VND)</label>
+            <input type="number" id="new-prod-price" class="input-box" placeholder="5000000" required>
+          </div>
+
+          <div class="modal-actions-row">
+            <button type="button" class="btn"
+              onclick="document.getElementById('add-product-modal').classList.remove('active')">CANCEL</button>
+            <button type="submit" class="btn btn-primary">SAVE PRODUCT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOAST SHELF -->
+    <div id="toast-container" class="toast-shelf"></div>
+
+  </div>
+
+  <!-- MODULAR SCRIPTS (CLEAN, SEPARATED, EASY TO DEBUG) -->
+  <script src="scripts/state.js"></script>
+  <script src="scripts/mercurix-bridge.js"></script>
+  <script src="scripts/components/toast.js"></script>
+  <script src="scripts/components/topbar.js"></script>
+  <script src="scripts/components/sidebar.js"></script>
+  <script src="scripts/components/modals.js"></script>
+  <script src="scripts/components/channel-breakdown.js"></script>
+  <script src="scripts/views/overview.js"></script>
+  <script src="scripts/views/products.js"></script>
+  <script src="scripts/views/categories.js"></script>
+  <script src="scripts/views/collections.js"></script>
+  <script src="scripts/views/materials.js"></script>
+  <script src="scripts/views/settings.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>
