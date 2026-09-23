@@ -1,0 +1,150 @@
+/* ==========================================================================
+   MERCURIOS // SETTINGS VIEW SPECIFIC STYLES
+   Account Profile, System Telemetry & Operational Modules List
+   ========================================================================== */
+
+.settings-split-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1024px) {
+  .settings-split-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* KEY-VALUE INFO ROWS (CLEAN MINIMAL TYPOGRAPHY) */
+.settings-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13.5px;
+}
+
+.settings-info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.info-value {
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-value-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* SETTINGS SELECT CONTROL */
+.settings-inline-select {
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+
+.settings-inline-select:focus {
+  border-color: var(--text-main);
+}
+
+/* MODULES LIST IN SETTINGS */
+.modules-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.module-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color 100ms ease;
+}
+
+.module-row-item:last-child {
+  border-bottom: none;
+}
+
+.module-row-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.module-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.module-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  min-width: 52px;
+  text-align: center;
+}
+
+.module-name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--text-main);
+}
+
+.module-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+/* MODULE STATUS BADGES */
+.module-status-active {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  color: var(--text-main);
+}
+
+.module-status-roadmap {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1px dashed var(--border-medium);
+  color: var(--text-muted);
+}

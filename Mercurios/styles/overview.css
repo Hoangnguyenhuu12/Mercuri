@@ -1,0 +1,88 @@
+/* ==========================================================================
+   MERCURIOS // OVERVIEW DASHBOARD SPECIFIC STYLES
+   Revenue velocity bars, order status progress tracks & omnichannel slot
+   ========================================================================== */
+
+.analytics-split-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1024px) {
+  .analytics-split-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* REVENUE BARS */
+.chart-bars-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 180px;
+  padding-top: 20px;
+}
+
+.chart-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart-bar-fill {
+  width: 100%;
+  border-radius: var(--radius-xs);
+  background-color: var(--accent-black);
+  transition: height 300ms ease;
+  min-height: 8px;
+}
+
+.chart-bar-col:nth-child(even) .chart-bar-fill {
+  background-color: var(--border-medium);
+}
+
+.chart-bar-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-subtle);
+}
+
+/* STATUS PROGRESS */
+.status-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.progress-track-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.progress-bar-bg {
+  height: 8px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--accent-black);
+  border-radius: var(--radius-pill);
+}

@@ -1,0 +1,59 @@
+/* ==========================================================================
+   MERCURIOS // PRODUCTS CATALOG SPECIFIC STYLES
+   Search input, filter selects and catalog controls
+   ========================================================================== */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-field-box {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.search-input:focus {
+  border-color: var(--text-main);
+}
+
+.dropdown-filters-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 9px 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: var(--text-main);
+}
