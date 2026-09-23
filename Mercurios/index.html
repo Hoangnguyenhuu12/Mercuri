@@ -784,242 +784,123 @@
                   <tbody id="customers-table-body"></tbody>
                 </table>
               </div>
-            </div>
-          </div>
-
           <!-- ================================================================
-               VIEW: OMNICHANNEL INBOX & MERCURIX AI COPILOT
+               VIEW: OMNICHANNEL INBOX (MESSENGER-STYLE INTERFACE)
                ================================================================ -->
           <div id="view-inbox" class="view-section">
-            <div class="dashboard-hero">
-              <div class="hero-text">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-                  <h1>Omnichannel Inbox</h1>
-                  <span class="badge-tag tag-active" style="font-size: 11px;">[LIVE SYNCED]</span>
-                </div>
-                <p>Unified customer communications across Facebook, Instagram, Zalo OA, TikTok Shop, Shopee with Mercurix AI Copilot.</p>
-              </div>
+            <div class="messenger-wrapper">
 
-              <!-- OVERARCHING CONTROLS (LOCATED HIGH UP BESIDE TITLE & BENEATH ADMIN PROFILE) -->
-              <div class="hero-actions inbox-top-controls">
-                <div class="inbox-telemetry-cluster">
-                  <div class="telemetry-pill">
-                    <span class="telemetry-label">UNREAD:</span>
-                    <span class="telemetry-val" id="telemetry-unread-count">2</span>
-                  </div>
-                  <div class="telemetry-pill" style="border-left: 1px solid var(--border-light); padding-left: 8px;">
-                    <span class="telemetry-label">AI RESOLUTION:</span>
-                    <span class="telemetry-val">94.6%</span>
-                  </div>
-                </div>
-
-                <!-- AUTOPILOT TOGGLE SWITCH -->
-                <button id="btn-toggle-autopilot" class="btn-autopilot active" title="Toggle Mercurix AI Autopilot">
-                  <span class="status-indicator-dot"></span>
-                  <span id="autopilot-btn-text">AI AUTOPILOT: ON</span>
-                </button>
-
-                <!-- SLIDE-OVER DRAWER TOGGLE -->
-                <button id="btn-toggle-inbox-drawer" class="btn btn-primary" title="Toggle CRM & AI Copilot Panel">
-                  <span id="btn-drawer-label">[CRM &amp; AI COPILOT]</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- UNCLUTTERED 2-PANE OR 3-PANE LAYOUT -->
-            <div class="inbox-layout-card">
-
-              <!-- LEFT PANE: CONVERSATION DIRECTORY -->
-              <div class="inbox-list-pane">
-                <div class="inbox-list-header">
-                  <div class="inbox-title-row">
-                    <span class="inbox-pane-title">INBOX DIRECTORY</span>
-                    <span class="badge-tag tag-active">[LIVE]</span>
+              <!-- COLUMN 1: CHATS DIRECTORY -->
+              <div class="msg-chats-col">
+                <div class="msg-chats-header">
+                  <div class="msg-chats-title-row">
+                    <span class="msg-chats-title">Chats</span>
                   </div>
 
-                  <!-- CHANNEL FILTER PILLS -->
-                  <div class="channel-filter-pills">
-                    <button class="channel-pill-btn active" data-channel="ALL">ALL</button>
-                    <button class="channel-pill-btn" data-channel="FB">FB</button>
-                    <button class="channel-pill-btn" data-channel="IG">IG</button>
-                    <button class="channel-pill-btn" data-channel="ZALO">ZALO</button>
-                    <button class="channel-pill-btn" data-channel="TT">TT</button>
-                    <button class="channel-pill-btn" data-channel="SP">SP</button>
+                  <!-- Channels Filter Row -->
+                  <div class="msg-channels-row">
+                    <button class="msg-channel-chip active" data-channel="ALL">All</button>
+                    <button class="msg-channel-chip" data-channel="FB">Facebook</button>
+                    <button class="msg-channel-chip" data-channel="IG">Instagram</button>
+                    <button class="msg-channel-chip" data-channel="ZALO">Zalo</button>
+                    <button class="msg-channel-chip" data-channel="TT">TikTok</button>
+                    <button class="msg-channel-chip" data-channel="SP">Shopee</button>
                   </div>
 
-                  <!-- SEARCH INPUT -->
-                  <div class="inbox-search-wrap">
-                    <input type="text" id="inbox-search" class="inbox-search-input" placeholder="Search conversations...">
+                  <!-- Search Bar -->
+                  <div class="msg-search-box">
+                    <input type="text" id="msg-search-input" class="msg-search-input" placeholder="Search Messenger...">
                   </div>
                 </div>
 
-                <!-- SCROLLABLE LIST -->
-                <div id="inbox-conversations-list" class="inbox-conversations-scroll"></div>
+                <!-- Scrollable Conversation List -->
+                <div id="msg-conversations-list" class="msg-conversations-list"></div>
               </div>
 
-              <!-- CENTER PANE: ACTIVE CONVERSATION & MESSAGING -->
-              <div class="inbox-chat-pane">
-
-                <!-- TOP BAR (CLEAN & MINIMAL, NO BULKY OVERLAPPING BUTTONS) -->
-                <div class="chat-header-bar">
-                  <div class="chat-customer-meta">
+              <!-- COLUMN 2: CHAT THREAD CANVAS -->
+              <div class="msg-thread-col">
+                <!-- Header -->
+                <div class="msg-thread-header">
+                  <div class="msg-thread-recipient">
+                    <div class="msg-avatar-wrap" style="width: 40px; height: 40px; min-width: 40px;">
+                      <div id="msg-header-avatar" class="msg-avatar">TD</div>
+                      <span class="msg-online-dot"></span>
+                    </div>
                     <div>
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <span id="chat-header-title" class="chat-customer-name">Select Conversation</span>
-                        <span id="chat-header-channel" class="conv-channel-tag">[FB]</span>
-                      </div>
-                      <div id="chat-header-sub" class="chat-customer-sub">Customer details</div>
+                      <div id="msg-header-name" class="msg-recipient-name">Toan Duc</div>
+                      <div id="msg-header-status" class="msg-recipient-status">Active now</div>
                     </div>
                   </div>
 
-                  <div class="chat-controls-right">
-                    <span id="chat-handler-status" class="chat-status-pill ai-active">● HANDLED BY AI</span>
-                    <button id="btn-chat-open-drawer" class="btn btn-sm" title="Expand CRM & AI Details">[PANEL ➔]</button>
+                  <div class="msg-header-actions">
+                    <button id="btn-toggle-info" class="msg-icon-btn active" title="Conversation Details">ⓘ</button>
                   </div>
                 </div>
 
-                <!-- MESSAGES THREAD -->
-                <div id="chat-messages-thread" class="chat-messages-thread"></div>
+                <!-- Messages Canvas -->
+                <div id="msg-messages-canvas" class="msg-messages-canvas"></div>
 
-                <!-- MERCURIX AI COPILOT SMART DRAFT (OPTIONAL FLOATING BANNER) -->
-                <div id="ai-draft-banner" class="ai-copilot-draft-banner" style="display: none;">
-                  <div class="ai-draft-header">
-                    <span class="ai-draft-label">[MERCURIX COPILOT SUGGESTION]</span>
-                    <div class="ai-draft-actions">
-                      <button id="btn-dismiss-ai-draft" class="btn btn-sm">DISMISS</button>
-                      <button id="btn-use-ai-draft" class="btn btn-sm btn-primary">USE DRAFT ↵</button>
-                    </div>
-                  </div>
-                  <div id="ai-draft-text" class="ai-draft-text"></div>
+                <!-- PRE-MADE QUICK QUESTION CHIPS (BỘ CÂU HỎI SẴN CÓ) -->
+                <div class="msg-quick-prompts-bar">
+                  <span class="msg-prompts-label">Gợi ý:</span>
+                  <button class="msg-prompt-chip" data-prompt="size">💡 Bảng size &amp; số đo chuẩn</button>
+                  <button class="msg-prompt-chip" data-prompt="freeship">📦 Chính sách freeship toàn quốc</button>
+                  <button class="msg-prompt-chip" data-prompt="evening-gown">👗 Đầm dạ hội Evening Gown còn không?</button>
+                  <button class="msg-prompt-chip" data-prompt="store">📍 Địa chỉ Flagship Store [ST-01]</button>
+                  <button class="msg-prompt-chip" data-prompt="promo">🏷️ Khuyến mãi &amp; Voucher tuần này</button>
                 </div>
 
-                <!-- COMPOSER BOX -->
-                <div class="chat-composer-box">
-                  <textarea id="chat-composer-textarea" class="chat-composer-textarea" placeholder="Type a response or press Ctrl+Enter to send..."></textarea>
-                  <div class="chat-composer-footer">
-                    <div class="chat-composer-quick-tags">
-                      <button class="quick-action-tag" data-tag="stock">+ [CHECK STOCK]</button>
-                      <button class="quick-action-tag" data-tag="po">+ [CUSTOMER PO]</button>
-                    </div>
-                    <div class="chat-composer-send-group">
-                      <span class="send-hint">Ctrl+Enter</span>
-                      <button id="btn-send-message" class="btn btn-primary">SEND ↵</button>
-                    </div>
-                  </div>
+                <!-- Composer Bar -->
+                <div class="msg-composer-bar">
+                  <input type="text" id="msg-composer-input" class="msg-input-pill" placeholder="Write a message... (Press Enter to send)">
+                  <button id="btn-msg-send" class="msg-send-btn" title="Send message">➤</button>
                 </div>
-
               </div>
 
-              <!-- RIGHT PANE: SLIDE-OVER DRAWER (HIDDEN BY DEFAULT TO PREVENT CLUTTER) -->
-              <div id="inbox-side-drawer" class="inbox-side-drawer">
-                <div class="drawer-header-bar">
-                  <div class="drawer-tabs">
-                    <button class="drawer-tab-btn active" data-tab="crm">[CRM INFO]</button>
-                    <button class="drawer-tab-btn" data-tab="ai-sim">[AI SIMULATOR]</button>
-                    <button class="drawer-tab-btn" data-tab="metrics">[AI METRICS]</button>
+              <!-- COLUMN 3: CUSTOMER PROFILE & QUICK FAQ SIDEBAR -->
+              <div id="msg-info-col" class="msg-info-col">
+                <div class="msg-info-profile-card">
+                  <div id="msg-profile-avatar" class="msg-info-avatar-large">TD</div>
+                  <div id="msg-profile-name" class="msg-info-name">Toan Duc</div>
+                  <div class="msg-info-status">Active now</div>
+                  <div class="msg-info-quick-stats">
+                    <span id="msg-profile-tier" class="msg-stat-badge">VIP</span>
+                    <span id="msg-profile-phone" class="msg-stat-badge">0933221100</span>
+                    <span id="msg-profile-orders" class="msg-stat-badge">8 orders</span>
                   </div>
-                  <button id="btn-close-drawer" class="btn btn-sm" title="Close Panel">[X]</button>
                 </div>
 
-                <div class="drawer-body-content">
-
-                  <!-- TAB 1: CRM INFO -->
-                  <div id="drawer-tab-crm" style="display: flex; flex-direction: column; gap: 12px;">
-                    <div class="drawer-card-box">
-                      <span class="drawer-box-title">CUSTOMER OVERVIEW</span>
-                      <div class="settings-info-list" style="margin-top: 4px;">
-                        <div class="settings-info-row">
-                          <span class="info-label">Customer Tier</span>
-                          <span id="drawer-crm-tier" class="info-value"><span class="crm-tier-tag tier-vip">[VIP]</span></span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Phone</span>
-                          <span id="drawer-crm-phone" class="info-value info-value-mono">0933221100</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Email</span>
-                          <span id="drawer-crm-email" class="info-value info-value-mono">toanduc@gmail.com</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Orders Count</span>
-                          <span id="drawer-crm-orders" class="info-value info-value-mono">8</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Total Spent</span>
-                          <span id="drawer-crm-spent" class="info-value info-value-mono">68,500,000 đ</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="drawer-card-box">
-                      <span class="drawer-box-title">INTERNAL STAFF NOTES</span>
-                      <textarea class="input-box" style="height: 60px; font-size: 12px;" placeholder="Add internal notes about this customer (only visible to team)..."></textarea>
+                <div class="msg-info-sections">
+                  <!-- AI Autopilot Switch -->
+                  <div class="msg-section-box">
+                    <span class="msg-section-title">AI Assistant</span>
+                    <div class="msg-ai-toggle-row">
+                      <span class="msg-ai-label">Mercurix Autopilot</span>
+                      <button id="btn-msg-ai-toggle" class="msg-switch-btn on">ON</button>
                     </div>
                   </div>
 
-                  <!-- TAB 2: AI SIMULATOR (FOR BAN AI MERCURIX TESTING) -->
-                  <div id="drawer-tab-ai-sim" style="display: none; flex-direction: column; gap: 12px;">
-                    <div class="drawer-card-box">
-                      <span class="drawer-box-title">MERCURIX AI SIMULATOR</span>
-                      <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45; margin: 0;">
-                        Giả lập tin nhắn khách hàng gửi tới để kiểm thử luồng phản hồi tự động của AI Mercurix mà không cần Facebook webhook thật.
-                      </p>
-                      <input type="text" id="sim-cust-input" class="ai-sim-input" placeholder="Gõ câu hỏi giả lập của khách...">
-                      <button id="btn-sim-cust-send" class="btn btn-primary btn-sm" style="width: 100%;">
-                        SIMULATE CUSTOMER MSG
-                      </button>
-                    </div>
-
-                    <div class="drawer-card-box">
-                      <span class="drawer-box-title">MODEL CONFIGURATION</span>
-                      <div class="settings-info-list" style="margin-top: 4px;">
-                        <div class="settings-info-row">
-                          <span class="info-label">Model Endpoint</span>
-                          <span class="info-value info-value-mono">mercurix-v1-fast</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Temperature</span>
-                          <span class="info-value info-value-mono">0.2</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Stock Integration</span>
-                          <span class="info-value"><span class="badge-tag tag-active">[SYNCED]</span></span>
-                        </div>
-                      </div>
-                    </div>
+                  <!-- Quick Answers / FAQ -->
+                  <div class="msg-section-box">
+                    <span class="msg-section-title">Câu trả lời mẫu (Click để gửi)</span>
+                    <button class="msg-faq-btn" data-faq="size">📏 Gửi bảng thông số size thời trang</button>
+                    <button class="msg-faq-btn" data-faq="freeship">🚚 Gửi chính sách giao hàng freeship</button>
+                    <button class="msg-faq-btn" data-faq="store">🏢 Gửi địa chỉ &amp; hotline cửa hàng</button>
+                    <button class="msg-faq-btn" data-faq="promo">🎁 Gửi mã giảm giá khách hàng VIP</button>
                   </div>
 
-                  <!-- TAB 3: AI METRICS -->
-                  <div id="drawer-tab-metrics" style="display: none; flex-direction: column; gap: 12px;">
-                    <div class="drawer-card-box">
-                      <span class="drawer-box-title">REAL-TIME INFERENCE METRICS</span>
-                      <div class="settings-info-list" style="margin-top: 4px;">
-                        <div class="settings-info-row">
-                          <span class="info-label">Predicted Intent</span>
-                          <span class="info-value info-value-mono">CHECK_STOCK</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Confidence</span>
-                          <span class="info-value info-value-mono">98.2%</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Response Latency</span>
-                          <span class="info-value info-value-mono">0.45s</span>
-                        </div>
-                        <div class="settings-info-row">
-                          <span class="info-label">Mercurix Bridge</span>
-                          <span class="info-value"><span class="badge-tag tag-active">[CONNECTED]</span></span>
-                        </div>
-                      </div>
-                    </div>
+                  <!-- Customer Lifetime Value -->
+                  <div class="msg-section-box">
+                    <span class="msg-section-title">Chi tiêu tích lũy</span>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); font-family: var(--font-mono);" id="msg-profile-spent">68,500,000 đ</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Kênh chính: <strong id="msg-profile-channel">Facebook</strong></div>
                   </div>
-
                 </div>
               </div>
 
             </div>
-
           </div>
+
 
           <!-- ================================================================
                VIEW 3: SETTINGS (EXACT MATCH TO REFERENCE SETTINGS SCREENSHOT)

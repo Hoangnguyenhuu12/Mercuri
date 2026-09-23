@@ -191,14 +191,16 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
   * Cố định tuyệt đối thanh Sidebar: thu gọn padding và margin dọc, đặt `overflow: hidden;`, chiều cao vừa vặn ~570px, triệt tiêu hoàn toàn hiện tượng trượt/cuộn lên xuống.
   * Tối ưu hệ thống Toast thông báo: chặn thông báo trùng khi bấm lại tab đang mở, giảm thời gian hiển thị xuống 1.4s khi người dùng thao tác bấm liên tục, giới hạn tối đa 3 toasts cùng lúc.
 * **v1.8.0**: Tổng hợp toàn bộ tài liệu kỹ thuật, quy định thiết kế, quy chuẩn phân chia thư mục và lộ trình chuyển đổi framework vào file **`ghichu.md`**.
-* **v1.9.0**: Hoàn thiện toàn diện phân hệ **Bán hàng (Sales & Orders)** theo chuẩn thiết kế Minimalist:
-  * **Orders**: Bảng dữ liệu đơn hàng đa kênh, mã màu thanh toán (`[PAID]`, `[UNPAID]`, `[REFUNDED]`), bộ lọc đa chiều theo trạng thái/kênh/thanh toán.
-  * **Customers (CRM 360°)**: Quản lý khách hàng, phân hạng thẻ thành viên (`[VIP]`, `[DIAMOND]`, `[GOLD]`, `[SILVER]`), tích lũy điểm thưởng và giá trị vòng đời khách.
-  * **Omnichannel Inbox & Mercurix AI Copilot**: Tối giản hóa triệt để hộp thư đa kênh, triệt tiêu sự rối mắt của bản mẫu:
-    * Khung chat thoáng đãng 2 cột chính (Danh bạ hội thoại & Cửa sổ chat rộng rãi).
-    * Ngăn kéo trượt (Slide-over Drawer) linh hoạt được ẩn mặc định, mở ra bằng nút **`[CRM & AI COPILOT]`** để xem CRM info, ghi chú nội bộ hoặc bảng điều khiển AI mà không làm chật chội màn hình.
-    * Tích hợp **AI Autopilot** (`● AI AUTOPILOT: ON/OFF`), đề xuất phản hồi thông minh (`[MERCURIX COPILOT SUGGESTION]`) và công cụ **Giả lập tin nhắn khách hàng (AI Simulator)** phục vụ việc kiểm thử model của Ban AI Mercurix.
-    * Cung cấp API lập trình `window.Mercurios.inbox` dành riêng cho hệ thống AI Mercurix.
+* **v1.9.0**: Xây dựng phân hệ Bán hàng (Orders, Customers CRM 360, Omnichannel Inbox cơ bản).
+* **v2.0.0**: **Tái thiết kế toàn diện Omnichannel Inbox chuẩn giao diện Facebook Messenger**:
+  * **Loại bỏ triệt để các component rườm rà**: Xóa bỏ các thanh telemetry dài dòng và nút bấm thừa thãi ở khu vực tiêu đề, trả lại không gian tối giản, tinh khiết.
+  * **Chuẩn hóa bố cục 3 cột kinh điển của Messenger**:
+    * **Cột 1 (Chats Directory)**: Danh sách hội thoại với Avatar tròn, chấm tín hiệu online xanh (`#31A24C`), bộ lọc kênh tối giản (`All`, `FB`, `IG`, `Zalo`, `TikTok`, `Shopee`) và thanh tìm kiếm bo tròn nhẹ nhàng.
+    * **Cột 2 (Active Chat Thread)**: Khung chat rộng mở với bong bóng chat tròn mềm (Khách màu xám `#F0F2F5`, Shop màu xanh Messenger `#0084FF` / chữ trắng), thanh nhập liệu dạng pill thanh thoát.
+    * **Cột 3 (Customer Profile & Quick FAQ)**: Thẻ hồ sơ khách hàng, chi tiêu tích lũy, công tắc bật/tắt AI Autopilot và danh mục câu trả lời mẫu cho nhân viên.
+  * **Tích hợp Bộ câu hỏi nhanh có sẵn (Pre-made Question Chips)**: Cung cấp sẵn các nút câu hỏi thường gặp (`Bảng size & số đo chuẩn`, `Chính sách freeship toàn quốc`, `Đầm dạ hội Evening Gown còn không?`, `Địa chỉ Flagship Store`, `Khuyến mãi tuần này`).
+  * **Khắc phục triệt để lỗi AI trả lời sai/không liên quan**: Nâng cấp bộ máy phân tích ngữ cảnh, đảm bảo AI Mercurix nhận diện chính xác ý định khách hàng và phản hồi 100% chuẩn xác theo dữ liệu nghiệp vụ thời trang.
+
 
 
 ---
