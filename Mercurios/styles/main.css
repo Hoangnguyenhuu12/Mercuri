@@ -18,4 +18,8 @@
 /* 5. View-specific Stylesheets */
 @import url('./overview.css');
 @import url('./products.css');
+@import url('./orders.css');
+@import url('./customers.css');
+@import url('./inbox.css');
 @import url('./settings.css');
+

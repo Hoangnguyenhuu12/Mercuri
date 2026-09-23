@@ -165,7 +165,256 @@ class MercuriosStore {
         { id: 'mat-7', code: 'MAT-1009', name: 'Metal Snap Button 12mm', type: 'button', color: '—', uom: 'piece', price: '1,500 đ', onHand: '865.9', supplier: 'YKK Vietnam' },
         { id: 'mat-8', code: 'MAT-1008', name: 'Invisible Zipper 60cm', type: 'zipper', color: '—', uom: 'piece', price: '8,000 đ', onHand: '449.5', supplier: 'YKK Vietnam' },
         { id: 'mat-9', code: 'MAT-1007', name: 'Brass Zipper 18cm Gold', type: 'zipper', color: 'Gold', uom: 'piece', price: '4,500 đ', onHand: '648.4', supplier: 'YKK Vietnam' }
-      ]
+      ],
+
+      // ORDERS (BÁN HÀNG - ĐƠN HÀNG)
+      orders: [
+        {
+          id: 'ORD-8941',
+          customerName: 'Tran Thanh Ha',
+          phone: '0912345678',
+          channel: 'Shopee',
+          hub: 'Central Hub [WH-01]',
+          totalAmount: '2,450,000 đ',
+          paymentStatus: 'PAID',
+          status: 'DELIVERING',
+          createdAt: '23/09/2026 14:20',
+          items: 'Pleated Silk Skirt A x1, Essential Cotton Tee x2'
+        },
+        {
+          id: 'ORD-8940',
+          customerName: 'Le Thi Mai',
+          phone: '0988776655',
+          channel: 'TikTok Shop',
+          hub: 'Ecom Hub [WH-02]',
+          totalAmount: '1,200,000 đ',
+          paymentStatus: 'PAID',
+          status: 'PROCESSING',
+          createdAt: '23/09/2026 13:50',
+          items: 'Essential Cotton Tee 4512 x1'
+        },
+        {
+          id: 'ORD-8939',
+          customerName: 'Toan Duc',
+          phone: '0933221100',
+          channel: 'Facebook',
+          hub: 'Flagship Store [ST-01]',
+          totalAmount: '60,000,000 đ',
+          paymentStatus: 'UNPAID',
+          status: 'PENDING',
+          createdAt: '23/09/2026 13:15',
+          items: 'Client Style C - Evening Gown x1'
+        },
+        {
+          id: 'ORD-8938',
+          customerName: 'Nguyen Van Nam',
+          phone: '0909112233',
+          channel: 'Store',
+          hub: 'Flagship Store [ST-01]',
+          totalAmount: '60,100,000 đ',
+          paymentStatus: 'PAID',
+          status: 'COMPLETED',
+          createdAt: '23/09/2026 11:30',
+          items: 'Linen Overshirt B x1, Tailored Chino Trousers x1'
+        },
+        {
+          id: 'ORD-8937',
+          customerName: 'Pham Quynh Anh',
+          phone: '0945667788',
+          channel: 'Website',
+          hub: 'Central Hub [WH-01]',
+          totalAmount: '5,000,000 đ',
+          paymentStatus: 'PAID',
+          status: 'COMPLETED',
+          createdAt: '22/09/2026 19:40',
+          items: 'Pleated Silk Skirt A x1'
+        },
+        {
+          id: 'ORD-8936',
+          customerName: 'Do Minh Tuan',
+          phone: '0977112244',
+          channel: 'Lazada',
+          hub: 'Ecom Hub [WH-02]',
+          totalAmount: '890,000 đ',
+          paymentStatus: 'REFUNDED',
+          status: 'CANCELLED',
+          createdAt: '22/09/2026 16:15',
+          items: 'Tailored Chino Trousers x1'
+        }
+      ],
+
+      // CUSTOMERS CRM 360 (BÁN HÀNG - KHÁCH HÀNG)
+      crmCustomers: [
+        {
+          id: 'CUST-1001',
+          name: 'Toan Duc',
+          phone: '0933221100',
+          email: 'toanduc@gmail.com',
+          tier: 'VIP',
+          ordersCount: 8,
+          totalSpent: '68,500,000 đ',
+          points: 6850,
+          source: 'Facebook',
+          joinedDate: '15/01/2026'
+        },
+        {
+          id: 'CUST-1002',
+          name: 'Tran Thanh Ha',
+          phone: '0912345678',
+          email: 'hathanhtran@gmail.com',
+          tier: 'Gold',
+          ordersCount: 5,
+          totalSpent: '18,200,000 đ',
+          points: 1820,
+          source: 'Shopee',
+          joinedDate: '02/03/2026'
+        },
+        {
+          id: 'CUST-1003',
+          name: 'Le Thi Mai',
+          phone: '0988776655',
+          email: 'maile.fashion@gmail.com',
+          tier: 'Silver',
+          ordersCount: 3,
+          totalSpent: '6,400,000 đ',
+          points: 640,
+          source: 'TikTok Shop',
+          joinedDate: '10/05/2026'
+        },
+        {
+          id: 'CUST-1004',
+          name: 'Nguyen Van Nam',
+          phone: '0909112233',
+          email: 'nam.nguyen@vcorp.vn',
+          tier: 'Diamond',
+          ordersCount: 14,
+          totalSpent: '162,000,000 đ',
+          points: 16200,
+          source: 'Store',
+          joinedDate: '08/11/2025'
+        },
+        {
+          id: 'CUST-1005',
+          name: 'Pham Quynh Anh',
+          phone: '0945667788',
+          email: 'quynhanh.p@outlook.com',
+          tier: 'Gold',
+          ordersCount: 6,
+          totalSpent: '24,800,000 đ',
+          points: 2480,
+          source: 'Website',
+          joinedDate: '20/04/2026'
+        }
+      ],
+
+      // OMNICHANNEL INBOX // HỘP THƯ ĐA KÊNH & MERCURIX AI COPILOT
+      inbox: {
+        activeConversationId: 'conv-1',
+        filterChannel: 'ALL',
+        filterStatus: 'ALL',
+        aiAutoPilot: true,
+        showSideDrawer: false, // Mặc định ẩn để giao diện thoáng mắt, mở qua nút toggle
+        activeDrawerTab: 'crm', // 'crm' | 'ai-sim' | 'metrics'
+        conversations: [
+          {
+            id: 'conv-1',
+            customerId: 'CUST-1001',
+            name: 'Toan Duc',
+            phone: '0933221100',
+            channel: 'FB',
+            page: 'HEIN ONE Fashion - Fanpage',
+            unread: false,
+            starred: true,
+            status: 'OPEN',
+            priority: 'NORMAL',
+            aiHandling: true,
+            lastActivity: '14:22',
+            messages: [
+              { id: 'm1', sender: 'shop', time: '14:10', text: 'Dạ HEIN ONE xin chào anh Toàn Đức! Em có thể tư vấn gì cho mình ạ?' },
+              { id: 'm2', sender: 'customer', time: '14:12', text: 'Dạ shop em xin báo giá sản phẩm bên dưới ạ. Mình bên em có ưu đãi free ship cho đơn từ 500k nhé ạ?' },
+              { id: 'm3', sender: 'shop', isAi: true, time: '14:13', text: 'Dạ vâng đúng rồi ạ! Đơn hàng trên 500.000đ shop hỗ trợ freeship toàn quốc. Anh Toàn Đức đang quan tâm mẫu Evening Gown hay đầm lụa Pleated Silk ạ?' },
+              { id: 'm4', sender: 'customer', time: '14:20', text: 'Mẫu đầm dạ hội Evening Gown còn size M không shop? Có giao kịp tối nay ở Q1 không?' },
+              { id: 'm5', sender: 'shop', isAi: true, time: '14:22', text: 'Dạ mẫu Client Style C - Evening Gown size M hiện đang có sẵn 2 chiếc tại Flagship Store [ST-01] (123 Nguyễn Trãi, Q1). Shop có thể book shipper giao hỏa tốc đến ngay cho anh trong vòng 45 phút ạ!' }
+            ],
+            aiSuggestion: 'Dạ anh Toàn Đức gửi giúp em Số điện thoại & Địa chỉ cụ thể để em lên đơn hỏa tốc gửi ngay từ Flagship Store [ST-01] anh nhé!'
+          },
+          {
+            id: 'conv-2',
+            customerId: 'CUST-1002',
+            name: 'Tran Thanh Ha',
+            phone: '0912345678',
+            channel: 'SP',
+            page: 'Hein Fashion Official',
+            unread: true,
+            starred: false,
+            status: 'OPEN',
+            priority: 'HIGH',
+            aiHandling: true,
+            lastActivity: '13:58',
+            messages: [
+              { id: 'm21', sender: 'customer', time: '13:55', text: 'Đơn HE-88889 mình đặt hôm qua đã bàn giao cho bên vận chuyển chưa shop ơi?' },
+              { id: 'm22', sender: 'shop', isAi: true, time: '13:58', text: 'Dạ kiện hàng của chị Hà đã được xuất kho Ecom [WH-02] và đang trên đường chuyển sang SPX Express, dự kiến sáng mai giao đến chị ạ.' }
+            ],
+            aiSuggestion: 'Dạ mã vận đơn của chị là SPX883902, chị có thể theo dõi trực tiếp lộ trình trên app Shopee ạ!'
+          },
+          {
+            id: 'conv-3',
+            customerId: 'CUST-1003',
+            name: 'Le Thi Mai',
+            phone: '0988776655',
+            channel: 'TT',
+            page: 'Hein Fashion TikTok Shop',
+            unread: true,
+            starred: false,
+            status: 'OPEN',
+            priority: 'NORMAL',
+            aiHandling: false,
+            lastActivity: '13:30',
+            messages: [
+              { id: 'm31', sender: 'customer', time: '13:30', text: 'Shop ơi áo sơ mi lụa trắng Cocoon có quần phối cùng set không ạ?' }
+            ],
+            aiSuggestion: 'Dạ áo sơ mi Cocoon phối cùng quần Tailored Chino Trousers (HE-68809) là chuẩn set lookbook Fall/Winter bên em ạ!'
+          },
+          {
+            id: 'conv-4',
+            customerId: 'CUST-1005',
+            name: 'Pham Quynh Anh',
+            phone: '0945667788',
+            channel: 'IG',
+            page: '@heinfashion.studio',
+            unread: false,
+            starred: true,
+            status: 'RESOLVED',
+            priority: 'NORMAL',
+            aiHandling: true,
+            lastActivity: '11:15',
+            messages: [
+              { id: 'm41', sender: 'customer', time: '11:00', text: 'Mình nhận được đầm rồi nhé, chất vải lụa đẹp lắm, cảm ơn shop!' },
+              { id: 'm42', sender: 'shop', isAi: true, time: '11:15', text: 'Dạ shop cảm ơn chị Quỳnh Anh đã tin chọn HEIN ONE! Hẹn gặp lại chị trong BST Holiday Sparkle sắp tới ạ.' }
+            ],
+            aiSuggestion: ''
+          },
+          {
+            id: 'conv-5',
+            customerId: 'CUST-1004',
+            name: 'Nguyen Van Nam',
+            phone: '0909112233',
+            channel: 'ZALO',
+            page: 'Hein Fashion Zalo OA VIP',
+            unread: false,
+            starred: false,
+            status: 'OPEN',
+            priority: 'VIP',
+            aiHandling: false,
+            lastActivity: '09:40',
+            messages: [
+              { id: 'm51', sender: 'customer', time: '09:35', text: 'Chào shop, chiều nay khoảng 16h mình ghé Flagship Store xem mấy mẫu vest mới nhé.' },
+              { id: 'm52', sender: 'shop', time: '09:40', text: 'Dạ vâng anh Nam! Em đã báo các bạn tư vấn viên tại Flagship Store [ST-01] chuẩn bị sẵn phòng VIP và các mẫu vest mới nhất đón anh ạ.' }
+            ],
+            aiSuggestion: ''
+          }
+        ]
+      }
     };
   }
 
@@ -245,7 +494,88 @@ class MercuriosStore {
       this.state.productMetrics.avgPrice = '0 đ';
     }
   }
+
+  // ORDERS METHODS
+  addOrder(order) {
+    this.state.orders.unshift(order);
+    this.notify();
+  }
+
+  deleteOrder(orderId) {
+    this.state.orders = this.state.orders.filter(o => o.id !== orderId);
+    this.notify();
+  }
+
+  // CUSTOMERS METHODS
+  addCustomer(customer) {
+    this.state.crmCustomers.unshift(customer);
+    this.notify();
+  }
+
+  deleteCustomer(customerId) {
+    this.state.crmCustomers = this.state.crmCustomers.filter(c => c.id !== customerId);
+    this.notify();
+  }
+
+  // INBOX & MERCURIX AI METHODS
+  selectConversation(convId) {
+    this.state.inbox.activeConversationId = convId;
+    const conv = this.state.inbox.conversations.find(c => c.id === convId);
+    if (conv) {
+      conv.unread = false;
+    }
+    this.notify();
+  }
+
+  toggleInboxDrawer(forceState) {
+    if (typeof forceState === 'boolean') {
+      this.state.inbox.showSideDrawer = forceState;
+    } else {
+      this.state.inbox.showSideDrawer = !this.state.inbox.showSideDrawer;
+    }
+    this.notify();
+  }
+
+  setInboxDrawerTab(tab) {
+    this.state.inbox.activeDrawerTab = tab;
+    this.notify();
+  }
+
+  toggleAiAutoPilot() {
+    this.state.inbox.aiAutoPilot = !this.state.inbox.aiAutoPilot;
+    this.notify();
+  }
+
+  sendInboxMessage(convId, text, isAi = false, sender = 'shop') {
+    const conv = this.state.inbox.conversations.find(c => c.id === convId);
+    if (!conv || !text) return null;
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    const msg = {
+      id: `msg-${Date.now()}`,
+      sender: sender,
+      isAi: isAi,
+      time: timeStr,
+      text: text
+    };
+    conv.messages.push(msg);
+    conv.lastActivity = timeStr;
+    if (sender === 'customer') {
+      conv.unread = (this.state.inbox.activeConversationId !== convId);
+    }
+    this.notify();
+    return msg;
+  }
+
+  applyAiSuggestion(convId) {
+    const conv = this.state.inbox.conversations.find(c => c.id === convId);
+    if (!conv || !conv.aiSuggestion) return;
+    const text = conv.aiSuggestion;
+    conv.aiSuggestion = '';
+    this.sendInboxMessage(convId, text, true, 'shop');
+  }
 }
 
 // Global Store Instance
 window.mercuriosStore = new MercuriosStore();
+

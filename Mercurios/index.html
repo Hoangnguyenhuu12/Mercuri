@@ -61,11 +61,11 @@
         <div class="nav-section">
           <div class="nav-group-title">SALES &amp; ORDERS</div>
           <ul class="nav-list">
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Orders</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="orders"><span>Orders</span><span
                   class="nav-tag">[ORD]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Customers</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="customers"><span>Customers</span><span
                   class="nav-tag">[CRM]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Omnichannel Inbox</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="inbox"><span>Omnichannel Inbox</span><span
                   class="nav-tag">[MSG]</span></a></li>
           </ul>
         </div>
@@ -661,6 +661,344 @@
           </div>
 
           <!-- ================================================================
+               VIEW: ORDERS (BÁN HÀNG - ĐƠN HÀNG)
+               ================================================================ -->
+          <div id="view-orders" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Orders</h1>
+                <p>Consolidated multi-channel orders — Store, Website, Shopee, TikTok Shop, Facebook, Lazada...</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-new-order" class="btn btn-primary">+ New Order</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="order-search-input" class="search-input" placeholder="Search by Order ID, Customer name, Phone, SKU...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="order-filter-status" class="filter-select">
+                  <option value="ALL">All Status</option>
+                  <option value="DELIVERING">Delivering</option>
+                  <option value="PROCESSING">Processing</option>
+                  <option value="PENDING">Pending</option>
+                  <option value="COMPLETED">Completed</option>
+                  <option value="CANCELLED">Cancelled</option>
+                </select>
+                <select id="order-filter-payment" class="filter-select">
+                  <option value="ALL">All Payments</option>
+                  <option value="PAID">Paid</option>
+                  <option value="UNPAID">Unpaid</option>
+                  <option value="REFUNDED">Refunded</option>
+                </select>
+                <select id="order-filter-channel" class="filter-select">
+                  <option value="ALL">All Channels</option>
+                  <option value="Shopee">Shopee</option>
+                  <option value="TikTok Shop">TikTok Shop</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Store">Store (POS)</option>
+                  <option value="Website">Website</option>
+                  <option value="Lazada">Lazada</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Orders Table">
+                  <thead>
+                    <tr>
+                      <th>ORDER ID</th>
+                      <th>CUSTOMER</th>
+                      <th>CHANNEL</th>
+                      <th>FULFILLMENT HUB</th>
+                      <th>TOTAL AMOUNT</th>
+                      <th>PAYMENT</th>
+                      <th>STATUS</th>
+                      <th>CREATED AT</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="orders-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: CUSTOMERS (BÁN HÀNG - KHÁCH HÀNG CRM 360)
+               ================================================================ -->
+          <div id="view-customers" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Customers</h1>
+                <p>CRM 360° — Customer segmentation, loyalty reward tiers, purchase history &amp; lifetime value.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-customer" class="btn btn-primary">+ Add Customer</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="cust-search-input" class="search-input" placeholder="Search by name, phone, email, customer ID...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="cust-filter-tier" class="filter-select">
+                  <option value="ALL">All Tiers</option>
+                  <option value="VIP">VIP</option>
+                  <option value="Diamond">Diamond</option>
+                  <option value="Gold">Gold</option>
+                  <option value="Silver">Silver</option>
+                </select>
+                <select id="cust-filter-source" class="filter-select">
+                  <option value="ALL">All Sources</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Shopee">Shopee</option>
+                  <option value="TikTok Shop">TikTok Shop</option>
+                  <option value="Store">Store (POS)</option>
+                  <option value="Website">Website</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Customers Table">
+                  <thead>
+                    <tr>
+                      <th>CUST ID</th>
+                      <th>CUSTOMER NAME</th>
+                      <th>PHONE</th>
+                      <th>TIER</th>
+                      <th>ORDERS</th>
+                      <th>TOTAL SPENT</th>
+                      <th>POINTS</th>
+                      <th>SOURCE</th>
+                      <th>JOINED</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="customers-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: OMNICHANNEL INBOX & MERCURIX AI COPILOT
+               ================================================================ -->
+          <div id="view-inbox" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Omnichannel Inbox</h1>
+                <p>Unified customer inbox across Facebook, Instagram, Zalo OA, TikTok Shop, Shopee with Mercurix AI Copilot.</p>
+              </div>
+            </div>
+
+            <!-- UNCLUTTERED 2-PANE OR 3-PANE LAYOUT -->
+            <div class="inbox-layout-card">
+
+              <!-- LEFT PANE: CONVERSATION DIRECTORY -->
+              <div class="inbox-list-pane">
+                <div class="inbox-list-header">
+                  <div class="inbox-title-row">
+                    <span class="inbox-pane-title">INBOX</span>
+                    <span class="badge-tag tag-active">[LIVE]</span>
+                  </div>
+
+                  <!-- CHANNEL FILTER PILLS -->
+                  <div class="channel-filter-pills">
+                    <button class="channel-pill-btn active" data-channel="ALL">ALL</button>
+                    <button class="channel-pill-btn" data-channel="FB">FB</button>
+                    <button class="channel-pill-btn" data-channel="IG">IG</button>
+                    <button class="channel-pill-btn" data-channel="ZALO">ZALO</button>
+                    <button class="channel-pill-btn" data-channel="TT">TT</button>
+                    <button class="channel-pill-btn" data-channel="SP">SP</button>
+                  </div>
+
+                  <!-- SEARCH INPUT -->
+                  <div class="inbox-search-wrap">
+                    <input type="text" id="inbox-search" class="inbox-search-input" placeholder="Search conversations...">
+                  </div>
+                </div>
+
+                <!-- SCROLLABLE LIST -->
+                <div id="inbox-conversations-list" class="inbox-conversations-scroll"></div>
+              </div>
+
+              <!-- CENTER PANE: ACTIVE CONVERSATION & MESSAGING -->
+              <div class="inbox-chat-pane">
+
+                <!-- TOP BAR -->
+                <div class="chat-header-bar">
+                  <div class="chat-customer-meta">
+                    <div>
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span id="chat-header-title" class="chat-customer-name">Select Conversation</span>
+                        <span id="chat-header-channel" class="conv-channel-tag">[FB]</span>
+                      </div>
+                      <div id="chat-header-sub" class="chat-customer-sub">Customer details</div>
+                    </div>
+                  </div>
+
+                  <!-- TOP RIGHT ACTIONS: AI AUTOPILOT & TOGGLE COLLAPSIBLE DRAWER -->
+                  <div class="chat-controls-right">
+                    <button id="btn-toggle-autopilot" class="ai-autopilot-btn" title="Toggle AI Autopilot automatic responses">
+                      ● AI AUTOPILOT: ON
+                    </button>
+                    <button id="btn-toggle-inbox-drawer" class="btn-toggle-drawer" title="Toggle CRM & AI Copilot Details Panel">
+                      [CRM &amp; AI COPILOT]
+                    </button>
+                  </div>
+                </div>
+
+                <!-- MESSAGES THREAD -->
+                <div id="chat-messages-thread" class="chat-messages-thread"></div>
+
+                <!-- MERCURIX AI COPILOT SMART DRAFT (OPTIONAL FLOATING BANNER) -->
+                <div id="ai-draft-banner" class="ai-copilot-draft-banner" style="display: none;">
+                  <div class="ai-draft-header">
+                    <span class="ai-draft-label">[MERCURIX COPILOT SUGGESTION]</span>
+                    <div class="ai-draft-actions">
+                      <button id="btn-dismiss-ai-draft" class="btn btn-sm">DISMISS</button>
+                      <button id="btn-use-ai-draft" class="btn btn-sm btn-primary">USE DRAFT ↵</button>
+                    </div>
+                  </div>
+                  <div id="ai-draft-text" class="ai-draft-text"></div>
+                </div>
+
+                <!-- COMPOSER BOX -->
+                <div class="chat-composer-box">
+                  <textarea id="chat-composer-textarea" class="chat-composer-textarea" placeholder="Type a response or press Ctrl+Enter to send..."></textarea>
+                  <div class="chat-composer-footer">
+                    <div class="chat-composer-quick-tags">
+                      <button class="quick-action-tag" data-tag="stock">+ [CHECK STOCK]</button>
+                      <button class="quick-action-tag" data-tag="po">+ [CUSTOMER PO]</button>
+                    </div>
+                    <div class="chat-composer-send-group">
+                      <span class="send-hint">Ctrl+Enter</span>
+                      <button id="btn-send-message" class="btn btn-primary">SEND ↵</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- RIGHT PANE: SLIDE-OVER DRAWER (HIDDEN BY DEFAULT TO PREVENT CLUTTER) -->
+              <div id="inbox-side-drawer" class="inbox-side-drawer">
+                <div class="drawer-header-bar">
+                  <div class="drawer-tabs">
+                    <button class="drawer-tab-btn active" data-tab="crm">[CRM INFO]</button>
+                    <button class="drawer-tab-btn" data-tab="ai-sim">[AI SIMULATOR]</button>
+                    <button class="drawer-tab-btn" data-tab="metrics">[AI METRICS]</button>
+                  </div>
+                  <button id="btn-close-drawer" class="btn btn-sm" title="Close Panel">[X]</button>
+                </div>
+
+                <div class="drawer-body-content">
+
+                  <!-- TAB 1: CRM INFO -->
+                  <div id="drawer-tab-crm" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div class="drawer-card-box">
+                      <span class="drawer-box-title">CUSTOMER OVERVIEW</span>
+                      <div class="settings-info-list" style="margin-top: 4px;">
+                        <div class="settings-info-row">
+                          <span class="info-label">Customer Tier</span>
+                          <span id="drawer-crm-tier" class="info-value"><span class="crm-tier-tag tier-vip">[VIP]</span></span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Phone</span>
+                          <span id="drawer-crm-phone" class="info-value info-value-mono">0933221100</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Email</span>
+                          <span id="drawer-crm-email" class="info-value info-value-mono">toanduc@gmail.com</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Orders Count</span>
+                          <span id="drawer-crm-orders" class="info-value info-value-mono">8</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Total Spent</span>
+                          <span id="drawer-crm-spent" class="info-value info-value-mono">68,500,000 đ</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="drawer-card-box">
+                      <span class="drawer-box-title">INTERNAL STAFF NOTES</span>
+                      <textarea class="input-box" style="height: 60px; font-size: 12px;" placeholder="Add internal notes about this customer (only visible to team)..."></textarea>
+                    </div>
+                  </div>
+
+                  <!-- TAB 2: AI SIMULATOR (FOR BAN AI MERCURIX TESTING) -->
+                  <div id="drawer-tab-ai-sim" style="display: none; flex-direction: column; gap: 12px;">
+                    <div class="drawer-card-box">
+                      <span class="drawer-box-title">MERCURIX AI SIMULATOR</span>
+                      <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45; margin: 0;">
+                        Giả lập tin nhắn khách hàng gửi tới để kiểm thử luồng phản hồi tự động của AI Mercurix mà không cần Facebook webhook thật.
+                      </p>
+                      <input type="text" id="sim-cust-input" class="ai-sim-input" placeholder="Gõ câu hỏi giả lập của khách...">
+                      <button id="btn-sim-cust-send" class="btn btn-primary btn-sm" style="width: 100%;">
+                        SIMULATE CUSTOMER MSG
+                      </button>
+                    </div>
+
+                    <div class="drawer-card-box">
+                      <span class="drawer-box-title">MODEL CONFIGURATION</span>
+                      <div class="settings-info-list" style="margin-top: 4px;">
+                        <div class="settings-info-row">
+                          <span class="info-label">Model Endpoint</span>
+                          <span class="info-value info-value-mono">mercurix-v1-fast</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Temperature</span>
+                          <span class="info-value info-value-mono">0.2</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Stock Integration</span>
+                          <span class="info-value"><span class="badge-tag tag-active">[SYNCED]</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- TAB 3: AI METRICS -->
+                  <div id="drawer-tab-metrics" style="display: none; flex-direction: column; gap: 12px;">
+                    <div class="drawer-card-box">
+                      <span class="drawer-box-title">REAL-TIME INFERENCE METRICS</span>
+                      <div class="settings-info-list" style="margin-top: 4px;">
+                        <div class="settings-info-row">
+                          <span class="info-label">Predicted Intent</span>
+                          <span class="info-value info-value-mono">CHECK_STOCK</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Confidence</span>
+                          <span class="info-value info-value-mono">98.2%</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Response Latency</span>
+                          <span class="info-value info-value-mono">0.45s</span>
+                        </div>
+                        <div class="settings-info-row">
+                          <span class="info-label">Mercurix Bridge</span>
+                          <span class="info-value"><span class="badge-tag tag-active">[CONNECTED]</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- ================================================================
                VIEW 3: SETTINGS (EXACT MATCH TO REFERENCE SETTINGS SCREENSHOT)
                ================================================================ -->
           <div id="view-settings" class="view-section">
@@ -1003,6 +1341,9 @@
   <script src="scripts/views/categories.js"></script>
   <script src="scripts/views/collections.js"></script>
   <script src="scripts/views/materials.js"></script>
+  <script src="scripts/views/orders.js"></script>
+  <script src="scripts/views/customers.js"></script>
+  <script src="scripts/views/inbox.js"></script>
   <script src="scripts/views/settings.js"></script>
   <script src="scripts/app.js"></script>
 </body>

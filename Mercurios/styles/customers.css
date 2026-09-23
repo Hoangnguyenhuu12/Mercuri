@@ -1,0 +1,63 @@
+/* ==========================================================================
+   MERCURIOS // CUSTOMERS CRM 360 STYLESHEET
+   Clean monochrome table, tier badges, spending metrics, and CRM search.
+   ========================================================================== */
+
+.crm-tier-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tier-vip {
+  background: #FFF8E1;
+  color: #F57F17;
+  border: 1px solid #FFE082;
+}
+
+.tier-diamond {
+  background: #E1F5FE;
+  color: #0277BD;
+  border: 1px solid #81D4FA;
+}
+
+.tier-gold {
+  background: #FFFDE7;
+  color: #FBC02D;
+  border: 1px solid #FFF59D;
+}
+
+.tier-silver {
+  background: #ECEFF1;
+  color: #455A64;
+  border: 1px solid #CFD8DC;
+}
+
+[data-theme="dark"] .tier-vip {
+  background: rgba(245, 127, 23, 0.18);
+  color: #FFE082;
+  border-color: rgba(255, 224, 130, 0.3);
+}
+
+[data-theme="dark"] .tier-diamond {
+  background: rgba(2, 119, 189, 0.2);
+  color: #81D4FA;
+  border-color: rgba(129, 212, 250, 0.3);
+}
+
+[data-theme="dark"] .tier-gold {
+  background: rgba(251, 192, 45, 0.18);
+  color: #FFF59D;
+  border-color: rgba(255, 245, 157, 0.3);
+}
+
+[data-theme="dark"] .tier-silver {
+  background: rgba(69, 90, 100, 0.25);
+  color: #CFD8DC;
+  border-color: rgba(207, 216, 220, 0.3);
+}

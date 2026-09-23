@@ -191,6 +191,15 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
   * Cố định tuyệt đối thanh Sidebar: thu gọn padding và margin dọc, đặt `overflow: hidden;`, chiều cao vừa vặn ~570px, triệt tiêu hoàn toàn hiện tượng trượt/cuộn lên xuống.
   * Tối ưu hệ thống Toast thông báo: chặn thông báo trùng khi bấm lại tab đang mở, giảm thời gian hiển thị xuống 1.4s khi người dùng thao tác bấm liên tục, giới hạn tối đa 3 toasts cùng lúc.
 * **v1.8.0**: Tổng hợp toàn bộ tài liệu kỹ thuật, quy định thiết kế, quy chuẩn phân chia thư mục và lộ trình chuyển đổi framework vào file **`ghichu.md`**.
+* **v1.9.0**: Hoàn thiện toàn diện phân hệ **Bán hàng (Sales & Orders)** theo chuẩn thiết kế Minimalist:
+  * **Orders**: Bảng dữ liệu đơn hàng đa kênh, mã màu thanh toán (`[PAID]`, `[UNPAID]`, `[REFUNDED]`), bộ lọc đa chiều theo trạng thái/kênh/thanh toán.
+  * **Customers (CRM 360°)**: Quản lý khách hàng, phân hạng thẻ thành viên (`[VIP]`, `[DIAMOND]`, `[GOLD]`, `[SILVER]`), tích lũy điểm thưởng và giá trị vòng đời khách.
+  * **Omnichannel Inbox & Mercurix AI Copilot**: Tối giản hóa triệt để hộp thư đa kênh, triệt tiêu sự rối mắt của bản mẫu:
+    * Khung chat thoáng đãng 2 cột chính (Danh bạ hội thoại & Cửa sổ chat rộng rãi).
+    * Ngăn kéo trượt (Slide-over Drawer) linh hoạt được ẩn mặc định, mở ra bằng nút **`[CRM & AI COPILOT]`** để xem CRM info, ghi chú nội bộ hoặc bảng điều khiển AI mà không làm chật chội màn hình.
+    * Tích hợp **AI Autopilot** (`● AI AUTOPILOT: ON/OFF`), đề xuất phản hồi thông minh (`[MERCURIX COPILOT SUGGESTION]`) và công cụ **Giả lập tin nhắn khách hàng (AI Simulator)** phục vụ việc kiểm thử model của Ban AI Mercurix.
+    * Cung cấp API lập trình `window.Mercurios.inbox` dành riêng cho hệ thống AI Mercurix.
+
 
 ---
 

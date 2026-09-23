@@ -90,13 +90,47 @@
      * Trigger system toast notification
      */
     notifyUI: function (msg) {
-      if (window.MercuriosUI && window.MercuriosUI.showToast) {
-        window.MercuriosUI.showToast(msg);
+      if (window.MercuriosToast && window.MercuriosToast.show) {
+        window.MercuriosToast.show(msg);
       } else {
         console.log(`[Mercurios UI Notice] ${msg}`);
       }
+    },
+
+    /**
+     * Mercurix AI Omnichannel Inbox API
+     * Dedicated programmatic interface for Ban AI to query chats, inject predictions and send smart replies.
+     */
+    inbox: {
+      getConversations: function () {
+        return window.mercuriosStore ? window.mercuriosStore.getState().inbox.conversations : [];
+      },
+      getActiveConversation: function () {
+        if (!window.mercuriosStore) return null;
+        const state = window.mercuriosStore.getState().inbox;
+        return state.conversations.find(c => c.id === state.activeConversationId) || null;
+      },
+      simulateIncomingCustomerMessage: function (convId, text) {
+        if (!window.mercuriosStore) return;
+        return window.mercuriosStore.sendInboxMessage(convId, text, false, 'customer');
+      },
+      sendAiReply: function (convId, text) {
+        if (!window.mercuriosStore) return;
+        return window.mercuriosStore.sendInboxMessage(convId, text, true, 'shop');
+      },
+      setDraftSuggestion: function (convId, draft) {
+        if (window.MercuriosInbox && window.MercuriosInbox.setDraft) {
+          window.MercuriosInbox.setDraft(convId, draft);
+        }
+      },
+      toggleAutoPilot: function () {
+        if (window.mercuriosStore) {
+          window.mercuriosStore.toggleAiAutoPilot();
+        }
+      }
     }
   };
+
 
   // Expose global bridge
   window.Mercurios = bridge;

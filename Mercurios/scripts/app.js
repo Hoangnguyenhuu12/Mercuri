@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.MercuriosCategoriesView) window.MercuriosCategoriesView.init();
   if (window.MercuriosCollectionsView) window.MercuriosCollectionsView.init();
   if (window.MercuriosMaterialsView) window.MercuriosMaterialsView.init();
+  if (window.MercuriosOrdersView) window.MercuriosOrdersView.init();
+  if (window.MercuriosCustomersView) window.MercuriosCustomersView.init();
+  if (window.MercuriosInboxView) window.MercuriosInboxView.init();
   if (window.MercuriosSettingsView) window.MercuriosSettingsView.init();
 
   console.log('[MERCURIOS] All modules initialized and ready.');
 });
+

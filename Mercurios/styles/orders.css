@@ -1,0 +1,69 @@
+/* ==========================================================================
+   MERCURIOS // ORDERS VIEW STYLESHEET
+   Clean monochrome table, channel tags, payment status, and order filters.
+   ========================================================================== */
+
+.order-channel-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  letter-spacing: 0.03em;
+}
+
+.order-phone-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.order-items-preview {
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-paid {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-color: #C8E6C9;
+}
+
+.tag-unpaid {
+  background: #FFF3E0;
+  color: #EF6C00;
+  border-color: #FFE0B2;
+}
+
+.tag-refunded {
+  background: #FFEBEE;
+  color: #C62828;
+  border-color: #FFCDD2;
+}
+
+[data-theme="dark"] .tag-paid {
+  background: rgba(46, 125, 50, 0.2);
+  color: #81C784;
+  border-color: rgba(46, 125, 50, 0.4);
+}
+
+[data-theme="dark"] .tag-unpaid {
+  background: rgba(239, 108, 0, 0.2);
+  color: #FFB74D;
+  border-color: rgba(239, 108, 0, 0.4);
+}
+
+[data-theme="dark"] .tag-refunded {
+  background: rgba(198, 40, 40, 0.2);
+  color: #E57373;
+  border-color: rgba(198, 40, 40, 0.4);
+}
