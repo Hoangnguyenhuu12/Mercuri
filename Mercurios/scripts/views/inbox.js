@@ -14,13 +14,18 @@
     const conversationsContainer = document.getElementById('inbox-conversations-list');
     const channelPillBtns = document.querySelectorAll('.channel-pill-btn');
     const searchInput = document.getElementById('inbox-search');
+    const telemetryUnreadCount = document.getElementById('telemetry-unread-count');
     
     // Chat Elements
     const chatHeaderTitle = document.getElementById('chat-header-title');
     const chatHeaderSub = document.getElementById('chat-header-sub');
     const chatHeaderChannel = document.getElementById('chat-header-channel');
+    const chatHandlerStatus = document.getElementById('chat-handler-status');
     const btnToggleAutopilot = document.getElementById('btn-toggle-autopilot');
+    const autopilotBtnText = document.getElementById('autopilot-btn-text');
     const btnToggleDrawer = document.getElementById('btn-toggle-inbox-drawer');
+    const btnDrawerLabel = document.getElementById('btn-drawer-label');
+    const btnChatOpenDrawer = document.getElementById('btn-chat-open-drawer');
     const chatMessagesThread = document.getElementById('chat-messages-thread');
     const aiDraftBanner = document.getElementById('ai-draft-banner');
     const aiDraftText = document.getElementById('ai-draft-text');
@@ -50,6 +55,12 @@
       const list = inboxState.conversations || [];
       const query = (searchInput?.value || '').toLowerCase().trim();
 
+      // Update Telemetry Unread Count in Hero Bar
+      if (telemetryUnreadCount) {
+        const unreadCount = list.filter(c => c.unread).length;
+        telemetryUnreadCount.textContent = unreadCount;
+      }
+
       const filtered = list.filter(conv => {
         const matchesChannel = currentChannelFilter === 'ALL' || conv.channel.toUpperCase() === currentChannelFilter.toUpperCase();
         const matchesQuery = !query ||
@@ -63,8 +74,8 @@
 
       if (filtered.length === 0) {
         conversationsContainer.innerHTML = `
-          <div style="padding: 24px 16px; text-align: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 12px;">
-            NO CONVERSATIONS
+          <div style="padding: 32px 16px; text-align: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 12px;">
+            NO CONVERSATIONS FOUND
           </div>
         `;
         return;
@@ -124,19 +135,40 @@
       if (chatHeaderSub) chatHeaderSub.textContent = `${activeConv.phone} • ${activeConv.page}`;
       if (chatHeaderChannel) chatHeaderChannel.textContent = `[${activeConv.channel}]`;
 
-      // Update AI Autopilot Button state
+      // Update Handler status
+      if (chatHandlerStatus) {
+        if (activeConv.aiHandling && inboxState.aiAutoPilot) {
+          chatHandlerStatus.className = 'chat-status-pill ai-active';
+          chatHandlerStatus.textContent = '● HANDLED BY AI';
+        } else {
+          chatHandlerStatus.className = 'chat-status-pill';
+          chatHandlerStatus.textContent = '○ AGENT ASSIGNED';
+        }
+      }
+
+      // Update AI Autopilot Button state in Hero Header
       if (btnToggleAutopilot) {
         btnToggleAutopilot.classList.toggle('active', inboxState.aiAutoPilot);
-        btnToggleAutopilot.innerHTML = inboxState.aiAutoPilot
-          ? `● AI AUTOPILOT: ON`
-          : `○ AI AUTOPILOT: OFF`;
+        if (autopilotBtnText) {
+          autopilotBtnText.textContent = inboxState.aiAutoPilot
+            ? `AI AUTOPILOT: ON`
+            : `AI AUTOPILOT: OFF`;
+        }
       }
 
       // Update Drawer toggle button
       if (btnToggleDrawer) {
         btnToggleDrawer.classList.toggle('active', inboxState.showSideDrawer);
-        btnToggleDrawer.textContent = inboxState.showSideDrawer ? '[HIDE PANEL]' : '[CRM & AI COPILOT]';
+        if (btnDrawerLabel) {
+          btnDrawerLabel.textContent = inboxState.showSideDrawer ? '[HIDE AI PANEL]' : '[CRM & AI COPILOT]';
+        }
       }
+
+      if (btnChatOpenDrawer) {
+        btnChatOpenDrawer.classList.toggle('active', inboxState.showSideDrawer);
+        btnChatOpenDrawer.textContent = inboxState.showSideDrawer ? '[PANEL ⮌]' : '[PANEL ➔]';
+      }
+
 
       // Render Messages
       if (chatMessagesThread) {
@@ -244,6 +276,13 @@
         store.toggleInboxDrawer();
       });
     }
+
+    if (btnChatOpenDrawer) {
+      btnChatOpenDrawer.addEventListener('click', () => {
+        store.toggleInboxDrawer();
+      });
+    }
+
 
     if (btnCloseDrawer) {
       btnCloseDrawer.addEventListener('click', () => {

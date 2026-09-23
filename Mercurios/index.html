@@ -793,8 +793,36 @@
           <div id="view-inbox" class="view-section">
             <div class="dashboard-hero">
               <div class="hero-text">
-                <h1>Omnichannel Inbox</h1>
-                <p>Unified customer inbox across Facebook, Instagram, Zalo OA, TikTok Shop, Shopee with Mercurix AI Copilot.</p>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+                  <h1>Omnichannel Inbox</h1>
+                  <span class="badge-tag tag-active" style="font-size: 11px;">[LIVE SYNCED]</span>
+                </div>
+                <p>Unified customer communications across Facebook, Instagram, Zalo OA, TikTok Shop, Shopee with Mercurix AI Copilot.</p>
+              </div>
+
+              <!-- OVERARCHING CONTROLS (LOCATED HIGH UP BESIDE TITLE & BENEATH ADMIN PROFILE) -->
+              <div class="hero-actions inbox-top-controls">
+                <div class="inbox-telemetry-cluster">
+                  <div class="telemetry-pill">
+                    <span class="telemetry-label">UNREAD:</span>
+                    <span class="telemetry-val" id="telemetry-unread-count">2</span>
+                  </div>
+                  <div class="telemetry-pill" style="border-left: 1px solid var(--border-light); padding-left: 8px;">
+                    <span class="telemetry-label">AI RESOLUTION:</span>
+                    <span class="telemetry-val">94.6%</span>
+                  </div>
+                </div>
+
+                <!-- AUTOPILOT TOGGLE SWITCH -->
+                <button id="btn-toggle-autopilot" class="btn-autopilot active" title="Toggle Mercurix AI Autopilot">
+                  <span class="status-indicator-dot"></span>
+                  <span id="autopilot-btn-text">AI AUTOPILOT: ON</span>
+                </button>
+
+                <!-- SLIDE-OVER DRAWER TOGGLE -->
+                <button id="btn-toggle-inbox-drawer" class="btn btn-primary" title="Toggle CRM & AI Copilot Panel">
+                  <span id="btn-drawer-label">[CRM &amp; AI COPILOT]</span>
+                </button>
               </div>
             </div>
 
@@ -805,7 +833,7 @@
               <div class="inbox-list-pane">
                 <div class="inbox-list-header">
                   <div class="inbox-title-row">
-                    <span class="inbox-pane-title">INBOX</span>
+                    <span class="inbox-pane-title">INBOX DIRECTORY</span>
                     <span class="badge-tag tag-active">[LIVE]</span>
                   </div>
 
@@ -832,7 +860,7 @@
               <!-- CENTER PANE: ACTIVE CONVERSATION & MESSAGING -->
               <div class="inbox-chat-pane">
 
-                <!-- TOP BAR -->
+                <!-- TOP BAR (CLEAN & MINIMAL, NO BULKY OVERLAPPING BUTTONS) -->
                 <div class="chat-header-bar">
                   <div class="chat-customer-meta">
                     <div>
@@ -844,14 +872,9 @@
                     </div>
                   </div>
 
-                  <!-- TOP RIGHT ACTIONS: AI AUTOPILOT & TOGGLE COLLAPSIBLE DRAWER -->
                   <div class="chat-controls-right">
-                    <button id="btn-toggle-autopilot" class="ai-autopilot-btn" title="Toggle AI Autopilot automatic responses">
-                      ● AI AUTOPILOT: ON
-                    </button>
-                    <button id="btn-toggle-inbox-drawer" class="btn-toggle-drawer" title="Toggle CRM & AI Copilot Details Panel">
-                      [CRM &amp; AI COPILOT]
-                    </button>
+                    <span id="chat-handler-status" class="chat-status-pill ai-active">● HANDLED BY AI</span>
+                    <button id="btn-chat-open-drawer" class="btn btn-sm" title="Expand CRM & AI Details">[PANEL ➔]</button>
                   </div>
                 </div>
 
