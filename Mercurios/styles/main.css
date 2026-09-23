@@ -1,0 +1,21 @@
+/* ==========================================================================
+   MERCURIOS // STYLESHEET MANIFEST & ENTRY POINT
+   Clean modular architecture. Each section is organized in its own file.
+   ========================================================================== */
+
+/* 1. Global Tokens & Typography */
+@import url('./variables.css');
+
+/* 2. Core Layout & Shell Structure */
+@import url('./layout.css');
+
+/* 3. Shared UI Components (Buttons, Badges, Tables, Cards) */
+@import url('./components.css');
+
+/* 4. Modals & Dialogs */
+@import url('./modals.css');
+
+/* 5. View-specific Stylesheets */
+@import url('./overview.css');
+@import url('./products.css');
+@import url('./settings.css');
