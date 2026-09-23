@@ -72,15 +72,15 @@
 
         <!-- 04. OPERATIONS -->
         <div class="nav-section">
-          <div class="nav-group-title">OPERATIONS</div>
+          <div class="nav-group-title">VẬN HÀNH</div>
           <ul class="nav-list">
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Outlets &amp;
-                  Stores</span><span class="nav-tag">[09]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Inventory &amp;
-                  Stock</span><span class="nav-tag">[WHS]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Production (PO)</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="stores"><span>Cửa hàng</span><span
+                  class="nav-tag">[STR]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="inventory"><span>Tồn kho</span><span
+                  class="nav-tag">[WHS]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="production"><span>Sản xuất</span><span
                   class="nav-tag">[MFG]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Suppliers</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="suppliers"><span>Nhà cung cấp</span><span
                   class="nav-tag">[VND]</span></a></li>
           </ul>
         </div>
@@ -784,120 +784,115 @@
                   <tbody id="customers-table-body"></tbody>
                 </table>
               </div>
+            </div>
+          </div>
+
           <!-- ================================================================
-               VIEW: OMNICHANNEL INBOX (MESSENGER-STYLE INTERFACE)
+               VIEW: OMNICHANNEL INBOX (MERCURIOS UNIFIED FASHION CHAT)
                ================================================================ -->
           <div id="view-inbox" class="view-section">
-            <div class="messenger-wrapper">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Omnichannel Inbox</h1>
+                <p>Unified customer conversations across Facebook, Instagram, TikTok, Zalo &amp; Shopee.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-msg-ai-toggle" class="btn btn-secondary">AI Autopilot: ON</button>
+              </div>
+            </div>
 
-              <!-- COLUMN 1: CHATS DIRECTORY -->
-              <div class="msg-chats-col">
-                <div class="msg-chats-header">
-                  <div class="msg-chats-title-row">
-                    <span class="msg-chats-title">Chats</span>
-                  </div>
+            <div class="panel-card inbox-card-wrapper">
+              <div class="inbox-layout">
 
-                  <!-- Channels Filter Row -->
-                  <div class="msg-channels-row">
-                    <button class="msg-channel-chip active" data-channel="ALL">All</button>
-                    <button class="msg-channel-chip" data-channel="FB">Facebook</button>
-                    <button class="msg-channel-chip" data-channel="IG">Instagram</button>
+                <!-- COLUMN 1: CONVERSATIONS DIRECTORY (LEFT) -->
+                <div class="inbox-sidebar-col">
+                  <!-- Channel Filter Tabs -->
+                  <div class="inbox-channels-bar">
+                    <button class="msg-channel-chip active" data-channel="ALL">ALL</button>
+                    <button class="msg-channel-chip" data-channel="FB">FB</button>
+                    <button class="msg-channel-chip" data-channel="IG">IG</button>
                     <button class="msg-channel-chip" data-channel="ZALO">Zalo</button>
                     <button class="msg-channel-chip" data-channel="TT">TikTok</button>
                     <button class="msg-channel-chip" data-channel="SP">Shopee</button>
                   </div>
 
                   <!-- Search Bar -->
-                  <div class="msg-search-box">
-                    <input type="text" id="msg-search-input" class="msg-search-input" placeholder="Search Messenger...">
+                  <div class="inbox-search-box">
+                    <input type="text" id="msg-search-input" class="inbox-search-input" placeholder="Search customer or message...">
                   </div>
+
+                  <!-- Conversations List -->
+                  <div id="msg-conversations-list" class="inbox-conversations-list"></div>
                 </div>
 
-                <!-- Scrollable Conversation List -->
-                <div id="msg-conversations-list" class="msg-conversations-list"></div>
-              </div>
-
-              <!-- COLUMN 2: CHAT THREAD CANVAS -->
-              <div class="msg-thread-col">
-                <!-- Header -->
-                <div class="msg-thread-header">
-                  <div class="msg-thread-recipient">
-                    <div class="msg-avatar-wrap" style="width: 40px; height: 40px; min-width: 40px;">
-                      <div id="msg-header-avatar" class="msg-avatar">TD</div>
-                      <span class="msg-online-dot"></span>
+                <!-- COLUMN 2: ACTIVE CHAT THREAD (CENTER/RIGHT) -->
+                <div class="inbox-thread-col">
+                  <!-- Thread Header -->
+                  <div class="inbox-thread-header" style="position: relative;">
+                    <div id="msg-header-recipient" class="inbox-header-recipient" title="Click để mở bảng giả lập khách nhắn" style="cursor: pointer;">
+                      <div id="msg-header-avatar" class="inbox-avatar">TD</div>
+                      <div class="inbox-recipient-meta">
+                        <div class="inbox-meta-line1">
+                          <span id="msg-header-name" class="inbox-customer-name">Toan Duc</span>
+                          <span id="msg-profile-tier" class="inbox-tag-vip">[VIP]</span>
+                          <span id="msg-profile-channel" class="inbox-tag-channel">[FB]</span>
+                        </div>
+                        <div class="inbox-meta-line2">
+                          <span id="msg-profile-phone">0933221100</span>
+                          <span class="inbox-meta-sep">•</span>
+                          <span id="msg-profile-orders">8 orders</span>
+                          <span class="inbox-meta-sep">•</span>
+                          <span id="msg-profile-spent">68,500,000 đ</span>
+                          <span class="inbox-meta-sep">•</span>
+                          <span id="msg-header-status" class="inbox-status-active">Active</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div id="msg-header-name" class="msg-recipient-name">Toan Duc</div>
-                      <div id="msg-header-status" class="msg-recipient-status">Active now</div>
-                    </div>
-                  </div>
 
-                  <div class="msg-header-actions">
-                    <button id="btn-toggle-info" class="msg-icon-btn active" title="Conversation Details">ⓘ</button>
-                  </div>
-                </div>
-
-                <!-- Messages Canvas -->
-                <div id="msg-messages-canvas" class="msg-messages-canvas"></div>
-
-                <!-- PRE-MADE QUICK QUESTION CHIPS (BỘ CÂU HỎI SẴN CÓ) -->
-                <div class="msg-quick-prompts-bar">
-                  <span class="msg-prompts-label">Gợi ý:</span>
-                  <button class="msg-prompt-chip" data-prompt="size">💡 Bảng size &amp; số đo chuẩn</button>
-                  <button class="msg-prompt-chip" data-prompt="freeship">📦 Chính sách freeship toàn quốc</button>
-                  <button class="msg-prompt-chip" data-prompt="evening-gown">👗 Đầm dạ hội Evening Gown còn không?</button>
-                  <button class="msg-prompt-chip" data-prompt="store">📍 Địa chỉ Flagship Store [ST-01]</button>
-                  <button class="msg-prompt-chip" data-prompt="promo">🏷️ Khuyến mãi &amp; Voucher tuần này</button>
-                </div>
-
-                <!-- Composer Bar -->
-                <div class="msg-composer-bar">
-                  <input type="text" id="msg-composer-input" class="msg-input-pill" placeholder="Write a message... (Press Enter to send)">
-                  <button id="btn-msg-send" class="msg-send-btn" title="Send message">➤</button>
-                </div>
-              </div>
-
-              <!-- COLUMN 3: CUSTOMER PROFILE & QUICK FAQ SIDEBAR -->
-              <div id="msg-info-col" class="msg-info-col">
-                <div class="msg-info-profile-card">
-                  <div id="msg-profile-avatar" class="msg-info-avatar-large">TD</div>
-                  <div id="msg-profile-name" class="msg-info-name">Toan Duc</div>
-                  <div class="msg-info-status">Active now</div>
-                  <div class="msg-info-quick-stats">
-                    <span id="msg-profile-tier" class="msg-stat-badge">VIP</span>
-                    <span id="msg-profile-phone" class="msg-stat-badge">0933221100</span>
-                    <span id="msg-profile-orders" class="msg-stat-badge">8 orders</span>
-                  </div>
-                </div>
-
-                <div class="msg-info-sections">
-                  <!-- AI Autopilot Switch -->
-                  <div class="msg-section-box">
-                    <span class="msg-section-title">AI Assistant</span>
-                    <div class="msg-ai-toggle-row">
-                      <span class="msg-ai-label">Mercurix Autopilot</span>
-                      <button id="btn-msg-ai-toggle" class="msg-switch-btn on">ON</button>
+                    <!-- SIMULATION POPOVER BOX (GIẢ LẬP KHÁCH NHẮN / TEST AI) -->
+                    <div id="inbox-sim-popover" class="inbox-sim-popover" style="display: none;">
+                      <div class="sim-popover-header">
+                        <span class="sim-popover-title">GIẢ LẬP KHÁCH NHẮN (TEST AI / KHÔNG CẦN FB)</span>
+                        <button id="btn-close-sim" class="sim-close-btn" title="Đóng">[X]</button>
+                      </div>
+                      <div class="sim-popover-body">
+                        <textarea id="sim-input-text" class="sim-textarea" rows="3" placeholder="Gõ tin giả lập khách hỏi rồi bấm Gửi để xem AI tự trả lời..."></textarea>
+                        <div class="sim-popover-actions">
+                          <button id="btn-submit-sim" class="btn btn-secondary sim-send-btn">Giả lập tin khách</button>
+                        </div>
+                        <div class="sim-popover-footer">
+                          <span>Page bật AI — sẽ tự trả lời sau 1-2s</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- Quick Answers / FAQ -->
-                  <div class="msg-section-box">
-                    <span class="msg-section-title">Câu trả lời mẫu (Click để gửi)</span>
-                    <button class="msg-faq-btn" data-faq="size">📏 Gửi bảng thông số size thời trang</button>
-                    <button class="msg-faq-btn" data-faq="freeship">🚚 Gửi chính sách giao hàng freeship</button>
-                    <button class="msg-faq-btn" data-faq="store">🏢 Gửi địa chỉ &amp; hotline cửa hàng</button>
-                    <button class="msg-faq-btn" data-faq="promo">🎁 Gửi mã giảm giá khách hàng VIP</button>
-                  </div>
+                  <!-- Messages Scrollable Canvas -->
+                  <div id="msg-messages-canvas" class="inbox-messages-canvas"></div>
 
-                  <!-- Customer Lifetime Value -->
-                  <div class="msg-section-box">
-                    <span class="msg-section-title">Chi tiêu tích lũy</span>
-                    <div style="font-size: 15px; font-weight: 700; color: var(--text-main); font-family: var(--font-mono);" id="msg-profile-spent">68,500,000 đ</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Kênh chính: <strong id="msg-profile-channel">Facebook</strong></div>
+                  <!-- Composer Bar & Quick Canned Templates -->
+                  <div class="inbox-composer-container" style="position: relative;">
+                    <!-- QUICK CANNED REPLIES POPOVER (MẪU TRẢ LỜI NHANH) -->
+                    <div id="inbox-templates-popover" class="inbox-templates-popover" style="display: none;">
+                      <div class="templates-popover-header">
+                        <span class="templates-popover-title">Mẫu trả lời nhanh</span>
+                        <button id="btn-close-templates" class="templates-close-btn" title="Đóng">[X]</button>
+                      </div>
+                      <div class="templates-popover-search">
+                        <input type="text" id="templates-search-input" class="templates-search-input" placeholder="Tìm theo /phimtat hoặc từ khóa...">
+                      </div>
+                      <div id="templates-list-container" class="templates-list-container"></div>
+                    </div>
+
+                    <div class="inbox-composer-row">
+                      <button id="btn-toggle-templates" class="btn btn-secondary inbox-template-toggle-btn" title="Mở danh sách mẫu trả lời nhanh">/ Mẫu trả lời</button>
+                      <textarea id="msg-composer-input" class="inbox-composer-input" rows="1" placeholder="Type reply message..."></textarea>
+                      <button id="btn-msg-send" class="btn btn-primary inbox-send-btn">[SEND]</button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
 
@@ -1116,6 +1111,226 @@
 
           </div>
 
+          <!-- ================================================================
+               VIEW: OUTLETS & STORES (CỬA HÀNG)
+               ================================================================ -->
+          <div id="view-stores" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Cửa hàng</h1>
+                <p>6 cửa hàng vật lý + nhà máy + kho. Sẵn sàng scale lên 50+ stores.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-store" class="btn btn-primary">+ Thêm cửa hàng</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="store-search-input" class="search-input" placeholder="Tìm theo tên/mã/thành phố...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="store-filter-type" class="filter-select">
+                  <option value="ALL">Tất cả loại</option>
+                  <option value="flagship">Flagship</option>
+                  <option value="regular">Regular</option>
+                  <option value="central_warehouse">Kho trung tâm</option>
+                  <option value="online_warehouse">Kho online</option>
+                  <option value="factory">Nhà máy</option>
+                </select>
+                <select id="store-filter-status" class="filter-select">
+                  <option value="ALL">Tất cả trạng thái</option>
+                  <option value="ACTIVE">Đang hoạt động</option>
+                  <option value="INACTIVE">Tạm dừng</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Stores Table">
+                  <thead>
+                    <tr>
+                      <th>MÃ</th>
+                      <th>TÊN CỬA HÀNG</th>
+                      <th>LOẠI</th>
+                      <th>THÀNH PHỐ</th>
+                      <th>QUẢN LÝ</th>
+                      <th>SĐT</th>
+                      <th>TRẠNG THÁI</th>
+                      <th>THAO TÁC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stores-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: INVENTORY & STOCK (TỒN KHO)
+               ================================================================ -->
+          <div id="view-inventory" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Tồn kho</h1>
+                <p>Tồn theo từng SKU x cửa hàng. Real-time multi-channel.</p>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="inv-search-input" class="search-input" placeholder="Tìm theo SKU/màu...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="inv-filter-hub" class="filter-select">
+                  <option value="ALL">Tất cả kho</option>
+                  <option value="Kho Trung Tâm">Kho Trung Tâm</option>
+                  <option value="Kho Online">Kho Online</option>
+                  <option value="Vincom Đồng Khởi">Vincom Đồng Khởi</option>
+                  <option value="Saigon Centre">Saigon Centre</option>
+                  <option value="Crescent Mall">Crescent Mall</option>
+                  <option value="Vincom Bà Triệu">Vincom Bà Triệu</option>
+                  <option value="Lotte Liễu Giai">Lotte Liễu Giai</option>
+                </select>
+                <select id="inv-filter-status" class="filter-select">
+                  <option value="ALL">Tất cả</option>
+                  <option value="IN_STOCK">Còn hàng</option>
+                  <option value="LOW_STOCK">Sắp hết</option>
+                  <option value="OUT_OF_STOCK">Hết hàng</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Inventory Table">
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>SẢN PHẨM</th>
+                      <th>SIZE</th>
+                      <th>MÀU</th>
+                      <th>KHO/CỬA HÀNG</th>
+                      <th>TỒN</th>
+                      <th>RESERVED</th>
+                      <th>ĐẾM LẦN CUỐI</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inventory-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: PRODUCTION MES (LỆNH SẢN XUẤT)
+               ================================================================ -->
+          <div id="view-production" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Lệnh sản xuất</h1>
+                <p>MES — production order, BOM consumption, line tracking, QC.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-po" class="btn btn-primary">+ Tạo PO</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="po-search-input" class="search-input" placeholder="Tìm theo mã PO/line...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="po-filter-status" class="filter-select">
+                  <option value="ALL">Tất cả trạng thái</option>
+                  <option value="PENDING">Chờ Xử Lý</option>
+                  <option value="IN_PROGRESS">Đang Sản Xuất</option>
+                  <option value="QC">QC</option>
+                  <option value="PAUSED">Tạm Dừng</option>
+                  <option value="COMPLETED">Hoàn Tất</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Production Table">
+                  <thead>
+                    <tr>
+                      <th>MÃ PO</th>
+                      <th>SẢN PHẨM</th>
+                      <th>TIẾN ĐỘ</th>
+                      <th>LỖI</th>
+                      <th>LINE</th>
+                      <th>HẠN</th>
+                      <th>COST ƯỚC TÍNH</th>
+                      <th>TRẠNG THÁI</th>
+                      <th>THAO TÁC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="production-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: SUPPLIERS (NHÀ CUNG CẤP)
+               ================================================================ -->
+          <div id="view-suppliers" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Nhà cung cấp</h1>
+                <p>Vendor vải, phụ liệu, gia công CMT, bao bì.</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-sup" class="btn btn-primary">+ Thêm NCC</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="sup-search-input" class="search-input" placeholder="Tìm theo tên/mã/contact...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="sup-filter-type" class="filter-select">
+                  <option value="ALL">Tất cả loại</option>
+                  <option value="cmt">cmt</option>
+                  <option value="packaging">packaging</option>
+                  <option value="trim">trim</option>
+                  <option value="fabric">fabric</option>
+                </select>
+                <select id="sup-filter-status" class="filter-select">
+                  <option value="ALL">Tất cả trạng thái</option>
+                  <option value="ACTIVE">Đang hoạt động</option>
+                  <option value="INACTIVE">Tạm dừng</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Suppliers Table">
+                  <thead>
+                    <tr>
+                      <th>MÃ</th>
+                      <th>TÊN NCC</th>
+                      <th>LOẠI</th>
+                      <th>LIÊN HỆ</th>
+                      <th>SĐT</th>
+                      <th>LEAD TIME</th>
+                      <th>RATING</th>
+                      <th>TRẠNG THÁI</th>
+                      <th>THAO TÁC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="suppliers-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </main>
 
@@ -1248,6 +1463,7 @@
   <script src="scripts/views/orders.js"></script>
   <script src="scripts/views/customers.js"></script>
   <script src="scripts/views/inbox.js"></script>
+  <script src="scripts/views/operations.js"></script>
   <script src="scripts/views/settings.js"></script>
   <script src="scripts/app.js"></script>
 </body>

@@ -6,7 +6,12 @@
 (function () {
   'use strict';
 
-  const VIEWS = ['overview', 'products', 'categories', 'collections', 'materials', 'orders', 'customers', 'inbox', 'settings'];
+  const VIEWS = [
+    'overview', 'products', 'categories', 'collections', 'materials',
+    'orders', 'customers', 'inbox',
+    'stores', 'inventory', 'production', 'suppliers',
+    'settings'
+  ];
 
   function initSidebar() {
     const store = window.mercuriosStore;

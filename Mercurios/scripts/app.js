@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.MercuriosOrdersView) window.MercuriosOrdersView.init();
   if (window.MercuriosCustomersView) window.MercuriosCustomersView.init();
   if (window.MercuriosInboxView) window.MercuriosInboxView.init();
+  if (window.MercuriosOperationsView) window.MercuriosOperationsView.init();
   if (window.MercuriosSettingsView) window.MercuriosSettingsView.init();
 
   console.log('[MERCURIOS] All modules initialized and ready.');

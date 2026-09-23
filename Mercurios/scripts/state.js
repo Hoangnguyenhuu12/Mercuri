@@ -156,10 +156,10 @@ class MercuriosStore {
       ],
       // RAW MATERIALS & FABRICS (EXACT MATCH TO REFERENCE SAMPLE)
       materials: [
-        { id: 'mat-1', code: 'MAT-1015', name: 'Hein Medium Packaging Box', type: 'packaging', color: '—', uom: 'piece', price: '4,500 đ', onHand: '1,468.3', supplier: 'Bao bi Tan Phu' },
+        { id: 'mat-1', code: 'MAT-1015', name: 'Mercuri Medium Packaging Box', type: 'packaging', color: '—', uom: 'piece', price: '4,500 đ', onHand: '1,468.3', supplier: 'Bao bi Tan Phu' },
         { id: 'mat-2', code: 'MAT-1014', name: 'OPP Bag 25x35cm', type: 'packaging', color: '—', uom: 'piece', price: '600 đ', onHand: '508.8', supplier: 'Bao bi Tan Phu' },
         { id: 'mat-3', code: 'MAT-1013', name: 'Care Label Tag', type: 'label', color: '—', uom: 'piece', price: '400 đ', onHand: '529.2', supplier: 'YKK Vietnam' },
-        { id: 'mat-4', code: 'MAT-1012', name: 'Woven Neck Label Hein', type: 'label', color: '—', uom: 'piece', price: '900 đ', onHand: '1,115.8', supplier: 'YKK Vietnam' },
+        { id: 'mat-4', code: 'MAT-1012', name: 'Woven Neck Label Mercuri', type: 'label', color: '—', uom: 'piece', price: '900 đ', onHand: '1,115.8', supplier: 'YKK Vietnam' },
         { id: 'mat-5', code: 'MAT-1011', name: 'Polyester Thread 5000m White', type: 'thread', color: 'White', uom: 'piece', price: '35,000 đ', onHand: '829.5', supplier: 'YKK Vietnam' },
         { id: 'mat-6', code: 'MAT-1010', name: 'Pearl Button 14mm White', type: 'button', color: 'White Pearl', uom: 'piece', price: '2,500 đ', onHand: '830.4', supplier: 'YKK Vietnam' },
         { id: 'mat-7', code: 'MAT-1009', name: 'Metal Snap Button 12mm', type: 'button', color: '—', uom: 'piece', price: '1,500 đ', onHand: '865.9', supplier: 'YKK Vietnam' },
@@ -322,7 +322,7 @@ class MercuriosStore {
             name: 'Toan Duc',
             phone: '0933221100',
             channel: 'FB',
-            page: 'HEIN ONE Fashion - Fanpage',
+            page: 'Mercuri Fashion - Fanpage',
             unread: false,
             starred: true,
             status: 'OPEN',
@@ -330,7 +330,7 @@ class MercuriosStore {
             aiHandling: true,
             lastActivity: '14:22',
             messages: [
-              { id: 'm1', sender: 'shop', time: '14:10', text: 'Dạ HEIN ONE xin chào anh Toàn Đức! Em có thể tư vấn gì cho mình ạ?' },
+              { id: 'm1', sender: 'shop', time: '14:10', text: 'Dạ Mercuri xin chào anh Toàn Đức! Em có thể tư vấn gì cho mình ạ?' },
               { id: 'm2', sender: 'customer', time: '14:12', text: 'Dạ shop em xin báo giá sản phẩm bên dưới ạ. Mình bên em có ưu đãi free ship cho đơn từ 500k nhé ạ?' },
               { id: 'm3', sender: 'shop', isAi: true, time: '14:13', text: 'Dạ vâng đúng rồi ạ! Đơn hàng trên 500.000đ shop hỗ trợ freeship toàn quốc. Anh Toàn Đức đang quan tâm mẫu Evening Gown hay đầm lụa Pleated Silk ạ?' },
               { id: 'm4', sender: 'customer', time: '14:20', text: 'Mẫu đầm dạ hội Evening Gown còn size M không shop? Có giao kịp tối nay ở Q1 không?' },
@@ -344,7 +344,7 @@ class MercuriosStore {
             name: 'Tran Thanh Ha',
             phone: '0912345678',
             channel: 'SP',
-            page: 'Hein Fashion Official',
+            page: 'Mercuri Official Mall',
             unread: true,
             starred: false,
             status: 'OPEN',
@@ -363,7 +363,7 @@ class MercuriosStore {
             name: 'Le Thi Mai',
             phone: '0988776655',
             channel: 'TT',
-            page: 'Hein Fashion TikTok Shop',
+            page: 'Mercuri TikTok Shop',
             unread: true,
             starred: false,
             status: 'OPEN',
@@ -381,7 +381,7 @@ class MercuriosStore {
             name: 'Pham Quynh Anh',
             phone: '0945667788',
             channel: 'IG',
-            page: '@heinfashion.studio',
+            page: '@mercuri.studio',
             unread: false,
             starred: true,
             status: 'RESOLVED',
@@ -390,7 +390,7 @@ class MercuriosStore {
             lastActivity: '11:15',
             messages: [
               { id: 'm41', sender: 'customer', time: '11:00', text: 'Mình nhận được đầm rồi nhé, chất vải lụa đẹp lắm, cảm ơn shop!' },
-              { id: 'm42', sender: 'shop', isAi: true, time: '11:15', text: 'Dạ shop cảm ơn chị Quỳnh Anh đã tin chọn HEIN ONE! Hẹn gặp lại chị trong BST Holiday Sparkle sắp tới ạ.' }
+              { id: 'm42', sender: 'shop', isAi: true, time: '11:15', text: 'Dạ shop cảm ơn chị Quỳnh Anh đã tin chọn Mercuri! Hẹn gặp lại chị trong BST Holiday Sparkle sắp tới ạ.' }
             ],
             aiSuggestion: ''
           },
@@ -400,7 +400,7 @@ class MercuriosStore {
             name: 'Nguyen Van Nam',
             phone: '0909112233',
             channel: 'ZALO',
-            page: 'Hein Fashion Zalo OA VIP',
+            page: 'Mercuri Zalo OA VIP',
             unread: false,
             starred: false,
             status: 'OPEN',
@@ -414,7 +414,63 @@ class MercuriosStore {
             aiSuggestion: ''
           }
         ]
-      }
+      },
+
+      // OUTLETS & STORES (VẬN HÀNH - CỬA HÀNG)
+      outlets: [
+        { id: 'MERCURI-VC-DK', name: 'Mercuri Vincom Đồng Khởi', type: 'flagship', city: 'TP.HCM', manager: '—', phone: '02838221111', status: 'ACTIVE' },
+        { id: 'MERCURI-SC', name: 'Mercuri Saigon Centre', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221112', status: 'ACTIVE' },
+        { id: 'MERCURI-CRES', name: 'Mercuri Crescent Mall', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221113', status: 'ACTIVE' },
+        { id: 'MERCURI-AEON', name: 'Mercuri AEON Tân Phú', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221114', status: 'ACTIVE' },
+        { id: 'MERCURI-VC-BT', name: 'Mercuri Vincom Bà Triệu', type: 'regular', city: 'Hà Nội', manager: '—', phone: '02438221115', status: 'ACTIVE' },
+        { id: 'MERCURI-LOTTE', name: 'Mercuri Lotte Liễu Giai', type: 'regular', city: 'Hà Nội', manager: '—', phone: '02438221116', status: 'ACTIVE' },
+        { id: 'MERCURI-WH-HCM', name: 'Kho Trung Tâm HCM', type: 'central_warehouse', city: 'TP.HCM', manager: '—', phone: '02838221117', status: 'ACTIVE' },
+        { id: 'MERCURI-WH-ECO', name: 'Kho Online E-commerce', type: 'online_warehouse', city: 'TP.HCM', manager: '—', phone: '02838221118', status: 'ACTIVE' },
+        { id: 'MERCURI-FAC', name: 'Nhà máy Mercuri', type: 'factory', city: 'TP.HCM', manager: '—', phone: '02838221119', status: 'ACTIVE' }
+      ],
+
+      // INVENTORY & STOCK (VẬN HÀNH - TỒN KHO)
+      inventory: [
+        { sku: 'SKU-DRS-01-S', product: 'Client Style C - Evening Gown', size: 'S', color: 'Black', store: 'Vincom Đồng Khởi [ST-01]', onHand: 12, reserved: 2, lastCount: '23/09' },
+        { sku: 'SKU-DRS-01-M', product: 'Client Style C - Evening Gown', size: 'M', color: 'Black', store: 'Vincom Đồng Khởi [ST-01]', onHand: 2, reserved: 1, lastCount: '23/09' },
+        { sku: 'SKU-DRS-02-M', product: 'Silk Midi Pleated Dress', size: 'M', color: 'Emerald', store: 'Saigon Centre [ST-02]', onHand: 15, reserved: 3, lastCount: '23/09' },
+        { sku: 'SKU-TOP-01-S', product: 'Silk Organza Cocoon Blouse', size: 'S', color: 'White Pearl', store: 'Kho Online E-commerce', onHand: 45, reserved: 8, lastCount: '23/09' },
+        { sku: 'SKU-TOP-01-M', product: 'Silk Organza Cocoon Blouse', size: 'M', color: 'White Pearl', store: 'Kho Trung Tâm HCM', onHand: 120, reserved: 15, lastCount: '23/09' },
+        { sku: 'SKU-PNT-01-M', product: 'Tailored Chino Trousers', size: 'M', color: 'Khaki', store: 'Vincom Đồng Khởi [ST-01]', onHand: 28, reserved: 4, lastCount: '23/09' },
+        { sku: 'SKU-JCK-01-L', product: 'Double-Breasted Wool Blazer', size: 'L', color: 'Charcoal', store: 'Vincom Bà Triệu [ST-03]', onHand: 18, reserved: 2, lastCount: '23/09' },
+        { sku: 'SKU-SKT-01-S', product: 'Pleated Silk Satin Maxi Skirt', size: 'S', color: 'Gold Cream', store: 'Kho Trung Tâm HCM', onHand: 80, reserved: 10, lastCount: '23/09' },
+        { sku: 'SKU-DRS-03-S', product: 'Velvet Evening Mini Dress', size: 'S', color: 'Midnight Blue', store: 'Lotte Liễu Giai [ST-04]', onHand: 8, reserved: 0, lastCount: '23/09' },
+        { sku: 'SKU-TOP-02-M', product: 'Linen Relaxed Button Shirt', size: 'M', color: 'Beige Sand', store: 'Crescent Mall [ST-05]', onHand: 34, reserved: 5, lastCount: '23/09' }
+      ],
+
+      // PRODUCTION MES (VẬN HÀNH - LỆNH SẢN XUẤT)
+      production: [
+        { id: 'PO-2026019', product: '—', progress: '0 / 1', errors: 0, line: '—', deadline: '—', cost: '36 đ', status: 'PENDING' },
+        { id: 'PO-2026018', product: 'Tailored Chino Trousers', progress: '90 / 150', errors: 1, line: 'Line A 1213', deadline: '15 thg 12', cost: '14.250.000 đ', status: 'PAUSED' },
+        { id: 'PO-2026017', product: 'Silk Organza Cocoon Blouse', progress: '32 / 150', errors: 0, line: 'Line A', deadline: '21 thg 6', cost: '18.000.000 đ', status: 'QC' },
+        { id: 'PO-2026016', product: 'Double-Breasted Wool Blazer', progress: '45 / 100', errors: 1, line: 'Line C', deadline: '15 thg 5', cost: '9.000.000 đ', status: 'IN_PROGRESS' },
+        { id: 'PO-2026015', product: 'Client Style C - Evening Gown', progress: '800 / 800', errors: 12, line: 'Line C', deadline: '13 thg 2', cost: '496.000.000 đ', status: 'COMPLETED' },
+        { id: 'PO-2026014', product: 'Silk Midi Pleated Dress', progress: '260 / 500', errors: 1, line: 'Line A', deadline: '12 thg 2', cost: '190.000.000 đ', status: 'QC' },
+        { id: 'PO-2026013', product: 'Pleated Silk Satin Maxi Skirt', progress: '59 / 200', errors: 0, line: 'Line C', deadline: '06 thg 1', cost: '108.000.000 đ', status: 'IN_PROGRESS' },
+        { id: 'PO-2026012', product: 'Velvet Evening Mini Dress', progress: '54 / 150', errors: 0, line: 'Line C', deadline: '10 thg 3', cost: '24.750.000 đ', status: 'PAUSED' },
+        { id: 'PO-2026011', product: 'Wool Trench Coat Tailored', progress: '591 / 800', errors: 17, line: 'Line B', deadline: '28 thg 4', cost: '156.000.000 đ', status: 'PAUSED' },
+        { id: 'PO-2026010', product: 'Linen Relaxed Button Shirt', progress: '200 / 200', errors: 3, line: 'Line B', deadline: '14 thg 2', cost: '46.000.000 đ', status: 'COMPLETED' },
+        { id: 'PO-2026009', product: 'Cashmere Knit Turtleneck', progress: '242 / 800', errors: 2, line: 'Line C', deadline: '10 thg 5', cost: '160.000.000 đ', status: 'QC' }
+      ],
+
+      // SUPPLIERS (VẬN HÀNH - NHÀ CUNG CẤP)
+      suppliers: [
+        { id: 'SUP-CMT-02', name: 'May Việt Tiến CMT', type: 'cmt', contact: 'Edwin Will', phone: '+84972252309', leadTime: '24 ngày', rating: '3.90', status: 'ACTIVE' },
+        { id: 'SUP-CMT-01', name: 'May gia công Hồng Đức', type: 'cmt', contact: 'Leticia Leffler', phone: '+84943409217', leadTime: '8 ngày', rating: '3.00', status: 'ACTIVE' },
+        { id: 'SUP-PKG-01', name: 'Bao bì Tân Phú', type: 'packaging', contact: 'Wilfred Boehm', phone: '+84910011758', leadTime: '11 ngày', rating: '3.30', status: 'ACTIVE' },
+        { id: 'SUP-PL-03', name: 'BraVo Phụ Liệu', type: 'trim', contact: 'Dr. June Cremin', phone: '+84928842015', leadTime: '20 ngày', rating: '4.90', status: 'ACTIVE' },
+        { id: 'SUP-PL-02', name: 'Coats Phong Phú', type: 'trim', contact: 'Lionel Hand', phone: '+84907266531', leadTime: '27 ngày', rating: '4.90', status: 'ACTIVE' },
+        { id: 'SUP-PL-01', name: 'YKK Vietnam', type: 'trim', contact: 'Pedro Abbott', phone: '+84969149802', leadTime: '12 ngày', rating: '4.60', status: 'ACTIVE' },
+        { id: 'SUP-VAI-04', name: 'Sheng Hong Silk', type: 'fabric', contact: 'Dr. Mathew Windler', phone: '+84989861444', leadTime: '35 ngày', rating: '4.80', status: 'ACTIVE' },
+        { id: 'SUP-VAI-03', name: 'Yagi Textile (JP)', type: 'fabric', contact: 'Miss Bethany Aufderhar', phone: '+84997984685', leadTime: '26 ngày', rating: '4.30', status: 'ACTIVE' },
+        { id: 'SUP-VAI-02', name: 'Vải TC Đại Á', type: 'fabric', contact: 'Mr. Avis Dickens', phone: '+84989141827', leadTime: '18 ngày', rating: '3.00', status: 'ACTIVE' },
+        { id: 'SUP-VAI-01', name: 'Dệt Phong Phú', type: 'fabric', contact: 'Oleta Lesch', phone: '+84982883845', leadTime: '25 ngày', rating: '3.80', status: 'ACTIVE' }
+      ]
     };
   }
 
