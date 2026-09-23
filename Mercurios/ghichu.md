@@ -196,12 +196,14 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
   * **Loại bỏ triệt để các component rườm rà**: Xóa bỏ các thanh telemetry dài dòng và nút bấm thừa thãi ở khu vực tiêu đề, trả lại không gian tối giản, tinh khiết.
   * **Chuẩn hóa bố cục 3 cột kinh điển của Messenger**:
     * **Cột 1 (Chats Directory)**: Danh sách hội thoại với Avatar tròn, chấm tín hiệu online xanh (`#31A24C`), bộ lọc kênh tối giản (`All`, `FB`, `IG`, `Zalo`, `TikTok`, `Shopee`) và thanh tìm kiếm bo tròn nhẹ nhàng.
-    * **Cột 2 (Active Chat Thread)**: Khung chat rộng mở với bong bóng chat tròn mềm (Khách màu xám `#F0F2F5`, Shop màu xanh Messenger `#0084FF` / chữ trắng), thanh nhập liệu dạng pill thanh thoát.
+    * **Cột 2 (Active Chat Thread)**: Khung chat rộng mở với bong bóng chat tròn mềm, thanh nhập liệu dạng pill thanh thoát.
     * **Cột 3 (Customer Profile & Quick FAQ)**: Thẻ hồ sơ khách hàng, chi tiêu tích lũy, công tắc bật/tắt AI Autopilot và danh mục câu trả lời mẫu cho nhân viên.
-  * **Tích hợp Bộ câu hỏi nhanh có sẵn (Pre-made Question Chips)**: Cung cấp sẵn các nút câu hỏi thường gặp (`Bảng size & số đo chuẩn`, `Chính sách freeship toàn quốc`, `Đầm dạ hội Evening Gown còn không?`, `Địa chỉ Flagship Store`, `Khuyến mãi tuần này`).
-  * **Khắc phục triệt để lỗi AI trả lời sai/không liên quan**: Nâng cấp bộ máy phân tích ngữ cảnh, đảm bảo AI Mercurix nhận diện chính xác ý định khách hàng và phản hồi 100% chuẩn xác theo dữ liệu nghiệp vụ thời trang.
-
-
+* **v2.1.0**: **Hoàn thiện 4 phân hệ VẬN HÀNH & Nâng cấp tương tác Omnichannel Inbox**:
+  * **Cửa hàng (Stores)**: Danh sách 9 điểm bán lẻ, nhà máy, kho trung tâm, bộ lọc loại cửa hàng + trạng thái, nút thêm cửa hàng.
+  * **Tồn kho (Inventory)**: Bảng SKU matrix x kho bãi real-time, bộ lọc theo điểm kho và ngưỡng tồn (cảnh báo tồn thấp < 5).
+  * **Lệnh sản xuất (Production MES)**: Theo dõi tiến độ chuyền may, tỷ lệ lỗi, deadline, cost ước tính và trạng thái đơn PO.
+  * **Nhà cung cấp (Suppliers)**: Quản lý danh bạ NCC vải, phụ liệu may mặc, gia công CMT, bao bì kèm Lead time & Rating ★.
+  * **Tối ưu trải nghiệm Inbox**: Nâng cấp composer thành auto-resizing textarea, phím tắt `Shift + Space` để xuống dòng tự nhiên, tự động ẩn popover mẫu khi xóa `/`, popover giả lập khách nhắn tương tác trực tiếp khi click vào tên/avatar khách.
 
 ---
 
@@ -220,3 +222,44 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
 3. **Hiệu năng & Tương thích**:
    * Hệ thống vận hành ở chế độ Native Vanilla ES6+, không cần cài đặt node_modules phức tạp.
    * Tải trang và chuyển đổi tab tức thì với độ trễ 0ms.
+
+---
+
+## 10. NHẬT KÝ LỖI & KẾ HOẠCH BẢO TRÌ (PENDING FIXES & ROADMAP CHO NGÀY MAI)
+
+> **Ghi chú quan trọng**: Toàn bộ các lỗi và màn hình tham chiếu bên dưới đã được lưu trữ ảnh vào thư mục `Mercurios/assets/images/` để tiến hành khắc phục vào ngày mai.
+
+### 10.1. Màn hình tham chiếu: Quản lý Nhân viên & Phân quyền (`Staff & Access`)
+
+![Màn hình Quản lý Nhân viên](Mercurios/assets/images/system_staff_management.png)
+
+* **Vị trí**: Thanh Sidebar -> Nhóm `HỆ THỐNG` -> `Nhân viên` (thay thế stub nav hiện tại bằng `data-view-target="staff"`).
+* **Mô tả nghiệp vụ**:
+  * **Tiêu đề**: `Nhân viên`
+  * **Phụ đề**: `Quản lý 14 vai trò: Designer, Production, Sales, CSKH, Marketing, Finance, HR...`
+  * **Nút hành động**: `+ Thêm NV`
+  * **Thanh bộ lọc**: Ô tìm kiếm `Tìm theo tên/email...` + Dropdown `Tất cả vai trò` + Dropdown `Tất cả cửa hàng`.
+  * **Các cột bảng dữ liệu**: `TÊN` | `EMAIL` | `SĐT` | `VAI TRÒ` | `CỬA HÀNG` | `TT` (`Đang Hoạt Động`) | `LOGIN CUỐI` | `THAO TÁC` (`[EDIT]`, `[DEL]`).
+  * **Dữ liệu mẫu**:
+    * `luan` — `luan.sales@mercuri.vn` — `0343977651` — `sales_staff` — `—` — `Đang Hoạt Động` — `16:15 23 thg 9, 2026`
+    * `Nguyen Huu Hung` — `hung.prod@mercuri.vn` — `0342291996` — `sales_staff` — `—` — `Đang Hoạt Động` — `—`
+    * `linh vi` — `linhvi.cskh@mercuri.vn` — `0903555768` — `sales_staff` — `—` — `Đang Hoạt Động` — `—`
+  * **Tiêu chuẩn thiết kế**: Giữ đúng phong cách Minimalist, Zero-Icon của MercuriOS, nhãn vai trò dạng tag xám, trạng thái xanh lá dịu mắt, mã hóa thương hiệu chuẩn Mercuri.
+
+---
+
+### 10.2. Danh sách lỗi giao diện cần khắc phục trên Omnichannel Inbox (Dark Mode)
+
+![Lỗi giao diện Omnichannel Inbox Dark Mode](Mercurios/assets/images/inbox_dark_mode_bugs.png)
+
+Dựa trên hình ảnh chụp thực tế phiên bản Dark Mode của Omnichannel Inbox, các lỗi sau được ghi nhận cần xử lý:
+
+| STT | Tên lỗi & Hiện tượng | Nguyên nhân kỹ thuật | Hướng khắc phục cụ thể | Mức độ |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | **Chữ trắng trên nền trắng trong bong bóng chat (Contrast Bug)** | Trong Dark Mode, biến chữ `--text-main` đổi thành màu sáng (`#FFFFFF`/`#E6EDF3`). Các bong bóng chat của AI/Shop và tin nhắn giả lập có nền trắng (`#FFFFFF`) nhưng chữ kế thừa màu trắng, dẫn đến mất tương phản và chữ bị tàng hình. | Cố định rõ màu chữ và nền cho bong bóng ở cả 2 theme: Trong Dark Mode, bong bóng khách/AI dùng nền than `#1F242C` + viền mảnh `#2E3642` + chữ `#E6EDF3`; hoặc nếu giữ bong bóng sáng thì bắt buộc ép `color: #111418 !important;`. | **Nghiêm trọng (P1)** |
+| **2** | **Chip bộ lọc kênh `ALL` bị trắng trơn mất chữ** | Khi tab `ALL` ở trạng thái active trong Dark Mode, background chuyển sang màu trắng sáng nhưng text color bên trong cũng là màu trắng. | Thêm quy tắc CSS chuyên biệt cho Dark Mode: `.msg-channel-chip.active { background: #FFFFFF; color: #111418 !important; font-weight: 600; }`. | **Cao (P2)** |
+| **3** | **Thanh cuộn dọc thừa và nút `/ Mẫu trả lời` bị ép chật** | Textarea trong thanh composer phát sinh thanh cuộn dọc nhỏ `▲ ▼` ngay cả khi chỉ có 1 dòng, đồng thời nút bấm `/ Mẫu trả lời` có nguy cơ bị co méo trên màn hình nhỏ. | Đặt `overflow-y: hidden;` cho textarea khi nội dung dưới 2 dòng (chỉ kích hoạt scroll khi vượt quá `max-height: 120px`); thêm `flex-shrink: 0; white-space: nowrap;` cho nút `/ Mẫu trả lời`. | **Trung bình (P3)** |
+| **4** | **Bong bóng tin nhắn của Shop (AI) và Khách cần phân biệt rõ ràng hơn** | Hiện tại cả tin nhắn Shop lẫn tin nhắn khách giả lập ở góc phải dưới đều có nền sáng tương tự nhau, khó phân định ai gửi. | Chuẩn hóa bong bóng: Tin nhắn của Khách căn trái nền xám than `#22272E`, tin nhắn của Shop/AI căn phải với đường viền nhận diện thương hiệu hoặc nền than xanh dịu mắt `#162C46` kèm nhãn `[AI]` rõ nét. | **Trung bình (P3)** |
+| **5** | **Đồng bộ hóa ngôn ngữ Sidebar Navigation** | Nhóm `VẬN HÀNH` đã dùng tiếng Việt (`Cửa hàng`, `Tồn kho`, `Sản xuất`, `Nhà cung cấp`), trong khi các nhóm khác vẫn dùng tiếng Anh (`Products & Design`, `Sales & Orders`). | Thống nhất chuẩn ngôn ngữ toàn bộ thanh điều hướng (ưu tiên tiếng Việt tối giản, chuẩn nghiệp vụ thời trang để đồng bộ với các màn hình mới). | **Thấp (P4)** |
+
+---
