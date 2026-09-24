@@ -20,3 +20,9 @@ Desktop.ini
 .idea/
 *.swp
 *.swo
+
+# Internal Documentation & Notes (Excluded from public repo per user request)
+*ghichu*.md
+ghichu*.md
+docs/
+**/docs/

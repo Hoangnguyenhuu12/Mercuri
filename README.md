@@ -1,7 +1,7 @@
 # MERCURI // Unified Fashion OS & AI Operations Suite
 
-> **Hệ điều hành vận hành thời trang đa kênh (MercuriOS) kết hợp Trợ lý Tác tử AI Vận hành Độc lập (Mercurix)**  
-> Thiết kế chuẩn mực, hiệu năng cao, tối giản và tự động hóa toàn diện quy trình chuỗi bán lẻ, kho hàng và xưởng may.
+> **Unified Omnichannel Fashion Operating System (MercuriOS) with Autonomous Operations AI Copilot (Mercurix).**  
+> High-performance, minimalist, zero-icon technical typography, and end-to-end automation for fashion retail chains, fulfillment hubs, and garment production.
 
 ---
 
@@ -9,67 +9,65 @@
 
 ---
 
-## [01] Tổng Quan Hệ Thống
+## [01] Architecture Overview
 
-Dự án **Mercuri** là giải pháp toàn diện cho ngành công nghiệp bán lẻ và sản xuất thời trang, bao gồm hai phân hệ được phân tầng rạch ròi:
+Mercuri decouples presentation from autonomous AI reasoning across two dedicated suites:
 
 ```
 f:/Mercuri/
-├── Mercurix/    --> [BỘ NÃO AI & TÁC TỬ] Toàn bộ suy luận ReAct, nhận thức ngữ cảnh & bộ công cụ an toàn
-│   ├── docs/    --> Hồ sơ nghiên cứu, RFC, ADRs và đặc tả kỹ thuật chi tiết
-│   └── src/     --> Mã nguồn thực thi bộ não AI (Context Engine, Action Catalog, Brain Core)
-└── Mercurios/   --> [GIAO DIỆN & HỆ THỐNG] Vỏ Drawer Messenger 420px, CSS, View Tables, State & Server
+├── Mercurix/    --> [AI BRAIN & AGENTIC CORE] ReAct loop, PageContext awareness & Fail-Closed Action Gate
+│   └── src/     --> Modular runtime (context-engine.js, action-catalog.js, brain-core.js, index.js)
+└── Mercurios/   --> [HOST SYSTEM & UI HARNESS] 420px Messenger chat drawer, CSS, reactive state & dev server
 ```
 
 ---
 
-## [02] Các Tính Năng Nổi Bật
+## [02] Key Capabilities
 
 ### 1. MercuriOS — Fashion Operating System
-* **Bàn làm việc Tổng quan (Dashboard Overview)**: Đo lường doanh thu gộp, tỷ lệ an toàn tồn kho, số lượng đơn hoàn tất theo thời gian thực.
-* **Quản trị Sản phẩm & Thiết kế (Catalog & Design)**: Ma trận kích thước và màu sắc, danh mục sản phẩm, bộ sưu tập theo mùa (Spring/Summer/Fall/Winter/Capsule) và kho nguyên phụ liệu.
-* **Bán hàng & Đơn hàng Đa kênh (Sales & Omnichannel Orders)**: Hợp nhất đơn hàng từ cửa hàng Flagship (POS), Website, Shopee, TikTok Shop, Facebook, Lazada.
-* **Quản trị Tồn kho & Điều chuyển (Inventory & WMS)**: Giám sát ngưỡng an toàn tồn kho, quản lý 9 chi nhánh bán lẻ và 2 kho trung tâm (Central Hub HCM [WH-01], Ecom Hub [WH-02]).
-* **Hộp thư Đa kênh (Omnichannel Inbox)**: Quản lý hội thoại khách hàng tập trung với chế độ trợ lý AI thông minh (AI Autopilot).
-* **Quản trị Sản xuất & Xưởng may (Production MES)**: Theo dõi tiến độ lệnh sản xuất (Cutting, Sewing, QC, Packaging).
-* **Hỗ trợ Giao diện Tối / Sáng (Dark & Light Mode)**: Thiết kế Velvet Charcoal cao cấp, bảo vệ mắt và tối ưu tương phản.
+* **Executive Dashboard [01]**: Real-time gross revenue, fulfillment velocity, safe stock metrics, and live dispatch queues.
+* **Catalog & Design [SKU, CAT, COL, MAT]**: Style matrix (size × color), seasonal collections (Spring/Summer/Fall/Winter/Capsule), and raw material inventory.
+* **Sales & Omnichannel Orders [ORD, CRM, MSG]**: Unified multi-channel ingestion across Stores (POS), Website, Shopee, TikTok Shop, Facebook, and Lazada.
+* **Inventory & Fulfillment [WHS, STR]**: Safe-stock threshold alerts across 9 retail outlets and 2 central hubs (Central Hub HCM [WH-01], Ecom Hub [WH-02]).
+* **Production MES [MFG, VND]**: Real-time batch manufacturing tracking (Cutting, Sewing, QC, Packaging) and vendor lead-time monitoring.
+* **High-Contrast Dark Mode**: Technical Velvet Charcoal palette with crisp readability, designed for long operational shifts.
 
-### 2. Mercurix — Trợ Lý Tác Tử Vận Hành AI (Fashion Operations Assistant)
-* **Giao diện Messenger Mini Tinh Gọn**: Khung chat nổi góc dưới bên phải màn hình, không che mờ nội dung đang làm việc, mở/đóng tức thì bằng phím tắt `Ctrl + Space` hoặc biểu tượng nổi `MX`.
-* **Nhận thức Ngữ cảnh Phẳng (`PageContext`)**: Nắm rõ người dùng đang ở màn hình nào để đưa ra phản hồi chính xác.
-* **Chốt chặn Hành động An toàn (`Action Catalog` & `Action Gate`)**: Cơ chế Whitelist & Fail-Closed, kiểm soát tuyệt đối các tác vụ được phép gọi (`ui.navigate`, `ui.open_form`, `ops.filter_table`, `ops.filter_dropdown`, `ops.query_data`, `ui.set_theme`, `ui.trigger_action`, `ops.delete_record`).
-* **Con Người Bấm Nút Cuối Cùng (Human-in-the-Loop)**: Mọi thao tác đột biến nhạy cảm (như xóa đơn hàng) bắt buộc phải hỏi xác nhận chi tiết từ người dùng trước khi thực thi.
-* **Hỏi Lại Thông Minh (Contextual Clarification)**: Không sử dụng phản hồi rập khuôn cố định; phân tích hành vi để hỏi lại đúng trọng tâm khi người dùng nhập thiếu dữ kiện.
+### 2. Mercurix — Fashion Operations AI Assistant
+* **Floating Messenger Mini Chat**: Lightweight bottom-right widget (`MX` launcher, `Ctrl + Space`), completely non-modal with zero background dimming.
+* **Flat Context Awareness (`PageContext`)**: Real-time detection of active view, current hub, and operational counts without DOM scraping.
+* **Fail-Closed Action Gate**: Strictly whitelisted tool execution (`ui.navigate`, `ui.open_form`, `ops.filter_table`, `ops.filter_dropdown`, `ops.query_data`, `ui.set_theme`, `ui.trigger_action`, `ops.delete_record`).
+* **Human-in-the-Loop (HITL)**: All mutating operations (e.g. order deletion, stock dispatch) stage parameters and require explicit human confirmation prior to execution.
+* **Contextual Clarification**: Eliminates rigid boilerplate templates; dynamically analyzes user intent to ask focused clarifying questions when commands lack required arguments.
 
 ---
 
-## [03] Hướng Dẫn Cài Đặt & Chạy Thử
+## [03] Getting Started
 
-### Yêu cầu môi trường
-* Node.js (phiên bản 18+ hoặc 20+)
-* Trình duyệt hiện đại (Chrome, Edge, Firefox, Safari)
+### Prerequisites
+* Node.js (v18 or higher)
+* Modern web browser (Chrome, Edge, Firefox, Safari)
 
-### Khởi chạy hệ thống
-1. Di chuyển vào thư mục `Mercurios/`:
+### Quick Launch
+1. Open terminal and navigate to `Mercurios/`:
    ```bash
    cd Mercurios
    ```
-2. Khởi chạy máy chủ HTTP:
+2. Start the local server:
    ```bash
    node server.js
    ```
-3. Mở trình duyệt và truy cập:
+3. Open your browser and access:
    ```
    http://localhost:5173/index.html
    ```
 
 ---
 
-## [04] Tài Liệu Kỹ Thuật
+## [04] Design Principles
 
-* [Mercurix Documentation](Mercurix/docs/README.md): Hồ sơ RFC, ADRs kiến trúc và đặc tả chi tiết.
-* [Mercurix Architecture Notes](Mercurix/ghichu_mercurix.md): Ghi chú quy chuẩn kỹ thuật cho bộ não AI.
-* [MercuriOS Implementation Notes](Mercurios/ghichu_mercurios.md): Ghi chú bàn giao phân hệ giao diện và lõi vận hành.
+* **Zero-Icon Standard**: 100% typography-driven interface using `Plus Jakarta Sans` and `JetBrains Mono`. Technical bracketed tags (`[01]`, `[SKU]`, `[ORD]`, `[PAID]`, `[DELIVERING]`) replace ambiguous graphic icons.
+* **Fail-Closed Safety**: Any command or target view outside the authorized Action Catalog is safely rejected.
+* **Ephemeral Session State**: Chat memory and pending confirmations live strictly in memory and reset cleanly upon page refresh (`F5`).
 
 ---
 
