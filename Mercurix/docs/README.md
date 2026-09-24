@@ -11,13 +11,13 @@ tags: [ai, plugin-assistant, assistant, agentic-loop, tool-calling, react, slot,
 Tài liệu này là nguồn sự thật duy nhất (SSOT) trả lời hai câu hỏi ghép làm một: **"AI HOẠT ĐỘNG RA SAO?"** và **"NĂNG LỰC MỚI CẮM VÀO ĐÂU?"** trong phân hệ Plugin Trợ lý AI (`plugin-assistant`) — phần nghiệp vụ đính lên khung React Harness của hệ sinh thái `LV_Platform`.
 
 > [!NOTE]
-> - 🏛️ **Kiến trúc Khung Nền tảng ("Kiến Trúc Như Thế Nào?")**: Angular nhúng React qua Dual Root DOM, phong tỏa Shadow Root, ủy quyền API Gateway, xử lý vé dữ liệu lớn — xem [`../multi-flavor-architecture/README.md`](../multi-flavor-architecture/README.md).
-> - 📑 **Chỉ mục Tiến độ & Bản đồ Mô-đun**: [`index.md`](index.md).
-> - ⚖️ **Sổ Quyết định Kiến trúc (17 `QĐ-ASSISTANT-xxx`)**: [`03-decisions.md`](03-decisions.md).
+> - [ARCH] **Kiến trúc Khung Nền tảng ("Kiến Trúc Như Thế Nào?")**: Angular nhúng React qua Dual Root DOM, phong tỏa Shadow Root, ủy quyền API Gateway, xử lý vé dữ liệu lớn — xem [`../multi-flavor-architecture/README.md`](../multi-flavor-architecture/README.md).
+> - [INDEX] **Chỉ mục Tiến độ & Bản đồ Mô-đun**: [`index.md`](index.md).
+> - [ADR] **Sổ Quyết định Kiến trúc (17 `QĐ-ASSISTANT-xxx`)**: [`03-decisions.md`](03-decisions.md).
 
 ---
 
-![MercuriOS Overview & Mercurix Operations Assistant](assets/mercurios-overview.png)
+![MercuriOS Overview & Mercurix Operations Assistant](../../assets/mercurios-overview.png)
 
 ---
 

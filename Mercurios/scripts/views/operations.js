@@ -238,7 +238,7 @@
           <td>${item.contact}</td>
           <td class="cell-mono">${item.phone}</td>
           <td class="cell-mono" style="color: var(--text-muted);">${item.leadTime}</td>
-          <td class="cell-mono" style="font-weight: 700; color: #D97706;">★ ${item.rating}</td>
+          <td class="cell-mono" style="font-weight: 700; color: #D97706;">[${item.rating}]</td>
           <td><span class="badge-tag tag-active">[ACTIVE]</span></td>
           <td>
             <div style="display: flex; gap: 6px;">

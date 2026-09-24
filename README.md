@@ -9,7 +9,7 @@
 
 ---
 
-## 🌟 Tổng Quan Hệ Thống
+## [01] Tổng Quan Hệ Thống
 
 Dự án **Mercuri** là giải pháp toàn diện cho ngành công nghiệp bán lẻ và sản xuất thời trang, bao gồm hai phân hệ được phân tầng rạch ròi:
 
@@ -23,7 +23,7 @@ f:/Mercuri/
 
 ---
 
-## 🚀 Các Tính Năng Nổi Bật
+## [02] Các Tính Năng Nổi Bật
 
 ### 1. MercuriOS — Fashion Operating System
 * **Bàn làm việc Tổng quan (Dashboard Overview)**: Đo lường doanh thu gộp, tỷ lệ an toàn tồn kho, số lượng đơn hoàn tất theo thời gian thực.
@@ -43,7 +43,7 @@ f:/Mercuri/
 
 ---
 
-## 🛠️ Hướng Dẫn Cài Đặt & Chạy Thử
+## [03] Hướng Dẫn Cài Đặt & Chạy Thử
 
 ### Yêu cầu môi trường
 * Node.js (phiên bản 18+ hoặc 20+)
@@ -65,7 +65,7 @@ f:/Mercuri/
 
 ---
 
-## 📚 Tài Liệu Kỹ Thuật
+## [04] Tài Liệu Kỹ Thuật
 
 * [Mercurix Documentation](Mercurix/docs/README.md): Hồ sơ RFC, ADRs kiến trúc và đặc tả chi tiết.
 * [Mercurix Architecture Notes](Mercurix/ghichu_mercurix.md): Ghi chú quy chuẩn kỹ thuật cho bộ não AI.
