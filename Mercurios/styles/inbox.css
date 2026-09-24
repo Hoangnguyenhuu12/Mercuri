@@ -77,6 +77,13 @@
   border-color: var(--text-main);
 }
 
+[data-theme="dark"] .msg-channel-chip.active {
+  background: #FFFFFF !important;
+  color: #111418 !important;
+  border-color: #FFFFFF !important;
+  font-weight: 700;
+}
+
 /* Search Box */
 .inbox-search-box {
   padding: 10px 14px;
@@ -198,9 +205,17 @@
   font-size: 10px;
   font-weight: 800;
   background: var(--text-main);
-  color: #FFFFFF;
-  padding: 1px 5px;
+  color: var(--text-on-dark);
+  padding: 1px 6px;
   border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.3;
+}
+
+[data-theme="dark"] .msg-unread-indicator {
+  background: #FFFFFF;
+  color: #0E1012;
 }
 
 /* --------------------------------------------------------------------------
@@ -499,9 +514,36 @@
 }
 
 .msg-row.shop .msg-bubble {
-  background: var(--text-main);
+  background: #111418;
   color: #FFFFFF;
+  border: 1px solid #111418;
   border-bottom-right-radius: 2px;
+}
+
+/* Dark Mode Specific Message Styles (High Contrast & Differentiate Shop vs Customer) */
+[data-theme="dark"] .msg-row.customer .msg-bubble {
+  background: #1F242C;
+  color: #E6EDF3;
+  border: 1px solid #2E3642;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .msg-row.shop .msg-bubble {
+  background: #162C46;
+  color: #F0F6FC;
+  border: 1px solid #234267;
+}
+
+[data-theme="dark"] .msg-row-avatar {
+  background: #181B1F;
+  border-color: #353C46;
+  color: #F4F6F8;
+}
+
+[data-theme="dark"] .msg-ai-tag {
+  background: #1E3A5F;
+  color: #93C5FD;
+  border: 1px solid #2563EB;
 }
 
 .msg-time-stamp {
@@ -552,6 +594,7 @@
   font-size: 11.5px;
   font-weight: 700;
   white-space: nowrap;
+  flex-shrink: 0;
   height: 38px;
 }
 
@@ -569,7 +612,7 @@
   resize: none;
   min-height: 38px;
   max-height: 120px;
-  overflow-y: auto;
+  overflow-y: hidden;
   box-sizing: border-box;
   transition: border-color 0.15s ease;
 }

@@ -72,15 +72,15 @@
 
         <!-- 04. OPERATIONS -->
         <div class="nav-section">
-          <div class="nav-group-title">VẬN HÀNH</div>
+          <div class="nav-group-title">OPERATIONS</div>
           <ul class="nav-list">
-            <li><a class="nav-item" href="javascript:void(0)" data-view-target="stores"><span>Cửa hàng</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="stores"><span>Outlets &amp; Stores</span><span
                   class="nav-tag">[STR]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-view-target="inventory"><span>Tồn kho</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="inventory"><span>Inventory &amp; Stock</span><span
                   class="nav-tag">[WHS]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-view-target="production"><span>Sản xuất</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="production"><span>Production MES</span><span
                   class="nav-tag">[MFG]</span></a></li>
-            <li><a class="nav-item" href="javascript:void(0)" data-view-target="suppliers"><span>Nhà cung cấp</span><span
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="suppliers"><span>Suppliers &amp; Vendors</span><span
                   class="nav-tag">[VND]</span></a></li>
           </ul>
         </div>
@@ -89,8 +89,8 @@
         <div class="nav-section">
           <div class="nav-group-title">SYSTEM</div>
           <ul class="nav-list">
-            <li><a class="nav-item" href="javascript:void(0)" data-action="stub-nav"><span>Staff &amp;
-                  Access</span><span class="nav-tag">[USR]</span></a></li>
+            <li><a class="nav-item" href="javascript:void(0)" data-view-target="staff"><span>Staff &amp; Access</span><span
+                  class="nav-tag">[USR]</span></a></li>
             <li>
               <a class="nav-item" href="javascript:void(0)" data-view-target="settings">
                 <span>Settings</span>
@@ -1108,40 +1108,39 @@
                 </div>
               </div>
             </div>
-
           </div>
 
           <!-- ================================================================
-               VIEW: OUTLETS & STORES (CỬA HÀNG)
+               VIEW: OUTLETS & STORES
                ================================================================ -->
           <div id="view-stores" class="view-section">
             <div class="dashboard-hero">
               <div class="hero-text">
-                <h1>Cửa hàng</h1>
-                <p>6 cửa hàng vật lý + nhà máy + kho. Sẵn sàng scale lên 50+ stores.</p>
+                <h1>Outlets &amp; Stores</h1>
+                <p>6 retail boutiques, factory &amp; central fulfillment nodes. Scalable to 50+ stores.</p>
               </div>
               <div class="hero-actions">
-                <button id="btn-add-store" class="btn btn-primary">+ Thêm cửa hàng</button>
+                <button id="btn-add-store" class="btn btn-primary">+ Add Store</button>
               </div>
             </div>
 
             <div class="filter-bar">
               <div class="search-field-box">
-                <input type="text" id="store-search-input" class="search-input" placeholder="Tìm theo tên/mã/thành phố...">
+                <input type="text" id="store-search-input" class="search-input" placeholder="Search by name, code or city...">
               </div>
               <div class="dropdown-filters-group">
                 <select id="store-filter-type" class="filter-select">
-                  <option value="ALL">Tất cả loại</option>
-                  <option value="flagship">Flagship</option>
-                  <option value="regular">Regular</option>
-                  <option value="central_warehouse">Kho trung tâm</option>
-                  <option value="online_warehouse">Kho online</option>
-                  <option value="factory">Nhà máy</option>
+                  <option value="ALL">All Types</option>
+                  <option value="flagship">Flagship Boutique</option>
+                  <option value="regular">Regular Outlet</option>
+                  <option value="central_warehouse">Central Warehouse</option>
+                  <option value="online_warehouse">Online E-Com Hub</option>
+                  <option value="factory">Garment Factory</option>
                 </select>
                 <select id="store-filter-status" class="filter-select">
-                  <option value="ALL">Tất cả trạng thái</option>
-                  <option value="ACTIVE">Đang hoạt động</option>
-                  <option value="INACTIVE">Tạm dừng</option>
+                  <option value="ALL">All Status</option>
+                  <option value="ACTIVE">Active</option>
+                  <option value="INACTIVE">Inactive</option>
                 </select>
               </div>
             </div>
@@ -1151,14 +1150,14 @@
                 <table class="clean-table" aria-label="Stores Table">
                   <thead>
                     <tr>
-                      <th>MÃ</th>
-                      <th>TÊN CỬA HÀNG</th>
-                      <th>LOẠI</th>
-                      <th>THÀNH PHỐ</th>
-                      <th>QUẢN LÝ</th>
-                      <th>SĐT</th>
-                      <th>TRẠNG THÁI</th>
-                      <th>THAO TÁC</th>
+                      <th>CODE</th>
+                      <th>STORE NAME</th>
+                      <th>TYPE</th>
+                      <th>CITY</th>
+                      <th>MANAGER</th>
+                      <th>PHONE</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody id="stores-table-body"></tbody>
@@ -1168,25 +1167,25 @@
           </div>
 
           <!-- ================================================================
-               VIEW: INVENTORY & STOCK (TỒN KHO)
+               VIEW: INVENTORY & STOCK
                ================================================================ -->
           <div id="view-inventory" class="view-section">
             <div class="dashboard-hero">
               <div class="hero-text">
-                <h1>Tồn kho</h1>
-                <p>Tồn theo từng SKU x cửa hàng. Real-time multi-channel.</p>
+                <h1>Inventory &amp; Stock</h1>
+                <p>Real-time multi-channel stock levels per SKU across warehouses &amp; retail stores.</p>
               </div>
             </div>
 
             <div class="filter-bar">
               <div class="search-field-box">
-                <input type="text" id="inv-search-input" class="search-input" placeholder="Tìm theo SKU/màu...">
+                <input type="text" id="inv-search-input" class="search-input" placeholder="Search by SKU, product or color...">
               </div>
               <div class="dropdown-filters-group">
                 <select id="inv-filter-hub" class="filter-select">
-                  <option value="ALL">Tất cả kho</option>
-                  <option value="Kho Trung Tâm">Kho Trung Tâm</option>
-                  <option value="Kho Online">Kho Online</option>
+                  <option value="ALL">All Hubs</option>
+                  <option value="Central Warehouse">Central Warehouse HCMC</option>
+                  <option value="Online Hub">Online E-Com Hub</option>
                   <option value="Vincom Đồng Khởi">Vincom Đồng Khởi</option>
                   <option value="Saigon Centre">Saigon Centre</option>
                   <option value="Crescent Mall">Crescent Mall</option>
@@ -1194,10 +1193,10 @@
                   <option value="Lotte Liễu Giai">Lotte Liễu Giai</option>
                 </select>
                 <select id="inv-filter-status" class="filter-select">
-                  <option value="ALL">Tất cả</option>
-                  <option value="IN_STOCK">Còn hàng</option>
-                  <option value="LOW_STOCK">Sắp hết</option>
-                  <option value="OUT_OF_STOCK">Hết hàng</option>
+                  <option value="ALL">All Status</option>
+                  <option value="IN_STOCK">In Stock</option>
+                  <option value="LOW_STOCK">Low Stock</option>
+                  <option value="OUT_OF_STOCK">Out of Stock</option>
                 </select>
               </div>
             </div>
@@ -1208,13 +1207,13 @@
                   <thead>
                     <tr>
                       <th>SKU</th>
-                      <th>SẢN PHẨM</th>
+                      <th>PRODUCT NAME</th>
                       <th>SIZE</th>
-                      <th>MÀU</th>
-                      <th>KHO/CỬA HÀNG</th>
-                      <th>TỒN</th>
+                      <th>COLOR</th>
+                      <th>LOCATION</th>
+                      <th>ON HAND</th>
                       <th>RESERVED</th>
-                      <th>ĐẾM LẦN CUỐI</th>
+                      <th>LAST COUNT</th>
                     </tr>
                   </thead>
                   <tbody id="inventory-table-body"></tbody>
@@ -1224,31 +1223,31 @@
           </div>
 
           <!-- ================================================================
-               VIEW: PRODUCTION MES (LỆNH SẢN XUẤT)
+               VIEW: PRODUCTION MES
                ================================================================ -->
           <div id="view-production" class="view-section">
             <div class="dashboard-hero">
               <div class="hero-text">
-                <h1>Lệnh sản xuất</h1>
-                <p>MES — production order, BOM consumption, line tracking, QC.</p>
+                <h1>Production MES</h1>
+                <p>Manufacturing execution, BOM consumption, line allocation &amp; QC tracking.</p>
               </div>
               <div class="hero-actions">
-                <button id="btn-add-po" class="btn btn-primary">+ Tạo PO</button>
+                <button id="btn-add-po" class="btn btn-primary">+ Create PO</button>
               </div>
             </div>
 
             <div class="filter-bar">
               <div class="search-field-box">
-                <input type="text" id="po-search-input" class="search-input" placeholder="Tìm theo mã PO/line...">
+                <input type="text" id="po-search-input" class="search-input" placeholder="Search by PO code or line...">
               </div>
               <div class="dropdown-filters-group">
                 <select id="po-filter-status" class="filter-select">
-                  <option value="ALL">Tất cả trạng thái</option>
-                  <option value="PENDING">Chờ Xử Lý</option>
-                  <option value="IN_PROGRESS">Đang Sản Xuất</option>
-                  <option value="QC">QC</option>
-                  <option value="PAUSED">Tạm Dừng</option>
-                  <option value="COMPLETED">Hoàn Tất</option>
+                  <option value="ALL">All Status</option>
+                  <option value="PENDING">Pending</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="QC">Quality Control (QC)</option>
+                  <option value="PAUSED">Paused</option>
+                  <option value="COMPLETED">Completed</option>
                 </select>
               </div>
             </div>
@@ -1258,15 +1257,15 @@
                 <table class="clean-table" aria-label="Production Table">
                   <thead>
                     <tr>
-                      <th>MÃ PO</th>
-                      <th>SẢN PHẨM</th>
-                      <th>TIẾN ĐỘ</th>
-                      <th>LỖI</th>
+                      <th>PO CODE</th>
+                      <th>PRODUCT</th>
+                      <th>PROGRESS</th>
+                      <th>ERRORS</th>
                       <th>LINE</th>
-                      <th>HẠN</th>
-                      <th>COST ƯỚC TÍNH</th>
-                      <th>TRẠNG THÁI</th>
-                      <th>THAO TÁC</th>
+                      <th>DEADLINE</th>
+                      <th>EST. COST</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody id="production-table-body"></tbody>
@@ -1276,35 +1275,35 @@
           </div>
 
           <!-- ================================================================
-               VIEW: SUPPLIERS (NHÀ CUNG CẤP)
+               VIEW: SUPPLIERS & VENDORS
                ================================================================ -->
           <div id="view-suppliers" class="view-section">
             <div class="dashboard-hero">
               <div class="hero-text">
-                <h1>Nhà cung cấp</h1>
-                <p>Vendor vải, phụ liệu, gia công CMT, bao bì.</p>
+                <h1>Suppliers &amp; Vendors</h1>
+                <p>Fabric mills, trim accessories, CMT garment contracting &amp; packaging vendors.</p>
               </div>
               <div class="hero-actions">
-                <button id="btn-add-sup" class="btn btn-primary">+ Thêm NCC</button>
+                <button id="btn-add-sup" class="btn btn-primary">+ Add Vendor</button>
               </div>
             </div>
 
             <div class="filter-bar">
               <div class="search-field-box">
-                <input type="text" id="sup-search-input" class="search-input" placeholder="Tìm theo tên/mã/contact...">
+                <input type="text" id="sup-search-input" class="search-input" placeholder="Search by name, code or contact...">
               </div>
               <div class="dropdown-filters-group">
                 <select id="sup-filter-type" class="filter-select">
-                  <option value="ALL">Tất cả loại</option>
-                  <option value="cmt">cmt</option>
-                  <option value="packaging">packaging</option>
-                  <option value="trim">trim</option>
-                  <option value="fabric">fabric</option>
+                  <option value="ALL">All Types</option>
+                  <option value="cmt">CMT Contracting</option>
+                  <option value="packaging">Packaging</option>
+                  <option value="trim">Trims &amp; Accessories</option>
+                  <option value="fabric">Fabric Mill</option>
                 </select>
                 <select id="sup-filter-status" class="filter-select">
-                  <option value="ALL">Tất cả trạng thái</option>
-                  <option value="ACTIVE">Đang hoạt động</option>
-                  <option value="INACTIVE">Tạm dừng</option>
+                  <option value="ALL">All Status</option>
+                  <option value="ACTIVE">Active</option>
+                  <option value="INACTIVE">Inactive</option>
                 </select>
               </div>
             </div>
@@ -1314,18 +1313,91 @@
                 <table class="clean-table" aria-label="Suppliers Table">
                   <thead>
                     <tr>
-                      <th>MÃ</th>
-                      <th>TÊN NCC</th>
-                      <th>LOẠI</th>
-                      <th>LIÊN HỆ</th>
-                      <th>SĐT</th>
+                      <th>CODE</th>
+                      <th>VENDOR NAME</th>
+                      <th>TYPE</th>
+                      <th>CONTACT</th>
+                      <th>PHONE</th>
                       <th>LEAD TIME</th>
                       <th>RATING</th>
-                      <th>TRẠNG THÁI</th>
-                      <th>THAO TÁC</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody id="suppliers-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               VIEW: STAFF & ACCESS
+               ================================================================ -->
+          <div id="view-staff" class="view-section">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h1>Staff &amp; Access</h1>
+                <p>Manage 14 operational roles: Designer, Production, Sales, CSKH, Marketing, Finance, HR...</p>
+              </div>
+              <div class="hero-actions">
+                <button id="btn-add-staff" class="btn btn-primary">+ Add Staff</button>
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <div class="search-field-box">
+                <input type="text" id="staff-search-input" class="search-input" placeholder="Search by name, email or phone...">
+              </div>
+              <div class="dropdown-filters-group">
+                <select id="staff-filter-role" class="filter-select">
+                  <option value="ALL">All Roles</option>
+                  <option value="sales_staff">Sales Staff</option>
+                  <option value="designer">Designer / R&amp;D</option>
+                  <option value="production">Production Manager</option>
+                  <option value="cskh">Customer Care (CSKH)</option>
+                  <option value="marketing">Marketing &amp; Media</option>
+                  <option value="finance">Finance &amp; Accounting</option>
+                  <option value="hr">Human Resources (HR)</option>
+                  <option value="warehouse">Warehouse &amp; Logistics</option>
+                  <option value="qc_qa">Quality Control (QC / QA)</option>
+                  <option value="purchasing">Purchasing &amp; Sourcing</option>
+                  <option value="store_manager">Store Manager</option>
+                  <option value="merchandiser">Merchandiser</option>
+                  <option value="it_admin">IT &amp; Systems Admin</option>
+                  <option value="executive">Executive Board</option>
+                </select>
+                <select id="staff-filter-store" class="filter-select">
+                  <option value="ALL">All Locations</option>
+                  <option value="—">— Corporate HQ / System-Wide —</option>
+                  <option value="Mercuri Vincom Đồng Khởi">Mercuri Vincom Đồng Khởi</option>
+                  <option value="Mercuri Saigon Centre">Mercuri Saigon Centre</option>
+                  <option value="Mercuri Crescent Mall">Mercuri Crescent Mall</option>
+                  <option value="Mercuri AEON Tân Phú">Mercuri AEON Tân Phú</option>
+                  <option value="Mercuri Vincom Bà Triệu">Mercuri Vincom Bà Triệu</option>
+                  <option value="Mercuri Lotte Liễu Giai">Mercuri Lotte Liễu Giai</option>
+                  <option value="Kho Trung Tâm HCM">Central Warehouse HCMC</option>
+                  <option value="Kho Online E-commerce">Online E-Com Hub</option>
+                  <option value="Nhà máy Mercuri">Mercuri Garment Factory</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="table-responsive">
+                <table class="clean-table" aria-label="Staff Table">
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>EMAIL</th>
+                      <th>PHONE</th>
+                      <th>ROLE</th>
+                      <th>LOCATION</th>
+                      <th>STATUS</th>
+                      <th>LAST LOGIN</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="staff-table-body"></tbody>
                 </table>
               </div>
             </div>
@@ -1357,11 +1429,14 @@
           <div class="form-field">
             <label for="input-dest-node">DESTINATION</label>
             <select id="input-dest-node" class="select-box" required>
-              <option value="OUTLET-01">FLAGSHIP OUTLET 01</option>
-              <option value="OUTLET-02">OUTLET 02 (DOWNTOWN)</option>
-              <option value="OUTLET-03">OUTLET 03 (MALL NORTH)</option>
-              <option value="SHOPEE-FULFILL">SHOPEE BULK FULFILLMENT</option>
-              <option value="TIKTOK-EXPRESS">TIKTOK EXPRESS DISPATCH</option>
+              <option value="MER-VC-DK">Mercuri Vincom Đồng Khởi [ST-01]</option>
+              <option value="MER-SC">Mercuri Saigon Centre [ST-02]</option>
+              <option value="MER-CRES">Mercuri Crescent Mall [ST-05]</option>
+              <option value="MER-AEON">Mercuri AEON Tân Phú</option>
+              <option value="MER-VC-BT">Mercuri Vincom Bà Triệu [ST-03]</option>
+              <option value="MER-LOTTE">Mercuri Lotte Liễu Giai [ST-04]</option>
+              <option value="SHOPEE-FULFILL">Shopee Bulk Fulfillment</option>
+              <option value="TIKTOK-EXPRESS">TikTok Express Dispatch</option>
             </select>
           </div>
 
@@ -1442,6 +1517,122 @@
       </div>
     </div>
 
+    <!-- STAFF MODAL (ADD & EDIT) -->
+    <div id="staff-modal" class="modal-backdrop">
+      <div class="modal-window">
+        <div class="modal-title-row">
+          <h2 id="staff-modal-title">ADD NEW STAFF MEMBER</h2>
+          <button id="btn-close-staff-modal" class="btn btn-sm">[X]</button>
+        </div>
+        <form id="form-staff">
+          <input type="hidden" id="staff-input-id">
+          
+          <div class="form-field">
+            <label for="staff-input-name">FULL NAME</label>
+            <input type="text" id="staff-input-name" class="input-box" placeholder="e.g. Nguyen Van An" required>
+          </div>
+
+          <div class="form-field">
+            <label for="staff-input-email">LOGIN EMAIL</label>
+            <input type="email" id="staff-input-email" class="input-box" placeholder="e.g. an.sales@mercuri.vn" required>
+          </div>
+
+          <div class="form-field">
+            <label for="staff-input-phone">PHONE NUMBER</label>
+            <input type="tel" id="staff-input-phone" class="input-box" placeholder="e.g. 0912345678" required>
+          </div>
+
+          <div class="form-field">
+            <label for="staff-input-role">ROLE (14 SYSTEM ROLES)</label>
+            <select id="staff-input-role" class="select-box" required>
+              <option value="sales_staff">sales_staff (Sales Staff)</option>
+              <option value="designer">designer (Designer / R&amp;D)</option>
+              <option value="production">production (Production Manager)</option>
+              <option value="cskh">cskh (Customer Care)</option>
+              <option value="marketing">marketing (Marketing &amp; Media)</option>
+              <option value="finance">finance (Finance &amp; Accounting)</option>
+              <option value="hr">hr (Human Resources)</option>
+              <option value="warehouse">warehouse (Warehouse &amp; Logistics)</option>
+              <option value="qc_qa">qc_qa (Quality Control)</option>
+              <option value="purchasing">purchasing (Purchasing &amp; Sourcing)</option>
+              <option value="store_manager">store_manager (Store Manager)</option>
+              <option value="merchandiser">merchandiser (Merchandiser)</option>
+              <option value="it_admin">it_admin (IT &amp; Systems Admin)</option>
+              <option value="executive">executive (Executive Board)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="staff-input-store">OPERATIONAL LOCATION / BRANCH</label>
+            <select id="staff-input-store" class="select-box">
+              <option value="—">— Corporate HQ / System-Wide —</option>
+              <option value="Mercuri Vincom Đồng Khởi">Mercuri Vincom Đồng Khởi</option>
+              <option value="Mercuri Saigon Centre">Mercuri Saigon Centre</option>
+              <option value="Mercuri Crescent Mall">Mercuri Crescent Mall</option>
+              <option value="Mercuri AEON Tân Phú">Mercuri AEON Tân Phú</option>
+              <option value="Mercuri Vincom Bà Triệu">Mercuri Vincom Bà Triệu</option>
+              <option value="Mercuri Lotte Liễu Giai">Mercuri Lotte Liễu Giai</option>
+              <option value="Kho Trung Tâm HCM">Central Warehouse HCMC</option>
+              <option value="Kho Online E-commerce">Online E-Com Hub</option>
+              <option value="Nhà máy Mercuri">Mercuri Garment Factory</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="staff-input-status">ACCOUNT STATUS</label>
+            <select id="staff-input-status" class="select-box">
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
+            </select>
+          </div>
+
+          <div class="modal-actions-row">
+            <button type="button" id="btn-cancel-staff-modal" class="btn">CANCEL</button>
+            <button type="submit" class="btn btn-primary">SAVE STAFF</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         MERCURIX AI COPILOT // SLIDE-OUT DRAWER (420px)
+         ================================================================ -->
+    <aside id="agent-drawer" class="agent-drawer" aria-label="Mercurix Fashion Operations Assistant">
+      <!-- 1. MESSENGER MINI HEADER -->
+      <div class="agent-drawer-header">
+        <div class="agent-header-left">
+          <span class="messenger-avatar-dot"></span>
+          <div class="agent-header-meta">
+            <span class="agent-brand">Mercurix</span>
+            <span class="agent-subtitle">Online · Fashion Assistant</span>
+          </div>
+        </div>
+        <div class="agent-header-actions">
+          <button type="button" id="btn-clear-chat" class="btn-messenger-action" title="Clear Chat (Xóa cuộc trò chuyện)">[CLR]</button>
+          <button type="button" id="btn-close-agent-drawer" class="btn-messenger-action" title="Close (Đóng)">[X]</button>
+        </div>
+      </div>
+
+      <!-- 2. MESSAGES STREAM (SINGLE CLEAN BUBBLES ONLY) -->
+      <div id="agent-chat-stream" class="agent-chat-stream">
+        <!-- Messages rendered dynamically -->
+      </div>
+
+      <!-- 3. MESSENGER 1-LINE COMPOSER -->
+      <div class="agent-composer">
+        <form id="agent-composer-form" class="messenger-composer-form">
+          <input type="text" id="agent-input-text" class="messenger-input" placeholder="Nhắn cho Mercurix..." autocomplete="off">
+          <button type="submit" id="btn-agent-send" class="messenger-send-btn">Gửi</button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MERCURIX FLOATING LAUNCHER (BOTTOM-RIGHT) -->
+    <button type="button" id="btn-agent-floating-launcher" class="agent-floating-launcher" title="Open Mercurix Assistant (Ctrl+Space)" aria-label="Open Mercurix Assistant">
+      <span class="launcher-icon">MX</span>
+      <span class="launcher-status-dot"></span>
+    </button>
+
     <!-- TOAST SHELF -->
     <div id="toast-container" class="toast-shelf"></div>
 
@@ -1453,7 +1644,15 @@
   <script src="scripts/components/toast.js"></script>
   <script src="scripts/components/topbar.js"></script>
   <script src="scripts/components/sidebar.js"></script>
-  <script src="scripts/components/modals.js"></script>
+  <!-- MERCURIX FASHION OPERATIONS ASSISTANT BRAIN MODULES -->
+  <script src="../Mercurix/src/context-engine.js"></script>
+  <script src="../Mercurix/src/action-catalog.js"></script>
+  <script src="../Mercurix/src/brain-core.js"></script>
+  <script src="../Mercurix/src/index.js"></script>
+  <!-- EMBEDDED RESILIENT FALLBACK CORE -->
+  <script src="scripts/mercurix-core.js"></script>
+
+  <script src="scripts/components/agent-drawer.js"></script>
   <script src="scripts/components/channel-breakdown.js"></script>
   <script src="scripts/views/overview.js"></script>
   <script src="scripts/views/products.js"></script>
@@ -1464,6 +1663,7 @@
   <script src="scripts/views/customers.js"></script>
   <script src="scripts/views/inbox.js"></script>
   <script src="scripts/views/operations.js"></script>
+  <script src="scripts/views/staff.js"></script>
   <script src="scripts/views/settings.js"></script>
   <script src="scripts/app.js"></script>
 </body>

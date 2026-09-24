@@ -416,17 +416,17 @@ class MercuriosStore {
         ]
       },
 
-      // OUTLETS & STORES (VẬN HÀNH - CỬA HÀNG)
+      // OUTLETS & STORES (OPERATIONS - STORES & BOUTIQUES)
       outlets: [
-        { id: 'MERCURI-VC-DK', name: 'Mercuri Vincom Đồng Khởi', type: 'flagship', city: 'TP.HCM', manager: '—', phone: '02838221111', status: 'ACTIVE' },
-        { id: 'MERCURI-SC', name: 'Mercuri Saigon Centre', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221112', status: 'ACTIVE' },
-        { id: 'MERCURI-CRES', name: 'Mercuri Crescent Mall', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221113', status: 'ACTIVE' },
-        { id: 'MERCURI-AEON', name: 'Mercuri AEON Tân Phú', type: 'regular', city: 'TP.HCM', manager: '—', phone: '02838221114', status: 'ACTIVE' },
-        { id: 'MERCURI-VC-BT', name: 'Mercuri Vincom Bà Triệu', type: 'regular', city: 'Hà Nội', manager: '—', phone: '02438221115', status: 'ACTIVE' },
-        { id: 'MERCURI-LOTTE', name: 'Mercuri Lotte Liễu Giai', type: 'regular', city: 'Hà Nội', manager: '—', phone: '02438221116', status: 'ACTIVE' },
-        { id: 'MERCURI-WH-HCM', name: 'Kho Trung Tâm HCM', type: 'central_warehouse', city: 'TP.HCM', manager: '—', phone: '02838221117', status: 'ACTIVE' },
-        { id: 'MERCURI-WH-ECO', name: 'Kho Online E-commerce', type: 'online_warehouse', city: 'TP.HCM', manager: '—', phone: '02838221118', status: 'ACTIVE' },
-        { id: 'MERCURI-FAC', name: 'Nhà máy Mercuri', type: 'factory', city: 'TP.HCM', manager: '—', phone: '02838221119', status: 'ACTIVE' }
+        { id: 'MER-VC-DK', name: 'Mercuri Vincom Đồng Khởi', type: 'flagship', city: 'HCMC', manager: '—', phone: '02838221111', status: 'ACTIVE' },
+        { id: 'MER-SC', name: 'Mercuri Saigon Centre', type: 'regular', city: 'HCMC', manager: '—', phone: '02838221112', status: 'ACTIVE' },
+        { id: 'MER-CRES', name: 'Mercuri Crescent Mall', type: 'regular', city: 'HCMC', manager: '—', phone: '02838221113', status: 'ACTIVE' },
+        { id: 'MER-AEON', name: 'Mercuri AEON Tân Phú', type: 'regular', city: 'HCMC', manager: '—', phone: '02838221114', status: 'ACTIVE' },
+        { id: 'MER-VC-BT', name: 'Mercuri Vincom Bà Triệu', type: 'regular', city: 'Hanoi', manager: '—', phone: '02438221115', status: 'ACTIVE' },
+        { id: 'MER-LOTTE', name: 'Mercuri Lotte Liễu Giai', type: 'regular', city: 'Hanoi', manager: '—', phone: '02438221116', status: 'ACTIVE' },
+        { id: 'MER-WH-HCM', name: 'Central Warehouse HCMC', type: 'central_warehouse', city: 'HCMC', manager: '—', phone: '02838221117', status: 'ACTIVE' },
+        { id: 'MER-WH-ECO', name: 'E-Commerce Online Hub', type: 'online_warehouse', city: 'HCMC', manager: '—', phone: '02838221118', status: 'ACTIVE' },
+        { id: 'MER-FAC', name: 'Mercuri Garment Factory', type: 'factory', city: 'HCMC', manager: '—', phone: '02838221119', status: 'ACTIVE' }
       ],
 
       // INVENTORY & STOCK (VẬN HÀNH - TỒN KHO)
@@ -470,6 +470,100 @@ class MercuriosStore {
         { id: 'SUP-VAI-03', name: 'Yagi Textile (JP)', type: 'fabric', contact: 'Miss Bethany Aufderhar', phone: '+84997984685', leadTime: '26 ngày', rating: '4.30', status: 'ACTIVE' },
         { id: 'SUP-VAI-02', name: 'Vải TC Đại Á', type: 'fabric', contact: 'Mr. Avis Dickens', phone: '+84989141827', leadTime: '18 ngày', rating: '3.00', status: 'ACTIVE' },
         { id: 'SUP-VAI-01', name: 'Dệt Phong Phú', type: 'fabric', contact: 'Oleta Lesch', phone: '+84982883845', leadTime: '25 ngày', rating: '3.80', status: 'ACTIVE' }
+      ],
+
+      // STAFF & ACCESS (HỆ THỐNG - NHÂN VIÊN & PHÂN QUYỀN)
+      staff: [
+        {
+          id: 'USR-001',
+          name: 'luan',
+          email: 'luan.sales@mercuri.vn',
+          phone: '0343977651',
+          role: 'sales_staff',
+          store: '—',
+          status: 'ACTIVE',
+          lastLogin: '16:15 23 thg 9, 2026'
+        },
+        {
+          id: 'USR-002',
+          name: 'Nguyen Huu Hung',
+          email: 'hung.prod@mercuri.vn',
+          phone: '0342291996',
+          role: 'sales_staff',
+          store: '—',
+          status: 'ACTIVE',
+          lastLogin: '—'
+        },
+        {
+          id: 'USR-003',
+          name: 'linh vi',
+          email: 'linhvi.cskh@mercuri.vn',
+          phone: '0903555768',
+          role: 'sales_staff',
+          store: '—',
+          status: 'ACTIVE',
+          lastLogin: '—'
+        },
+        {
+          id: 'USR-004',
+          name: 'Tran Minh Chau',
+          email: 'chau.design@mercuri.vn',
+          phone: '0912345678',
+          role: 'designer',
+          store: 'Mercuri Vincom Đồng Khởi',
+          status: 'ACTIVE',
+          lastLogin: '09:10 24 thg 9, 2026'
+        },
+        {
+          id: 'USR-005',
+          name: 'Doan Quoc Bao',
+          email: 'bao.prod@mercuri.vn',
+          phone: '0938112233',
+          role: 'production',
+          store: 'Nhà máy Mercuri',
+          status: 'ACTIVE',
+          lastLogin: '14:20 23 thg 9, 2026'
+        },
+        {
+          id: 'USR-006',
+          name: 'Pham Thuy Tien',
+          email: 'tien.cskh@mercuri.vn',
+          phone: '0977889900',
+          role: 'cskh',
+          store: 'Kho Online E-commerce',
+          status: 'ACTIVE',
+          lastLogin: '17:45 23 thg 9, 2026'
+        },
+        {
+          id: 'USR-007',
+          name: 'Vo Hoang Yen',
+          email: 'yen.mkt@mercuri.vn',
+          phone: '0988665544',
+          role: 'marketing',
+          store: 'Central Hub [WH-01]',
+          status: 'ACTIVE',
+          lastLogin: '11:05 23 thg 9, 2026'
+        },
+        {
+          id: 'USR-008',
+          name: 'Dang Thu Thao',
+          email: 'thao.fin@mercuri.vn',
+          phone: '0908223344',
+          role: 'finance',
+          store: 'Central Hub [WH-01]',
+          status: 'ACTIVE',
+          lastLogin: '08:30 24 thg 9, 2026'
+        },
+        {
+          id: 'USR-009',
+          name: 'Le Van Hai',
+          email: 'hai.wh@mercuri.vn',
+          phone: '0933445566',
+          role: 'warehouse',
+          store: 'Kho Trung Tâm HCM',
+          status: 'ACTIVE',
+          lastLogin: '07:15 24 thg 9, 2026'
+        }
       ]
     };
   }
@@ -629,6 +723,25 @@ class MercuriosStore {
     const text = conv.aiSuggestion;
     conv.aiSuggestion = '';
     this.sendInboxMessage(convId, text, true, 'shop');
+  }
+
+  // STAFF METHODS
+  addStaff(member) {
+    this.state.staff.unshift(member);
+    this.notify();
+  }
+
+  updateStaff(id, updatedData) {
+    const idx = this.state.staff.findIndex(s => s.id === id);
+    if (idx !== -1) {
+      this.state.staff[idx] = { ...this.state.staff[idx], ...updatedData };
+      this.notify();
+    }
+  }
+
+  deleteStaff(id) {
+    this.state.staff = this.state.staff.filter(s => s.id !== id);
+    this.notify();
   }
 }
 

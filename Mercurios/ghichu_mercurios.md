@@ -1,7 +1,8 @@
-# MERCURIOS // TỔNG HỢP CẬP NHẬT, LƯU Ý, QUY ĐỊNH VÀ THAY ĐỔI
+# MERCURIOS // TỔNG HỢP KIẾN TRÚC, GIAO DIỆN VÀ VẬN HÀNH HỆ THỐNG
 
-> **Tài liệu bàn giao & Quy chuẩn kỹ thuật toàn diện cho hệ sinh thái vận hành MercuriOS**  
-> *Thời gian cập nhật gần nhất: 23/09/2026*  
+> **Tài liệu bàn giao & Quy chuẩn kỹ thuật toàn diện cho Giao diện & Hệ thống Vận hành MercuriOS**  
+> *Tài liệu độc quyền của Bộ não Tác tử AI đặt tại: [`../Mercurix/ghichu_mercurix.md`](../Mercurix/ghichu_mercurix.md)*  
+> *Thời gian cập nhật gần nhất: 24/09/2026*  
 > *Phụ trách: MercuriOS Core Engineering Team*
 
 ---
@@ -16,18 +17,23 @@
 
 ---
 
-## 2. QUY ĐỊNH PHÂN CHIA THƯ MỤC DỰ ÁN & VÙNG CẤM
+## 2. QUY ĐỊNH PHÂN CHIA THƯ MỤC DỰ ÁN & RANH GIỚI KIẾN TRÚC
 
 ```
 f:/Mercuri/
-├── Mercurios/   --> [CHO PHÉP] Toàn bộ mã nguồn giao diện, CSS, JS, UI components và tài liệu vận hành
-└── Mercurix/    --> [VÙNG CẤM TUYỆT ĐỐI] Dành riêng cho Ban AI & Tự động hóa
+├── Mercurix/    --> [BỘ NÃO AI & TÁC TỬ] Logic suy luận ReAct, Intent Parser, Action Catalog, Context Engine
+└── Mercurios/   --> [GIAO DIỆN & HỆ THỐNG] Toàn bộ mã nguồn giao diện UI, CSS, Views, State, Server
 ```
 
-* **`f:/Mercuri/Mercurios/`**: Thư mục làm việc chính của đội ngũ giao diện. Mọi file HTML, CSS, JavaScript, assets và tài liệu kỹ thuật bắt buộc phải được đặt trong thư mục này.
-* **`f:/Mercuri/Mercurix/`**: Khu vực độc quyền của **Ban AI (`Mercurix`)**. 
-  * **Quy định bất khả xâm phạm**: Tuyệt đối **không can thiệp, không tạo mới, không sửa đổi hay xóa** bất kỳ tệp tin/thư mục nào bên trong `Mercurix`.
-  * Ban AI sẽ độc lập phát triển các worker thông minh, model dự báo nhu cầu (demand forecasting), tự động hóa định tuyến đơn hàng và giao tiếp với MercuriOS thông qua cổng cầu nối `window.Mercurios` (Mercurix Bridge).
+* **`f:/Mercuri/Mercurix/`**: Khu vực độc quyền chứa **Bộ não & Năng lực của AI**:
+  * `src/context-engine.js`: Nhận thức ngữ cảnh (`PageContext`), phân tích trạng thái và xuất chip đề xuất hành động.
+  * `src/action-catalog.js`: Sổ đăng ký công cụ và chốt chặn an toàn lúc thực thi (`ui.navigate`, `ui.open_form`, `ops.filter_table`...).
+  * `src/brain-core.js`: Vòng lặp suy luận ReAct đa bước (Reason ➔ Act ➔ Observe ➔ Repeat), bóc tách thực thể và cấu trúc hóa câu trả lời.
+  * `src/index.js`: Xuất giao diện lập trình `window.Mercurix` cho toàn hệ thống.
+* **`f:/Mercuri/Mercurios/`**: Thư mục làm việc của **Giao diện & Hệ thống**:
+  * Chứa HTML, CSS, hệ thống thẻ hiển thị, View Components, State Management (`state.js`).
+  * `scripts/components/agent-drawer.js` đóng vai trò **Pure UI Presentation Harness**: quản lý Floating Launcher màu đen ở góc dưới bên phải (Hình 1 có hiệu ứng sóng xung quanh), khung chat mini nổi phong cách Messenger (Hình 2 - không che mờ nền), nút thu nhỏ `[—]`, đóng `[X]`, xóa đoạn chat `[CLR]`, duy trì lịch sử hội thoại khi ẩn/hiện và tự động làm mới khi F5.
+  * `server.js` hỗ trợ định tuyến `/mercurix/...` trỏ trực tiếp sang thư mục `Mercurix/`.
 
 ---
 
@@ -204,6 +210,22 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
   * **Lệnh sản xuất (Production MES)**: Theo dõi tiến độ chuyền may, tỷ lệ lỗi, deadline, cost ước tính và trạng thái đơn PO.
   * **Nhà cung cấp (Suppliers)**: Quản lý danh bạ NCC vải, phụ liệu may mặc, gia công CMT, bao bì kèm Lead time & Rating ★.
   * **Tối ưu trải nghiệm Inbox**: Nâng cấp composer thành auto-resizing textarea, phím tắt `Shift + Space` để xuống dòng tự nhiên, tự động ẩn popover mẫu khi xóa `/`, popover giả lập khách nhắn tương tác trực tiếp khi click vào tên/avatar khách.
+* **v2.2.0**: **Hoàn thiện phân hệ Nhân viên (`Staff & Access`) & Khắc phục triệt để lỗi Inbox Dark Mode**:
+  * **Quản lý Nhân viên & Phân quyền (`Staff & Access`)**:
+    * Xây dựng đầy đủ màn hình Nhân viên bám sát mẫu thiết kế thực tế: Quản lý 14 vai trò thời trang (`Designer`, `Production`, `Sales`, `CSKH`, `Marketing`, `Finance`, `HR`...).
+    * Bộ lọc tức thì: Ô tìm kiếm tên/email/SĐT + Dropdown 14 vai trò + Dropdown tất cả cửa hàng/chi nhánh.
+    * Bảng dữ liệu chuẩn Zero-Icon: Cột TÊN (Avatar Monogram tròn), EMAIL, SĐT, VAI TRÒ (Pill tag), CỬA HÀNG, TT (Đang Hoạt Động), LOGIN CUỐI, THAO TÁC (`[EDIT]`, `[DEL]`).
+    * Modal `+ Thêm NV` / Cập nhật NV: Thêm mới hoặc chỉnh sửa thông tin nhân viên, lưu vào Store và cập nhật tức thì.
+  * **Khắc phục 5 lỗi giao diện Omnichannel Inbox & Dark Mode**:
+    1. *Contrast Bug*: Khắc phục chữ trắng trên nền trắng trong Dark Mode, bong bóng shop/AI sử dụng nền than xanh `#162C46` chữ `#F0F6FC`, bong bóng khách nền than xám `#1F242C` viền `#2E3642`.
+    2. *Channel Chip `ALL`*: Thêm quy tắc CSS Dark Mode ép nền trắng chữ đen than `#111418` đậm nét khi active.
+    3. *Composer Scrollbar*: Đặt `overflow-y: hidden;` khi dưới 2 dòng để triệt tiêu thanh cuộn dọc thừa `▲ ▼`, thêm `flex-shrink: 0; white-space: nowrap;` cho nút `/ Mẫu trả lời`.
+    4. *Nhận diện tin nhắn Shop vs Khách*: Phân chia rõ ràng vị trí và màu sắc kèm tag `[AI]` sắc nét.
+    5. *Đồng bộ hóa Sidebar*: Thống nhất 100% ngôn ngữ tiếng Việt thanh điều hướng (`TỔNG QUAN`, `SẢN PHẨM & THIẾT KẾ`, `BÁN HÀNG`, `VẬN HÀNH`, `HỆ THỐNG`).
+* **v2.3.0**: **Chuẩn hóa Mã `MER-...`, Nút bấm Collections Style & Chuyển đổi 100% Ngôn ngữ Tiếng Anh**:
+  * **Rút gọn đầu mã địa điểm thành `MER-...`**: Đổi toàn bộ mã chuỗi cửa hàng, kho bãi thành `MER-VC-DK`, `MER-SC`, `MER-CRES`, `MER-AEON`, `MER-VC-BT`, `MER-LOTTE`, `MER-WH-HCM`, `MER-WH-ECO`, `MER-FAC`.
+  * **Chuẩn hóa nút bấm thao tác theo mẫu Collections**: Chuyển đổi toàn bộ nút thao tác dạng ngoặc vuông sang cặp nút bấm tối giản, thanh lịch: `<button class="btn btn-sm">EDIT</button>` và `<button class="btn btn-sm btn-danger">DELETE</button>` trên toàn bộ các bảng dữ liệu (Outlets & Stores, Production MES, Suppliers & Vendors, Staff & Access).
+  * **Chuẩn hóa toàn bộ ngôn ngữ Tiếng Anh (English Localization 100%)**: Đồng bộ toàn diện Sidebar navigation, tiêu đề hero, thanh tìm kiếm & dropdown filters, tiêu đề cột bảng dữ liệu (`CODE`, `STORE NAME`, `TYPE`, `CITY`, `MANAGER`, `PHONE`, `STATUS`, `ACTIONS`...) và hộp thoại modal.
 
 ---
 
@@ -225,41 +247,65 @@ Kiến trúc hiện tại của MercuriOS đã được thiết kế tuân theo 
 
 ---
 
-## 10. NHẬT KÝ LỖI & KẾ HOẠCH BẢO TRÌ (PENDING FIXES & ROADMAP CHO NGÀY MAI)
+## 10. NHẬT KÝ LỖI & KẾ HOẠCH BẢO TRÌ (PENDING FIXES & ROADMAP)
 
-> **Ghi chú quan trọng**: Toàn bộ các lỗi và màn hình tham chiếu bên dưới đã được lưu trữ ảnh vào thư mục `Mercurios/assets/images/` để tiến hành khắc phục vào ngày mai.
+> **Cập nhật ngày 24/09/2026**: Toàn bộ các hạng mục trong Section 10 đã được xử lý hoàn tất trong phiên bản **v2.2.0**.
 
-### 10.1. Màn hình tham chiếu: Quản lý Nhân viên & Phân quyền (`Staff & Access`)
+### 10.1. Màn hình Quản lý Nhân viên & Phân quyền (`Staff & Access`) — [HOÀN THÀNH]
+* Đã triển khai đầy đủ giao diện, dữ liệu mẫu chuẩn (luan, Nguyen Huu Hung, linh vi...), bộ lọc vai trò & chi nhánh, cùng modal Thêm/Sửa nhân viên.
 
-![Màn hình Quản lý Nhân viên](Mercurios/assets/images/system_staff_management.png)
+### 10.2. Danh sách lỗi giao diện trên Omnichannel Inbox (Dark Mode) — [HOÀN THÀNH 5/5 LỖI]
+* **Lỗi 1 (P1 - Contrast Bug)**: Đã khắc phục triệt để tương phản bong bóng chat Dark Mode.
+* **Lỗi 2 (P2 - Chip ALL)**: Đã khắc phục hiển thị chữ đen trên nền trắng active.
+* **Lỗi 3 (P3 - Composer Scrollbar & Nút Mẫu)**: Đã ẩn cuộn thừa và chống méo nút.
+* **Lỗi 4 (P3 - Phân biệt Shop vs Khách)**: Đã chuẩn hóa màu sắc và tag `[AI]`.
+* **Lỗi 5 (P4 - Đồng bộ Sidebar)**: Đã chuẩn hóa tiếng Anh toàn bộ hệ thống menu.
 
-* **Vị trí**: Thanh Sidebar -> Nhóm `HỆ THỐNG` -> `Nhân viên` (thay thế stub nav hiện tại bằng `data-view-target="staff"`).
-* **Mô tả nghiệp vụ**:
-  * **Tiêu đề**: `Nhân viên`
-  * **Phụ đề**: `Quản lý 14 vai trò: Designer, Production, Sales, CSKH, Marketing, Finance, HR...`
-  * **Nút hành động**: `+ Thêm NV`
-  * **Thanh bộ lọc**: Ô tìm kiếm `Tìm theo tên/email...` + Dropdown `Tất cả vai trò` + Dropdown `Tất cả cửa hàng`.
-  * **Các cột bảng dữ liệu**: `TÊN` | `EMAIL` | `SĐT` | `VAI TRÒ` | `CỬA HÀNG` | `TT` (`Đang Hoạt Động`) | `LOGIN CUỐI` | `THAO TÁC` (`[EDIT]`, `[DEL]`).
-  * **Dữ liệu mẫu**:
-    * `luan` — `luan.sales@mercuri.vn` — `0343977651` — `sales_staff` — `—` — `Đang Hoạt Động` — `16:15 23 thg 9, 2026`
-    * `Nguyen Huu Hung` — `hung.prod@mercuri.vn` — `0342291996` — `sales_staff` — `—` — `Đang Hoạt Động` — `—`
-    * `linh vi` — `linhvi.cskh@mercuri.vn` — `0903555768` — `sales_staff` — `—` — `Đang Hoạt Động` — `—`
-  * **Tiêu chuẩn thiết kế**: Giữ đúng phong cách Minimalist, Zero-Icon của MercuriOS, nhãn vai trò dạng tag xám, trạng thái xanh lá dịu mắt, mã hóa thương hiệu chuẩn Mercuri.
+### 10.3. Khắc phục lỗi hiển thị trống màn hình Staff & Operations — [HOÀN THÀNH]
+* **Nguyên nhân**: Thiếu 4 thẻ đóng `</div>` ở cuối `#view-settings` trong `index.html` khiến các view section tiếp theo (`#view-stores`, `#view-inventory`, `#view-production`, `#view-suppliers`, `#view-staff`) bị lồng vào bên trong thẻ `#view-settings`. Khi router kích hoạt các view này, do thẻ cha `#view-settings` có `display: none;` nên toàn bộ vùng hiển thị bị trắng xóa.
+* **Khắc phục**: Đã đóng đủ các thẻ `</div>` cho `.module-row-item`, `.modules-list`, `.panel-card`, và `#view-settings`. Tất cả các view section hiện tại đều là con trực tiếp của `.canvas-container`, chuyển tab mượt mà với 100% dữ liệu hiển thị chính xác.
 
 ---
 
-### 10.2. Danh sách lỗi giao diện cần khắc phục trên Omnichannel Inbox (Dark Mode)
+## 11. TRIỂN KHAI TRỢ LÝ TÁC TỬ MERCURIX AI // PHASE 1 — [HOÀN THÀNH]
 
-![Lỗi giao diện Omnichannel Inbox Dark Mode](Mercurios/assets/images/inbox_dark_mode_bugs.png)
+> **Triết lý kiến trúc**: Kế thừa chắt lọc từ tài liệu `Mercurix`: Nhận thức ngữ cảnh (`PageContext`), Vòng lặp ReAct liên hoàn (> 3 bước: Reason ➔ Act ➔ Observe ➔ Repeat), và Tôn chỉ Human-in-the-Loop ("Con người bấm nút cuối cùng").
 
-Dựa trên hình ảnh chụp thực tế phiên bản Dark Mode của Omnichannel Inbox, các lỗi sau được ghi nhận cần xử lý:
+### 11.1. Cấu trúc Giao diện Slide-out Drawer 420px (Phương án A)
+* **Vị trí**: Ngăn kéo trượt cố định mép phải màn hình (rộng `420px`), mở/đóng bằng nút `[MERCURIX AI]` trên Topbar, nút tắt `Esc` hoặc phím tắt `Ctrl + Space` / `Alt + A`.
+* **Zero-Icon & Monochrome**: Toàn bộ nhãn, thẻ, bước tư duy đều dùng typography sắc nét, font `Plus Jakarta Sans` và `JetBrains Mono`, không icon hình ảnh, tương thích 100% Dark/Light mode.
+* **Banner Ngữ cảnh động**: Tự động hiển thị `[VIEW: ...]` và `[NODE: ...]` theo thời gian thực khi người dùng chuyển trang.
+* **Dòng thẻ hội thoại ReAct**:
+  * Thẻ người dùng (C1): Tin nhắn và thời gian.
+  * Thẻ suy luận (C3): Khối `[REASONING // N STEPS]` có thể mở/gập.
+  * Thẻ tác vụ công cụ (C5): Thẻ `[ui.navigate]` và `[ui.open_form]` hiển thị trạng thái `[SUCCESS]` hoặc `[FORM_PREFILLED]`.
+  * Thẻ phản hồi trợ lý (C2): Trình bày ngắn gọn, làm nổi bật thông số và mã SKU.
 
-| STT | Tên lỗi & Hiện tượng | Nguyên nhân kỹ thuật | Hướng khắc phục cụ thể | Mức độ |
-| :--- | :--- | :--- | :--- | :--- |
-| **1** | **Chữ trắng trên nền trắng trong bong bóng chat (Contrast Bug)** | Trong Dark Mode, biến chữ `--text-main` đổi thành màu sáng (`#FFFFFF`/`#E6EDF3`). Các bong bóng chat của AI/Shop và tin nhắn giả lập có nền trắng (`#FFFFFF`) nhưng chữ kế thừa màu trắng, dẫn đến mất tương phản và chữ bị tàng hình. | Cố định rõ màu chữ và nền cho bong bóng ở cả 2 theme: Trong Dark Mode, bong bóng khách/AI dùng nền than `#1F242C` + viền mảnh `#2E3642` + chữ `#E6EDF3`; hoặc nếu giữ bong bóng sáng thì bắt buộc ép `color: #111418 !important;`. | **Nghiêm trọng (P1)** |
-| **2** | **Chip bộ lọc kênh `ALL` bị trắng trơn mất chữ** | Khi tab `ALL` ở trạng thái active trong Dark Mode, background chuyển sang màu trắng sáng nhưng text color bên trong cũng là màu trắng. | Thêm quy tắc CSS chuyên biệt cho Dark Mode: `.msg-channel-chip.active { background: #FFFFFF; color: #111418 !important; font-weight: 600; }`. | **Cao (P2)** |
-| **3** | **Thanh cuộn dọc thừa và nút `/ Mẫu trả lời` bị ép chật** | Textarea trong thanh composer phát sinh thanh cuộn dọc nhỏ `▲ ▼` ngay cả khi chỉ có 1 dòng, đồng thời nút bấm `/ Mẫu trả lời` có nguy cơ bị co méo trên màn hình nhỏ. | Đặt `overflow-y: hidden;` cho textarea khi nội dung dưới 2 dòng (chỉ kích hoạt scroll khi vượt quá `max-height: 120px`); thêm `flex-shrink: 0; white-space: nowrap;` cho nút `/ Mẫu trả lời`. | **Trung bình (P3)** |
-| **4** | **Bong bóng tin nhắn của Shop (AI) và Khách cần phân biệt rõ ràng hơn** | Hiện tại cả tin nhắn Shop lẫn tin nhắn khách giả lập ở góc phải dưới đều có nền sáng tương tự nhau, khó phân định ai gửi. | Chuẩn hóa bong bóng: Tin nhắn của Khách căn trái nền xám than `#22272E`, tin nhắn của Shop/AI căn phải với đường viền nhận diện thương hiệu hoặc nền than xanh dịu mắt `#162C46` kèm nhãn `[AI]` rõ nét. | **Trung bình (P3)** |
-| **5** | **Đồng bộ hóa ngôn ngữ Sidebar Navigation** | Nhóm `VẬN HÀNH` đã dùng tiếng Việt (`Cửa hàng`, `Tồn kho`, `Sản xuất`, `Nhà cung cấp`), trong khi các nhóm khác vẫn dùng tiếng Anh (`Products & Design`, `Sales & Orders`). | Thống nhất chuẩn ngôn ngữ toàn bộ thanh điều hướng (ưu tiên tiếng Việt tối giản, chuẩn nghiệp vụ thời trang để đồng bộ với các màn hình mới). | **Thấp (P4)** |
+### 11.2. Làm chủ Kịch bản 1: Tự động hóa Điều chuyển kho (Automated Stock Dispatch)
+* **Luồng xử lý**:
+  1. Người dùng yêu cầu điều chuyển (VD: *"Tạo phiếu điều chuyển 100 áo sơ mi về Đồng Khởi"* hoặc *"Chuyển 50 đầm dạ hội về Saigon Centre"*).
+  2. Agent bóc tách thực thể: Điểm xuất (`Central Hub [WH-01]`), Điểm đích (`MER-VC-DK` hoặc `MER-SC`...), Mã SKU (`SKU-TOP-01-M`, `SKU-DRS-01-M`...), Số lượng.
+  3. Agent kích hoạt `ui.navigate` chuyển màn hình sang `Inventory & Stock`.
+  4. Agent kích hoạt `ui.open_form` mở `#dispatch-modal` và điền sẵn toàn bộ trường dữ liệu.
+  5. Giữ nguyên chốt chặn an toàn: Người dùng trực tiếp kiểm tra và bấm `SUBMIT DISPATCH`.
 
----
+### 11.3. Làm chủ Kịch bản 2: Truy vấn & Lọc dữ liệu thông minh (Smart Search & Filtering)
+* **Luồng xử lý**:
+  * **Lọc tồn kho thấp**: Câu lệnh *"Lọc tồn kho thấp"* hoặc chip `[Filter Low Stock (<= 15)]` ➔ Chuyển sang Inventory ➔ Quét danh sách tồn kho ➔ Lọc ra các SKU dưới ngưỡng ➔ Báo cáo chi tiết vị trí và số lượng tồn.
+  * **Lọc nhân sự theo vai trò**: Câu lệnh *"Lọc Designer"*, *"Tìm nhân viên CSKH"*, v.v. ➔ Chuyển sang Staff & Access ➔ Tự chọn dropdown filter ➔ Liệt kê danh sách nhân sự tìm thấy.
+  * **Lọc đơn hàng**: Câu lệnh *"Lọc đơn Shopee"*, *"Xem đơn đang giao"* ➔ Chuyển sang Sales & Orders ➔ Áp dụng bộ lọc kênh hoặc trạng thái.
+  * **Tra cứu số liệu**: Tra cứu doanh thu, tổng số đơn, tỷ lệ an toàn kho bãi tức thì từ `mercuriosStore`.
+
+### 11.4. Làm chủ Kịch bản 3: Chuyển đổi giao diện Sáng / Tối (Theme Switching)
+* **Luồng xử lý**: Nhận diện `đổi màu nền trắng sang đen`, `dark mode`, `nền sáng`... ➔ Gọi `ui.set_theme('dark' | 'light')` ➔ Cập nhật `mercuriosStore` và `data-theme` tức thì.
+
+### 11.5. Làm chủ Kịch bản 4: Kích hoạt nhanh biểu mẫu Thêm/Tạo (Trigger Creation)
+* **Luồng xử lý**: Nhận diện `thêm collection`, `tạo sản phẩm`, `tạo đơn hàng`, `thêm khách hàng`... ➔ Chuyển đến view tương ứng ➔ Kích hoạt sự kiện click mở biểu mẫu / modal thêm mới.
+
+### 11.6. Làm chủ Kịch bản 5: Xóa an toàn có xác nhận người dùng (Human-in-the-Loop Safe Deletion)
+* **Luồng xử lý**: Tuân thủ bất biến `[INV-ASSISTANT-05]` ➔ Nhận diện lệnh xóa (VD: `xóa orders tran thanh ha`) ➔ Tra cứu bản ghi chính xác ➔ Hỏi xác nhận cụ thể kèm thông số ➔ Chỉ khi người dùng nhắn *"Xác nhận xóa"* mới gọi `ops.deleteRecord`.
+
+### 11.7. Làm chủ Kịch bản 6: Hỏi lại thông minh theo ngữ cảnh (Contextual Clarification)
+* **Luồng xử lý**: Xóa bỏ hoàn toàn câu trả lời rập khuôn 3 ví dụ ➔ Phân tích ý định và động từ người dùng vừa gõ để đặt câu hỏi làm rõ đích xác yêu cầu.
+
+

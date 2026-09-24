@@ -1,7 +1,7 @@
 /**
  * MERCURIOS // OPERATIONS VIEWS CONTROLLER
- * Handles Outlets & Stores, Inventory & Stock, Production (PO), and Suppliers.
- * Minimalist, functional, zero-icon, high readability.
+ * Handles Outlets & Stores, Inventory & Stock, Production (MES), and Suppliers & Vendors.
+ * Minimalist, functional, zero-icon, high readability. Fully English localized.
  */
 
 (function () {
@@ -12,7 +12,7 @@
     const toast = window.MercuriosToast;
 
     // -------------------------------------------------------------------------
-    // 1. OUTLETS & STORES (CỬA HÀNG)
+    // 1. OUTLETS & STORES
     // -------------------------------------------------------------------------
     const storeSearch = document.getElementById('store-search-input');
     const storeFilterType = document.getElementById('store-filter-type');
@@ -38,14 +38,16 @@
         return matchesQuery && matchesType && matchesStatus;
       });
 
-      storeTableBody.innerHTML = '';
-      if (filtered.length === 0) {
-        storeTableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 32px; color: var(--text-muted); font-family: var(--font-mono);">Không có dữ liệu</td></tr>`;
-        return;
-      }
+      tableBodyEmptyCheck(storeTableBody, filtered.length, 8, 'NO STORES MATCHING FILTER');
+      if (filtered.length === 0) return;
 
       filtered.forEach(item => {
         const tr = document.createElement('tr');
+        const isActive = (item.status === 'ACTIVE');
+        const statusHtml = isActive
+          ? `<span class="badge-tag tag-active">[ACTIVE]</span>`
+          : `<span class="badge-tag tag-pending">[INACTIVE]</span>`;
+
         tr.innerHTML = `
           <td><span class="mono-badge">${item.id}</span></td>
           <td style="font-weight: 600; color: var(--text-main);">${item.name}</td>
@@ -53,16 +55,22 @@
           <td>${item.city}</td>
           <td style="color: var(--text-muted);">${item.manager}</td>
           <td class="cell-mono">${item.phone}</td>
-          <td><span class="badge-tag tag-active">Đang Hoạt Động</span></td>
+          <td>${statusHtml}</td>
           <td>
-            <div class="row-actions">
-              <button class="action-btn" data-action="edit-store" title="Edit">[EDIT]</button>
-              <button class="action-btn text-danger" data-action="del-store" title="Delete">[DEL]</button>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-sm" data-action="edit-store">EDIT</button>
+              <button class="btn btn-sm btn-danger" data-action="del-store">DELETE</button>
             </div>
           </td>
         `;
-        tr.querySelector('[data-action="edit-store"]')?.addEventListener('click', () => toast.show(`Edit cửa hàng [${item.id}]`));
-        tr.querySelector('[data-action="del-store"]')?.addEventListener('click', () => toast.show(`Xóa cửa hàng [${item.id}]`));
+        tr.querySelector('[data-action="edit-store"]')?.addEventListener('click', () => toast.show(`Store [${item.id}] edit mode ready`));
+        tr.querySelector('[data-action="del-store"]')?.addEventListener('click', () => {
+          if (confirm(`Delete store [${item.id}] - ${item.name}?`)) {
+            store.state.outlets = (store.state.outlets || []).filter(o => o.id !== item.id);
+            store.notify();
+            toast.show(`Store [${item.id}] deleted`);
+          }
+        });
         storeTableBody.appendChild(tr);
       });
     }
@@ -70,10 +78,10 @@
     if (storeSearch) storeSearch.addEventListener('input', renderStoresTable);
     if (storeFilterType) storeFilterType.addEventListener('change', renderStoresTable);
     if (storeFilterStatus) storeFilterStatus.addEventListener('change', renderStoresTable);
-    if (btnAddStore) btnAddStore.addEventListener('click', () => toast.show('+ Thêm cửa hàng mới'));
+    if (btnAddStore) btnAddStore.addEventListener('click', () => toast.show('Add Store modal triggered'));
 
     // -------------------------------------------------------------------------
-    // 2. INVENTORY & STOCK (TỒN KHO)
+    // 2. INVENTORY & STOCK
     // -------------------------------------------------------------------------
     const invSearch = document.getElementById('inv-search-input');
     const invFilterHub = document.getElementById('inv-filter-hub');
@@ -94,17 +102,14 @@
           item.color.toLowerCase().includes(query);
         const matchesHub = (hubVal === 'ALL' || item.store.toLowerCase().includes(hubVal.toLowerCase()));
         let matchesStatus = true;
-        if (statusVal === 'IN_STOCK') matchesStatus = (item.onHand > 10);
-        else if (statusVal === 'LOW_STOCK') matchesStatus = (item.onHand <= 10 && item.onHand > 0);
+        if (statusVal === 'IN_STOCK') matchesStatus = (item.onHand > 15);
+        else if (statusVal === 'LOW_STOCK') matchesStatus = (item.onHand <= 15 && item.onHand > 0);
         else if (statusVal === 'OUT_OF_STOCK') matchesStatus = (item.onHand === 0);
         return matchesQuery && matchesHub && matchesStatus;
       });
 
-      invTableBody.innerHTML = '';
-      if (filtered.length === 0) {
-        invTableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 32px; color: var(--text-muted); font-family: var(--font-mono);">Không có dữ liệu</td></tr>`;
-        return;
-      }
+      tableBodyEmptyCheck(invTableBody, filtered.length, 8, 'NO INVENTORY ITEMS MATCHING FILTER');
+      if (filtered.length === 0) return;
 
       filtered.forEach(item => {
         const tr = document.createElement('tr');
@@ -128,7 +133,7 @@
     if (invFilterStatus) invFilterStatus.addEventListener('change', renderInventoryTable);
 
     // -------------------------------------------------------------------------
-    // 3. PRODUCTION MES (LỆNH SẢN XUẤT)
+    // 3. PRODUCTION MES
     // -------------------------------------------------------------------------
     const poSearch = document.getElementById('po-search-input');
     const poFilterStatus = document.getElementById('po-filter-status');
@@ -150,20 +155,17 @@
         return matchesQuery && matchesStatus;
       });
 
-      poTableBody.innerHTML = '';
-      if (filtered.length === 0) {
-        poTableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 32px; color: var(--text-muted); font-family: var(--font-mono);">Không có dữ liệu</td></tr>`;
-        return;
-      }
+      tableBodyEmptyCheck(poTableBody, filtered.length, 9, 'NO PRODUCTION ORDERS MATCHING FILTER');
+      if (filtered.length === 0) return;
 
       filtered.forEach(item => {
         const tr = document.createElement('tr');
-        let statusTag = `<span class="badge-tag">${item.status}</span>`;
-        if (item.status === 'COMPLETED') statusTag = `<span class="badge-tag tag-active">Hoàn Tất</span>`;
-        else if (item.status === 'IN_PROGRESS') statusTag = `<span class="badge-tag tag-amber">Đang Sản Xuất</span>`;
-        else if (item.status === 'QC') statusTag = `<span class="badge-tag tag-active">QC</span>`;
-        else if (item.status === 'PAUSED') statusTag = `<span class="badge-tag tag-pending">Tạm Dừng</span>`;
-        else if (item.status === 'PENDING') statusTag = `<span class="badge-tag">Chờ Xử Lý</span>`;
+        let statusTag = `<span class="badge-tag">[${item.status}]</span>`;
+        if (item.status === 'COMPLETED') statusTag = `<span class="badge-tag tag-active">[COMPLETED]</span>`;
+        else if (item.status === 'IN_PROGRESS') statusTag = `<span class="badge-tag tag-amber">[IN PROGRESS]</span>`;
+        else if (item.status === 'QC') statusTag = `<span class="badge-tag tag-active">[QC]</span>`;
+        else if (item.status === 'PAUSED') statusTag = `<span class="badge-tag tag-pending">[PAUSED]</span>`;
+        else if (item.status === 'PENDING') statusTag = `<span class="badge-tag">[PENDING]</span>`;
 
         tr.innerHTML = `
           <td><span class="mono-badge">${item.id}</span></td>
@@ -175,24 +177,30 @@
           <td class="cell-mono" style="font-weight: 600;">${item.cost}</td>
           <td>${statusTag}</td>
           <td>
-            <div class="row-actions">
-              <button class="action-btn" data-action="edit-po" title="Edit">[EDIT]</button>
-              <button class="action-btn text-danger" data-action="del-po" title="Delete">[DEL]</button>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-sm" data-action="edit-po">EDIT</button>
+              <button class="btn btn-sm btn-danger" data-action="del-po">DELETE</button>
             </div>
           </td>
         `;
-        tr.querySelector('[data-action="edit-po"]')?.addEventListener('click', () => toast.show(`Edit PO [${item.id}]`));
-        tr.querySelector('[data-action="del-po"]')?.addEventListener('click', () => toast.show(`Xóa PO [${item.id}]`));
+        tr.querySelector('[data-action="edit-po"]')?.addEventListener('click', () => toast.show(`Production Order [${item.id}] edit mode ready`));
+        tr.querySelector('[data-action="del-po"]')?.addEventListener('click', () => {
+          if (confirm(`Delete PO [${item.id}]?`)) {
+            store.state.production = (store.state.production || []).filter(p => p.id !== item.id);
+            store.notify();
+            toast.show(`Production Order [${item.id}] deleted`);
+          }
+        });
         poTableBody.appendChild(tr);
       });
     }
 
     if (poSearch) poSearch.addEventListener('input', renderProductionTable);
     if (poFilterStatus) poFilterStatus.addEventListener('change', renderProductionTable);
-    if (btnAddPo) btnAddPo.addEventListener('click', () => toast.show('+ Tạo Lệnh Sản Xuất (PO)'));
+    if (btnAddPo) btnAddPo.addEventListener('click', () => toast.show('Create Production Order (PO) modal triggered'));
 
     // -------------------------------------------------------------------------
-    // 4. SUPPLIERS (NHÀ CUNG CẤP)
+    // 4. SUPPLIERS & VENDORS
     // -------------------------------------------------------------------------
     const supSearch = document.getElementById('sup-search-input');
     const supFilterType = document.getElementById('sup-filter-type');
@@ -218,32 +226,35 @@
         return matchesQuery && matchesType && matchesStatus;
       });
 
-      supTableBody.innerHTML = '';
-      if (filtered.length === 0) {
-        supTableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 32px; color: var(--text-muted); font-family: var(--font-mono);">Không có dữ liệu</td></tr>`;
-        return;
-      }
+      tableBodyEmptyCheck(supTableBody, filtered.length, 9, 'NO VENDORS MATCHING FILTER');
+      if (filtered.length === 0) return;
 
       filtered.forEach(item => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td><span class="mono-badge">${item.id}</span></td>
           <td style="font-weight: 600; color: var(--text-main);">${item.name}</td>
-          <td><span class="badge-tag">${item.type}</span></td>
+          <td><span class="badge-tag">${item.type.toUpperCase()}</span></td>
           <td>${item.contact}</td>
           <td class="cell-mono">${item.phone}</td>
           <td class="cell-mono" style="color: var(--text-muted);">${item.leadTime}</td>
           <td class="cell-mono" style="font-weight: 700; color: #D97706;">★ ${item.rating}</td>
-          <td><span class="badge-tag tag-active">Đang Hoạt Động</span></td>
+          <td><span class="badge-tag tag-active">[ACTIVE]</span></td>
           <td>
-            <div class="row-actions">
-              <button class="action-btn" data-action="edit-sup" title="Edit">[EDIT]</button>
-              <button class="action-btn text-danger" data-action="del-sup" title="Delete">[DEL]</button>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-sm" data-action="edit-sup">EDIT</button>
+              <button class="btn btn-sm btn-danger" data-action="del-sup">DELETE</button>
             </div>
           </td>
         `;
-        tr.querySelector('[data-action="edit-sup"]')?.addEventListener('click', () => toast.show(`Edit NCC [${item.id}]`));
-        tr.querySelector('[data-action="del-sup"]')?.addEventListener('click', () => toast.show(`Xóa NCC [${item.id}]`));
+        tr.querySelector('[data-action="edit-sup"]')?.addEventListener('click', () => toast.show(`Vendor [${item.id}] edit mode ready`));
+        tr.querySelector('[data-action="del-sup"]')?.addEventListener('click', () => {
+          if (confirm(`Delete vendor [${item.id}] - ${item.name}?`)) {
+            store.state.suppliers = (store.state.suppliers || []).filter(s => s.id !== item.id);
+            store.notify();
+            toast.show(`Vendor [${item.id}] deleted`);
+          }
+        });
         supTableBody.appendChild(tr);
       });
     }
@@ -251,7 +262,14 @@
     if (supSearch) supSearch.addEventListener('input', renderSuppliersTable);
     if (supFilterType) supFilterType.addEventListener('change', renderSuppliersTable);
     if (supFilterStatus) supFilterStatus.addEventListener('change', renderSuppliersTable);
-    if (btnAddSup) btnAddSup.addEventListener('click', () => toast.show('+ Thêm Nhà Cung Cấp'));
+    if (btnAddSup) btnAddSup.addEventListener('click', () => toast.show('Add Vendor modal triggered'));
+
+    function tableBodyEmptyCheck(tbody, count, colspan, emptyText) {
+      tbody.innerHTML = '';
+      if (count === 0) {
+        tbody.innerHTML = `<tr><td colspan="${colspan}" style="text-align: center; padding: 32px; color: var(--text-muted); font-family: var(--font-mono);">${emptyText}</td></tr>`;
+      }
+    }
 
     // Re-render when store updates
     store.subscribe(() => {

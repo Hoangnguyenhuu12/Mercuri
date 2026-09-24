@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.MercuriosTopbar) window.MercuriosTopbar.init();
   if (window.MercuriosSidebar) window.MercuriosSidebar.init();
   if (window.MercuriosModals) window.MercuriosModals.init();
+  if (window.MercuriosAgentDrawer) window.MercuriosAgentDrawer.init();
 
   // 2. Initialize Views
   if (window.MercuriosOverviewView) window.MercuriosOverviewView.init();
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.MercuriosCustomersView) window.MercuriosCustomersView.init();
   if (window.MercuriosInboxView) window.MercuriosInboxView.init();
   if (window.MercuriosOperationsView) window.MercuriosOperationsView.init();
+  if (window.MercuriosStaffView) window.MercuriosStaffView.init();
   if (window.MercuriosSettingsView) window.MercuriosSettingsView.init();
 
   console.log('[MERCURIOS] All modules initialized and ready.');

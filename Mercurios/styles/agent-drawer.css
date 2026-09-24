@@ -1,0 +1,366 @@
+/* ==========================================================================
+   MERCURIOS // MERCURIX MINI CHATBOX (MESSENGER-STYLE BOTTOM RIGHT)
+   Ultra-clean / Monochrome / Pure Typography / Non-modal (Zero backdrop blur)
+   ========================================================================== */
+
+/* 1. FLOATING LAUNCHER BUTTON (HÌNH 1 - GÓC DƯỚI BÊN PHẢI) */
+.agent-floating-launcher {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #111418;
+  color: #FFFFFF;
+  border: 1px solid #272C33;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.agent-floating-launcher:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  background: #000000;
+}
+
+.agent-floating-launcher:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Subtle breathing aura around black launcher */
+.agent-floating-launcher::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(17, 20, 24, 0.3);
+  animation: agent-launcher-wave 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes agent-launcher-wave {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.14); opacity: 0.1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.agent-floating-launcher .launcher-icon {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+.agent-floating-launcher .launcher-status-dot {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2px solid #111418;
+}
+
+.agent-floating-launcher.chat-open {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7) translateY(10px);
+}
+
+/* NO BACKDROP (KHÔNG CHE MỜ NỀN KHI CHAT) */
+.agent-drawer-backdrop {
+  display: none !important;
+}
+
+/* 2. MESSENGER MINI CHAT WINDOW (HÌNH 2) */
+.agent-drawer {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: 490px;
+  max-height: calc(100vh - 40px);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  opacity: 0;
+  transform: scale(0.88) translateY(18px);
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.agent-drawer.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* 1. MESSENGER HEADER */
+.agent-drawer-header {
+  height: 48px;
+  min-height: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--bg-card);
+  user-select: none;
+}
+
+.agent-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.messenger-avatar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.agent-header-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.agent-subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.agent-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.btn-messenger-action {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.btn-messenger-action:hover {
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  border-color: var(--border-light);
+}
+
+/* 2. CHAT STREAM (SINGLE-FRAME MESSENGER BUBBLES) */
+.agent-chat-stream {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+}
+
+.agent-node {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  animation: fadeInBubble 0.15s ease-out;
+}
+
+@keyframes fadeInBubble {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* User Bubble (Right) */
+.agent-node-user {
+  align-self: flex-end;
+  max-width: 82%;
+}
+
+.agent-user-bubble {
+  background: #111418;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 14px 14px 2px 14px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+[data-theme="dark"] .agent-user-bubble {
+  background: #2A3038;
+  color: #F4F6F8;
+  border: 1px solid #3A434E;
+}
+
+.agent-user-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-subtle);
+  margin-top: 2px;
+  text-align: right;
+}
+
+/* Assistant Bubble (Left, Single-frame) */
+.agent-node-assistant {
+  align-self: flex-start;
+  max-width: 88%;
+}
+
+.agent-assistant-bubble {
+  background: #F1F3F5;
+  color: #111418;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px 14px 14px 2px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+[data-theme="dark"] .agent-assistant-bubble {
+  background: #1C2025;
+  color: #E6EDF3;
+  border-color: #2D333B;
+}
+
+.agent-assistant-bubble p {
+  margin: 0 0 4px 0;
+}
+
+.agent-assistant-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.agent-assistant-bubble ul {
+  margin: 2px 0 4px 14px;
+  padding: 0;
+}
+
+.agent-assistant-bubble li {
+  margin-bottom: 2px;
+}
+
+.agent-assistant-bubble strong {
+  font-weight: 600;
+}
+
+.agent-assistant-bubble .mono-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.agent-assistant-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-subtle);
+  margin-top: 2px;
+}
+
+/* 3. MESSENGER 1-LINE COMPOSER */
+.agent-composer {
+  padding: 8px 12px 10px 12px;
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-light);
+}
+
+.messenger-composer-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.messenger-input {
+  flex: 1;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 18px;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.messenger-input:focus {
+  border-color: #111418;
+  background: var(--bg-card);
+}
+
+.messenger-send-btn {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 17px;
+  background: #111418;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.12s ease;
+}
+
+.messenger-send-btn:hover {
+  opacity: 0.85;
+}
+
+.messenger-send-btn:active {
+  transform: scale(0.97);
+}
+
+[data-theme="dark"] .messenger-input:focus {
+  border-color: #FFFFFF;
+}
+
+[data-theme="dark"] .messenger-send-btn {
+  background: #FFFFFF;
+  color: #111418;
+}

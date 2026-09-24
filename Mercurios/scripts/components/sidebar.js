@@ -10,7 +10,7 @@
     'overview', 'products', 'categories', 'collections', 'materials',
     'orders', 'customers', 'inbox',
     'stores', 'inventory', 'production', 'suppliers',
-    'settings'
+    'staff', 'settings'
   ];
 
   function initSidebar() {
@@ -46,7 +46,8 @@
           return;
         }
         switchView(target);
-        toast.show(`Navigated to ${target.toUpperCase()}`);
+        const label = item.querySelector('span:first-child')?.textContent || target.toUpperCase();
+        toast.show(`Navigated to ${label.toUpperCase()}`);
       });
     });
 

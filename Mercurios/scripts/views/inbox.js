@@ -472,6 +472,7 @@
       composerInput.style.height = 'auto';
       const newHeight = Math.min(composerInput.scrollHeight, 120);
       composerInput.style.height = (newHeight > 38 ? newHeight : 38) + 'px';
+      composerInput.style.overflowY = composerInput.scrollHeight > 120 ? 'auto' : 'hidden';
     }
 
     // Send Message via Composer
@@ -484,6 +485,7 @@
       store.sendInboxMessage(convId, text, false, 'shop');
       composerInput.value = '';
       composerInput.style.height = '38px';
+      composerInput.style.overflowY = 'hidden';
     }
 
     if (btnSend) {

@@ -1,0 +1,130 @@
+/* ==========================================================================
+   MERCURIOS // STAFF & ACCESS (HỆ THỐNG - NHÂN VIÊN & PHÂN QUYỀN)
+   Zero-Icon / Monochrome / High Readability / Clean Typography
+   ========================================================================== */
+
+/* 1. TABLE SPECIFICS FOR STAFF */
+.staff-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.staff-avatar {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+[data-theme="dark"] .staff-avatar {
+  background: #1E2227;
+  border-color: #353C46;
+  color: #F4F6F8;
+}
+
+.staff-name-text {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Role Badges */
+.role-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .role-badge {
+  background: #1C2025;
+  border-color: #2E3642;
+  color: #9BA3AF;
+}
+
+/* Status Badges */
+.status-pill-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+}
+
+[data-theme="dark"] .status-pill-active {
+  background: #06281E;
+  border-color: #0B533C;
+  color: #6EE7B7;
+}
+
+.status-pill-inactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+}
+
+/* Row Action Buttons */
+.staff-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.staff-action-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.staff-action-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-medium);
+}
+
+.staff-action-btn.btn-delete:hover {
+  background: #FEF2F2;
+  border-color: #F87171;
+  color: #DC2626;
+}
+
+[data-theme="dark"] .staff-action-btn.btn-delete:hover {
+  background: #3B1214;
+  border-color: #7F1D1D;
+  color: #FCA5A5;
+}
